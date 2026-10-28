@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP African American Studies: Unit 1 Mastery & Diagnostic</title>
+    <title>AP African American Studies: Complete Units 1-4 Mastery & Diagnostic</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -75,14 +75,14 @@
                 <div class="w-10 h-10 rounded bg-cb-blue text-white font-bold flex items-center justify-center font-serif text-lg tracking-wider border border-white/20">AP</div>
                 <div>
                     <h1 class="font-serif font-bold text-base sm:text-lg tracking-wide text-white">AP African American Studies</h1>
-                    <p class="text-xs text-cb-gold font-medium">Unit 1: Origins of the African Diaspora</p>
+                    <p class="text-xs text-cb-gold font-medium">Complete Course Framework (Units 1–4)</p>
                 </div>
             </div>
             <nav class="flex items-center space-x-1 sm:space-x-2">
                 <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm"><i class="fas fa-home"></i><span class="hidden md:inline">Overview</span></button>
-                <button onclick="switchTab('diagnostic')" id="nav-diagnostic" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-edit"></i><span class="hidden md:inline">Diagnostic Quiz</span></button>
-                <button onclick="switchTab('analysis')" id="nav-analysis" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-chart-bar"></i><span class="hidden md:inline">Results & Diagnostics</span></button>
-                <button onclick="switchTab('reteach')" id="nav-reteach" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-book-open"></i><span class="hidden md:inline">Reteach & Simulations</span></button>
+                <button onclick="switchTab('diagnostic')" id="nav-diagnostic" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-edit"></i><span class="hidden md:inline">Diagnostic</span></button>
+                <button onclick="switchTab('analysis')" id="nav-analysis" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-chart-bar"></i><span class="hidden md:inline">Results</span></button>
+                <button onclick="switchTab('reteach')" id="nav-reteach" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-book-open"></i><span class="hidden md:inline">Reteach</span></button>
             </nav>
         </div>
     </header>
@@ -92,7 +92,7 @@
         <div class="flex justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold text-cb-navy font-serif">AP African American Studies - Diagnostic Report</h1>
-                <p class="text-gray-600 text-sm">Unit 1: Origins of the African Diaspora (Topics 1.1 - 1.10)</p>
+                <p class="text-gray-600 text-sm">Comprehensive Course Mastery (Units 1–4)</p>
             </div>
             <div class="text-right">
                 <p id="print-date" class="text-sm font-semibold text-gray-700"></p>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="text-center">
                     <span class="text-xs text-gray-500 font-semibold block">Score</span>
-                    <span id="header-score" class="text-base font-bold text-cb-navy">-- / 10</span>
+                    <span id="header-score" class="text-base font-bold text-cb-navy">-- / 4</span>
                 </div>
                 <button onclick="exportToPDF()" class="bg-cb-blue hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-all shadow flex items-center space-x-2">
                     <i class="fas fa-file-pdf"></i><span>Export Report</span>
@@ -128,14 +128,14 @@
             </div>
         </div>
 
-        <!-- TAB 1: DASHBOARD -->
+        <!-- TAB 1: DASHBOARD (OVERVIEW) -->
         <section id="tab-dashboard" class="tab-content space-y-6">
             <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
                 <div class="relative z-10 max-w-3xl">
-                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Framework</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">Unit 1: Origins of the African Diaspora</h2>
+                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Framework (Units 1–4)</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">AP African American Studies Master Dashboard</h2>
                     <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
-                        Explore foundational African history, geography, societies, and intellectual traditions from human origins through early global contact, aligned strictly with the College Board Course and Exam Description (Topics 1.1–1.10). Features integrated archival sources from the Gilder Lehrman Institute of American History.
+                        Explore foundational African history, transatlantic enslavement, the practice of freedom during Reconstruction and Jim Crow, and modern civil rights and cultural movements. Fully integrated with Gilder Lehrman archival sources and primary documents.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2"><i class="fas fa-play"></i><span>Start Interactive Diagnostic</span></button>
@@ -145,9 +145,17 @@
                 <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white"><i class="fas fa-globe-africa text-[260px]"></i></div>
             </div>
 
+            <!-- Unit Filter Tabs for Overview -->
+            <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-4">
+                <button onclick="filterOverviewUnit('all')" id="overview-btn-all" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-cb-blue text-white shadow-sm">All Units (1-4)</button>
+                <button onclick="filterOverviewUnit(1)" id="overview-btn-1" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 1: Origins</button>
+                <button onclick="filterOverviewUnit(2)" id="overview-btn-2" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 2: Enslavement</button>
+                <button onclick="filterOverviewUnit(3)" id="overview-btn-3" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 3: Freedom</button>
+                <button onclick="filterOverviewUnit(4)" id="overview-btn-4" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 4: Movements</button>
+            </div>
+
             <div>
-                <h3 class="text-xl font-serif font-bold text-cb-navy mb-4 flex items-center space-x-2"><i class="fas fa-list-check text-cb-gold"></i><span>Course & Exam Description Unit 1 Topics (1.1 - 1.10)</span></h3>
-                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </div>
         </section>
 
@@ -156,12 +164,12 @@
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200 gap-4">
                     <div>
-                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Unit 1 Interactive Diagnostic Assessment</h2>
-                        <p class="text-gray-600 text-sm">Drag key terms into the blanks to complete each official AP CED Essential Knowledge sentence.</p>
+                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Units 1–4 Interactive Diagnostic Assessment</h2>
+                        <p class="text-gray-600 text-sm">Drag key terms into the blanks to complete official AP CED Essential Knowledge statements across all 4 units.</p>
                     </div>
                     <div class="flex items-center space-x-3 bg-cb-lightBlue px-4 py-2 rounded-lg border border-cb-blue/20">
                         <i class="fas fa-tasks text-cb-blue"></i>
-                        <span class="text-sm font-semibold text-cb-navy">Filled: <strong id="quiz-progress-text" class="text-cb-blue">0 / 10</strong></span>
+                        <span class="text-sm font-semibold text-cb-navy">Filled: <strong id="quiz-progress-text" class="text-cb-blue">0 / 4</strong></span>
                     </div>
                 </div>
 
@@ -190,16 +198,16 @@
                     <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Diagnostic Summary</h2>
                     <p id="score-feedback-msg" class="text-gray-600 text-sm sm:text-base">Complete the diagnostic assessment to reveal your mastery score and targeted review recommendations.</p>
                     <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Correct</span><span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 10</span></div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span><span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Topics</span></div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span><span id="stat-review" class="text-xl font-bold text-cb-ochre">10 Topics</span></div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Correct</span><span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 4</span></div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span><span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Units</span></div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span><span id="stat-review" class="text-xl font-bold text-cb-ochre">4 Units</span></div>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
-                    <h3 class="text-xl font-serif font-bold text-cb-navy">Objective Mastery Breakdown</h3>
+                    <h3 class="text-xl font-serif font-bold text-cb-navy">Unit Mastery Breakdown</h3>
                     <button onclick="exportToPDF()" class="no-print text-xs font-bold px-3 py-1.5 rounded bg-cb-lightBlue text-cb-blue hover:bg-blue-100 transition-colors"><i class="fas fa-print mr-1"></i> Print / Export Report</button>
                 </div>
                 <div id="analysis-list" class="space-y-4"></div>
@@ -212,12 +220,12 @@
                 <div class="flex items-center space-x-3 w-full md:w-auto">
                     <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold"><i class="fas fa-lightbulb"></i></div>
                     <div>
-                        <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Mini-Simulations</h3>
-                        <p class="text-xs text-gray-500">Select any official CED Unit 1 topic to view concept breakdowns, Gilder Lehrman visual sources, and interactive simulations.</p>
+                        <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Gilder Lehrman Archives</h3>
+                        <p class="text-xs text-gray-500">Select any official CED Unit to explore historical archives, visual analysis, and interactive simulations.</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 w-full md:w-auto">
-                    <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Topic:</label>
+                    <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Unit / Topic:</label>
                     <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-80 focus:outline-none focus:border-cb-blue"></select>
                 </div>
             </div>
@@ -229,35 +237,35 @@
     <!-- Footer -->
     <footer class="bg-cb-navy text-white py-6 mt-12 no-print border-t-4 border-cb-gold">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-300 space-y-1">
-            <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Unit 1: Origins of the African Diaspora</p>
-            <p>Designed for High School AP Scholars • Official CED Topics 1.1–1.10 & Gilder Lehrman Source Integration</p>
+            <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Units 1–4 Complete</p>
+            <p>Designed for High School AP Scholars • Official CED Framework & Gilder Lehrman Source Integration</p>
         </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // OFFICIAL AP CED UNIT 1 TOPICS 1.1 - 1.10 DATA WITH GILDER LEHRMAN REPOSITORY IMAGES & LINKS
-        const unitTopics = [
+        // OFFICIAL AP CED UNITS 1 - 4 DATA WITH GILDER LEHRMAN REPOSITORY IMAGES & LINKS
+        const courseUnits = [
             {
-                id: "1.1",
-                title: "1.1 African American Studies: An Interdisciplinary Field",
-                learningObjective: "Explain the interdisciplinary nature of African American Studies and its focus on the experiences, histories, and cultures of people of African descent.",
-                essentialKnowledge: "African American Studies is an interdisciplinary field that draws from history, literature, the visual and performing arts, sociology, and other academic disciplines to examine the complex experiences, histories, and cultures of Black people in the United States and across the diaspora.",
-                blankQuestion: "African American Studies is characterized as a(n) _____ field that examines Black experiences by integrating history, literature, sociology, and the arts.",
+                unitId: 1,
+                unitTitle: "Unit 1: Origins of the African Diaspora",
+                weight: "20–25% Exam Weight",
+                description: "Africa before and at the dawn of the transatlantic slave trade, from ancient societies and Sudanic empires to cultural and religious traditions.",
                 correctAnswer: "interdisciplinary",
                 acceptedAnswers: ["interdisciplinary", "cross-disciplinary"],
+                blankQuestion: "African American Studies is characterized as a(n) _____ field that examines Black experiences by integrating history, literature, sociology, and the arts.",
                 hint: "Describes a field combining multiple academic disciplines into a unified study.",
-                breakdown: "African American Studies rejects single-lens approaches, instead utilizing history, literature, art history, and spatial analysis to evaluate Black agency and cultural production.",
+                breakdown: "African American Studies rejects single-lens approaches, utilizing history, literature, art history, and spatial analysis to evaluate Black agency and cultural production.",
                 source: {
-                    name: "Gilder Lehrman Institute Repository: Foundations of African American Historiography",
-                    url: "https://www.gilderlehrman.org/",
+                    name: "Gilder Lehrman Collection: Foundations of African American Historiography",
+                    url: "https://www.gilderlehrman.org/collection/glc03300",
                     img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600&auto=format&fit=crop",
                     description: "Archival documents illustrating how scholars pioneered interdisciplinary Black studies."
                 },
                 simulationType: "match",
                 simulationData: {
                     title: "Interdisciplinary Lens Categorization Task",
-                    prompt: "Match each research inquiry to its appropriate academic lens in African American Studies:",
+                    prompt: "Match each research inquiry to its appropriate academic lens:",
                     options: [
                         { item: "Analyzing slave narratives and poetry", correct: "Literary & Oral Tradition Lens" },
                         { item: "Mapping demographic migration patterns over time", correct: "Spatial & Geographic Lens" },
@@ -266,240 +274,80 @@
                 }
             },
             {
-                id: "1.2",
-                title: "1.2 Africa: Geography, Climate, and Human Origins",
-                learningObjective: "Explain how Africa's diverse geography and climate zones shaped early human societies and migration patterns.",
-                essentialKnowledge: "Fossil evidence establishes East Africa's Great Rift Valley as the cradle of human origin. Africa's diverse topography—including deserts, sahel, savanna grasslands, tropical rainforests, and Mediterranean zones—shaped agricultural development, trade routes, and human settlement.",
-                blankQuestion: "Archaeological and fossil evidence identifies East Africa's _____ as the primary cradle of early human origin.",
-                correctAnswer: "Great Rift Valley",
-                acceptedAnswers: ["great rift valley", "rift valley"],
-                hint: "Major geographic trench in East Africa renowned for hominid fossil discoveries.",
-                breakdown: "Africa's vast geographic diversity dictated economic patterns. While the Sahara and dense rainforests presented distinct challenges, Sudanic savanna grasslands supported large-scale pastoralism and cereal farming.",
+                unitId: 2,
+                unitTitle: "Unit 2: Freedom, Enslavement, and Resistance",
+                weight: "30–35% Exam Weight",
+                description: "The transatlantic and domestic slave trades, slave codes, and the extensive forms of resistance, rebellion, and community building under enslavement.",
+                correctAnswer: "resistance",
+                acceptedAnswers: ["resistance", "rebellion", "agency"],
+                blankQuestion: "Enslaved Africans and their descendants continually deployed everyday acts of _____ and organized revolts to challenge the chattel slavery system.",
+                hint: "Active opposition or defiance against oppressive conditions.",
+                breakdown: "Unit 2 explores the trauma of the Middle Passage alongside profound cultural retention, marronage, slave revolts (e.g., Stono, Nat Turner), and abolitionist alliances.",
                 source: {
-                    name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Early African Environments",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=600&auto=format&fit=crop",
-                    description: "Topographical maps and climate zone charts detailing early African human settlements."
+                    name: "Gilder Lehrman Collection: Anti-Slavery Petitions and Slave Narratives",
+                    url: "https://www.gilderlehrman.org/collection/glc00127",
+                    img: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?q=80&w=600&auto=format&fit=crop",
+                    description: "Original 18th- and 19th-century abolitionist broadsides and firsthand narratives documenting slave resistance."
+                },
+                simulationType: "source_analysis",
+                simulationData: {
+                    prompt: "Primary Source Analysis: Slave Code & Legal Control",
+                    question: "What was the primary legal function of slave codes enacted across Southern colonies?",
+                    options: [
+                        { text: "To institutionalize chattel slavery, strip human rights, and maintain total racial control over enslaved laborers.", correct: true, feedback: "Correct! Slave codes legally codified human bondage and suppressed autonomous gatherings." },
+                        { text: "To guarantee fair wages and due process for all plantation workers.", correct: false, feedback: "Incorrect. Slave codes systematically denied legal personhood and basic civil rights." }
+                    ]
+                }
+            },
+            {
+                unitId: 3,
+                unitTitle: "Unit 3: The Practice of Freedom",
+                weight: "20–25% Exam Weight",
+                description: "Reconstruction, Jim Crow segregation, disenfranchisement, the Great Migration, and the cultural flowering of the Harlem Renaissance.",
+                correctAnswer: "Reconstruction",
+                acceptedAnswers: ["reconstruction"],
+                hint: "Post-Civil War era (1865–1877) focused on rebuilding the Union and integrating freedmen.",
+                breakdown: "Following emancipation, Black Americans established schools, churches, and political organizations during Reconstruction, later mobilizing against violent Jim Crow backlash and migrating northward for industrial work.",
+                source: {
+                    name: "Gilder Lehrman Collection: Reconstruction Era Legislation & Photographs",
+                    url: "https://www.gilderlehrman.org/collection/glc02745",
+                    img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop",
+                    description: "Photographs and voter registration rolls from Black legislators serving during Reconstruction."
                 },
                 simulationType: "timeline",
                 simulationData: {
-                    title: "Geographic Adaptation & Migration Analysis",
-                    prompt: "Examine how climate zones dictated human activity in early Africa:",
+                    title: "The Practice of Freedom Era Chronology",
+                    prompt: "Examine key milestones from emancipation through the Harlem Renaissance:",
                     events: [
-                        { era: "Savanna Zone", text: "Supported cereal agriculture (sorghum, millet) and cattle pastoralism, facilitating large population centers." },
-                        { era: "Rainforest Zone", text: "Fostered root crop cultivation and specialized forest resource management." },
-                        { era: "Sahel Transition Zone", text: "Acted as a critical commercial and cultural bridge between Saharan and forest societies." }
+                        { era: "1865–1877", text: "Reconstruction Amendments (13th, 14th, 15th) expand citizenship and suffrage." },
+                        { era: "1890s–1950s", text: "Jim Crow segregation, poll taxes, and disenfranchisement enforced across the South." },
+                        { era: "1910s–1930s", text: "The Great Migration and Harlem Renaissance redefine modern Black literature, art, and music." }
                     ]
                 }
             },
             {
-                id: "1.3",
-                title: "1.3 Ancient Societies in Northeast Africa",
-                learningObjective: "Analyze the political, economic, and cultural developments of ancient civilizations in Northeast Africa.",
-                essentialKnowledge: "Ancient civilizations in Northeast Africa, including Nubia (Kush) and Aksum, developed sophisticated trade networks, writing systems, monumental architecture, and religious traditions that interacted extensively with the Mediterranean and Near East.",
-                blankQuestion: "The ancient Northeast African kingdom of Aksum developed its own indigenous script known as _____ and adopted Christianity in the 4th century CE.",
-                correctAnswer: "Ge'ez",
-                acceptedAnswers: ["ge'ez", "geez"],
-                hint: "Ancient Ethiopic writing system used for royal proclamations and liturgy.",
-                breakdown: "Northeast African societies were global powerhouses. Kush mastered iron production at Meroë and built pyramids along the Nile. Aksum controlled lucrative Red Sea trade routes, minting its own gold coinage.",
+                unitId: 4,
+                unitTitle: "Unit 4: Movements and Debates",
+                weight: "20–25% Exam Weight",
+                description: "The Civil Rights Movement, Black Power, Black feminism and intersectionality, and contemporary debates in Black politics and culture.",
+                correctAnswer: "intersectionality",
+                acceptedAnswers: ["intersectionality", "black feminism"],
+                hint: "Analytical framework term coined by Kimberlé Crenshaw examining overlapping systems of oppression.",
+                breakdown: "Unit 4 traces organized activism from the NAACP and the 1963 March on Washington to Black Panther organizing, the Black Feminist movement, and modern struggles for social justice.",
                 source: {
-                    name: "Gilder Lehrman Collection: Ancient Northeast African Inscriptions",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600&auto=format&fit=crop",
-                    description: "Translations of royal stelae and coinage documenting Aksumite political sovereignty."
-                },
-                simulationType: "source_analysis",
-                simulationData: {
-                    prompt: "Primary Source Analysis: Aksumite Trade & Governance",
-                    question: "What does the issuance of gold and silver coinage by ancient Aksum indicate about its economy?",
-                    options: [
-                        { text: "Aksum was fully integrated into international maritime and Mediterranean commercial networks.", correct: true, feedback: "Correct! Standardized coinage reflects a sophisticated, globally connected market economy." },
-                        { text: "Aksum relied exclusively on barter without any centralized government.", correct: false, feedback: "Incorrect. Coinage proves centralized monarchical authority and formal currency systems." }
-                    ]
-                }
-            },
-            {
-                id: "1.4",
-                title: "1.4 West African Empires: Ghana, Mali, and Songhai",
-                learningObjective: "Explain how the Trans-Saharan trade routes contributed to the rise and wealth of West African empires.",
-                essentialKnowledge: "The West African empires of Ghana, Mali, and Songhai accumulated immense wealth and political power by controlling the Trans-Saharan trade in gold, salt, and other commodities, connecting West Africa to North Africa and Eurasia.",
-                blankQuestion: "West African empires like Ghana, Mali, and Songhai built their economic power primarily by controlling the Trans-Saharan trade in gold and _____.",
-                correctAnswer: "salt",
-                acceptedAnswers: ["salt"],
-                hint: "Essential mineral traded ounce-for-ounce for gold across Saharan routes.",
-                breakdown: "Control over desert-edge entrepôts allowed Sudanic kings to tax passing caravans. This wealth funded formidable armies, administrative bureaucracies, and patronage of international scholarship.",
-                source: {
-                    name: "Gilder Lehrman Institute: Al-Omari’s Accounts of Mansa Musa's Journey",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600&auto=format&fit=crop",
-                    description: "14th-century Arabic manuscript accounts documenting royal opulence and gold reserves of the Mali Empire."
-                },
-                simulationType: "decision_sim",
-                simulationData: {
-                    title: "Trans-Saharan Trade Controller Simulation",
-                    scenario: "You are the Mansa (Emperor) of Mali controlling major gold mines in Wangara and salt deposits in Taghaza.",
-                    decisionPrompt: "How do you ensure safe and profitable passage for merchants across your territory?",
-                    options: [
-                        { text: "Maintain a well-equipped royal army to police trade routes and collect standard customs duties at border markets.", correct: true, feedback: "Correct! Imperial military protection and taxation secured long-term commercial stability and royal revenue." },
-                        { text: "Close all trade borders and ban foreign merchants from entering imperial cities.", correct: false, feedback: "Incorrect. Economic prosperity relied heavily on welcoming international merchant networks." }
-                    ]
-                }
-            },
-            {
-                id: "1.5",
-                title: "1.5 Learning Traditions and Intellectual Centers",
-                learningObjective: "Analyze the development of intellectual life and learning traditions in West African empires.",
-                essentialKnowledge: "Cities like Timbuktu became renowned centers of Islamic scholarship, science, law, and literature, housing vast libraries of manuscripts. Concurrently, oral historians and musicians (griots) preserved community genealogies, laws, and historical memory.",
-                blankQuestion: "In West Africa, cities like Timbuktu emerged as premier international centers of scholarship, while hereditary oral historians known as _____ preserved community history.",
-                correctAnswer: "griots",
-                acceptedAnswers: ["griots", "griot", "jali", "jelis"],
-                hint: "West African traditional bards and oral chroniclers.",
-                breakdown: "Intellectual infrastructure in West Africa was twofold: written scholarship flourished in universities like Sankore with thousands of manuscripts on astronomy and law, while griots maintained oral archives.",
-                source: {
-                    name: "Gilder Lehrman & Timbuktu Educational Foundation Archives",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop",
-                    description: "Facsimiles of mathematical, astronomical, and legal manuscripts from 14th-century West African libraries."
-                },
-                simulationType: "match",
-                simulationData: {
-                    title: "Intellectual Tradition Classification Task",
-                    prompt: "Match each West African intellectual role to its primary function:",
-                    options: [
-                        { item: "Sankore University Scholars", correct: "Composed and transcribed Arabic legal treatises, mathematics, and astronomy." },
-                        { item: "Griots (Jalis)", correct: "Memorized royal genealogies and epic histories using musical accompaniment." }
-                    ]
-                }
-            },
-            {
-                id: "1.6",
-                title: "1.6 East African City-States and Indian Ocean Trade",
-                learningObjective: "Explain the cultural and economic significance of East African Swahili coastal city-states in Indian Ocean trade.",
-                essentialKnowledge: "The Swahili Coast comprised independent cosmopolitan city-states (such as Kilwa, Mombasa, and Zanzibar) that engaged in Indian Ocean trade, blending Bantu African foundations with Arabic and Persian cultural influences.",
-                blankQuestion: "Along the East African coast, maritime city-states formed a distinct trading culture known as _____, combining Bantu and Middle Eastern influences.",
-                correctAnswer: "Swahili",
-                acceptedAnswers: ["swahili", "swahili coast"],
-                hint: "Language and culture of the East African maritime littoral.",
-                breakdown: "Swahili city-states were hubs of globalization. Utilizing seasonal monsoon winds, dhow sailors connected East Africa to Arabia, Persia, India, and China, creating multi-story coral towns.",
-                source: {
-                    name: "Gilder Lehrman Institute: Archaeological Records of Kilwa Kisiwani",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600&auto=format&fit=crop",
-                    description: "Portcelain and coin fragments demonstrating East Africa's extensive commercial ties across the Indian Ocean."
-                },
-                simulationType: "trade_navigator",
-                simulationData: {
-                    title: "Indian Ocean Monsoon Wind Simulation",
-                    prompt: "Analyze how maritime traders leveraged seasonal wind patterns:",
-                    pairs: [
-                        { wind: "Northeast Monsoons (Nov–Mar)", cargo: "Carried merchant vessels south from the Persian Gulf and India to Swahili ports." },
-                        { wind: "Southwest Monsoons (Apr–Oct)", cargo: "Propelled vessels north toward Asia laden with African gold, ivory, and frankincense." }
-                    ]
-                }
-            },
-            {
-                id: "1.7",
-                title: "1.7 Central and Southern African Kingdoms",
-                learningObjective: "Examine the political and architectural achievements of Central and Southern African kingdoms.",
-                essentialKnowledge: "Central and Southern African societies developed complex political structures, exemplified by Great Zimbabwe's monumental dry-stone architecture and the Kingdom of Kongo's centralized monarchy and diplomatic engagement.",
-                blankQuestion: "The inland Southern African empire of Great Zimbabwe is world-renowned for its massive stone structures built entirely without _____.",
-                correctAnswer: "mortar",
-                acceptedAnswers: ["mortar", "cement"],
-                hint: "Binding paste or adhesive material used in conventional masonry.",
-                breakdown: "Southern and Central African states demonstrated master engineering. Great Zimbabwe served as a political capital. In West-Central Africa, Kongo established sophisticated administrative provinces and maintained diplomacy with Europe.",
-                source: {
-                    name: "Gilder Lehrman & Smithsonian NMAAHC: Architecture of Great Zimbabwe",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=600&auto=format&fit=crop",
-                    description: "Photographic and architectural surveys of the Great Enclosure stone walls."
-                },
-                simulationType: "source_analysis",
-                simulationData: {
-                    prompt: "Architectural & Historical Analysis: Great Zimbabwe",
-                    question: "What does the dry-stone construction of Great Zimbabwe reveal about its society?",
-                    options: [
-                        { text: "It reflects advanced stonemasonry skills, centralized labor organization, and elite royal authority.", correct: true, feedback: "Correct! Constructing massive dry-stone walls required immense engineering expertise and centralized power." },
-                        { text: "It was a temporary campsite constructed by nomadic herdsmen.", correct: false, feedback: "Incorrect. The monumental scale indicates a permanent, highly stratified imperial capital." }
-                    ]
-                }
-            },
-            {
-                id: "1.8",
-                title: "1.8 Indigenous Cosmologies and Religious Syncretism",
-                learningObjective: "Explain the role of indigenous African spiritual systems and how religious syncretism developed.",
-                essentialKnowledge: "African spiritual systems emphasized ancestor reverence, supreme creators, and spiritual connections to the land. Religious syncretism occurred when communities blended indigenous beliefs with introduced world religions like Islam and Christianity.",
-                blankQuestion: "The blending of traditional African spiritual systems with introduced global religions such as Islam or Christianity is termed religious _____.",
-                correctAnswer: "syncretism",
-                acceptedAnswers: ["syncretism"],
-                hint: "Term for the fusion of different religious beliefs and practices.",
-                breakdown: "African cosmology viewed the spiritual and physical worlds as deeply interconnected. When Islam and Christianity arrived, African societies frequently synthesized these traditions, preserving core indigenous worldviews.",
-                source: {
-                    name: "Gilder Lehrman Collection: Religious Syncretism in West and Central Africa",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=600&auto=format&fit=crop",
-                    description: "Primary texts examining how African clergy and rulers integrated Christianity and Islam with local ancestral traditions."
-                },
-                simulationType: "decision_sim",
-                simulationData: {
-                    title: "Religious Syncretism Case Study Analysis",
-                    scenario: "Examining the adoption of Christianity by the Kingdom of Kongo in 1491 under King Nzinga a Nkuwu.",
-                    decisionPrompt: "How did Kongolese citizens and nobility initially practice Christianity?",
-                    options: [
-                        { text: "They synthesized Christian saints and iconography with indigenous spiritual concepts and royal symbols.", correct: true, feedback: "Correct! Kongolese Christianity uniquely blended European liturgical forms with local religious aesthetics." },
-                        { text: "They completely erased all indigenous religious memories overnight.", correct: false, feedback: "Incorrect. Religious synthesis and local adaptation were central to how Kongo embraced the faith." }
-                    ]
-                }
-            },
-            {
-                id: "1.9",
-                title: "1.9 Art, Material Culture, and Political Authority",
-                learningObjective: "Analyze how art, brass casting, textiles, and material culture expressed political power and spiritual beliefs in Africa.",
-                essentialKnowledge: "African artistic traditions—including Benin brass/bronze plaques, Yoruba terracotta sculptures, and Kente or Kuba textiles—served as visual archives of royal lineage, political legitimacy, and spiritual values.",
-                blankQuestion: "The Kingdom of Benin produced exquisite cast brass and bronze plaques that served as visual records of royal lineage and _____.",
-                correctAnswer: "political authority",
-                acceptedAnswers: ["political authority", "power", "royalty"],
-                hint: "Concept representing the right to rule and govern.",
-                breakdown: "Art in Africa was functional, political, and sacred. Royal workshops in Benin cast detailed brass panels commemorating Obas (kings), military victories, and court ceremonies.",
-                source: {
-                    name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Benin Bronzes Repository",
-                    url: "https://www.gilderlehrman.org/",
-                    img: "https://images.unsplash.com/photo-1582561244093-c901e855c5df?q=80&w=600&auto=format&fit=crop",
-                    description: "High-resolution visual archives of 16th-century royal brass castings from Benin."
-                },
-                simulationType: "match",
-                simulationData: {
-                    title: "Material Culture & Symbolism Task",
-                    prompt: "Match each African artistic tradition with its primary cultural function:",
-                    options: [
-                        { item: "Benin Brass Plaques", correct: "Recorded royal history and court ceremonies on palace walls." },
-                        { item: "Kente Woven Cloth", correct: "Expressed royal prestige, philosophical proverbs, and social status through color and pattern." },
-                        { item: "Nok Terracotta Sculptures", correct: "Served ritual, funerary, and spiritual functions with distinctive stylized features." }
-                    ]
-                }
-            },
-            {
-                id: "1.10",
-                title: "1.10 Synthesis: Foundations of the African Diaspora",
-                learningObjective: "Synthesize how the diverse cultures, institutions, and experiences of early Africa established the enduring foundations of the African diaspora.",
-                essentialKnowledge: "The sophisticated civilizations, trade networks, spiritual traditions, and political structures of early Africa formed the vibrant bedrock of the African diaspora as millions of Africans were later forcibly dispersed across the Atlantic world.",
-                blankQuestion: "The foundational knowledge, cultural practices, and resilience developed across early African societies carried forward into the global African _____.",
-                correctAnswer: "Diaspora",
-                acceptedAnswers: ["diaspora", "african diaspora"],
-                hint: "Global dispersion of African peoples maintaining cultural ties to their ancestral homeland.",
-                breakdown: "Unit 1 concludes by connecting the depth of pre-colonial African history to the diaspora. Enslaved Africans carried advanced agricultural skills, artistic patterns, legal concepts, and spiritual resilience that shaped the Americas.",
-                source: {
-                    name: "Gilder Lehrman Institute: Global Legacies of Pre-Colonial Africa",
-                    url: "https://www.gilderlehrman.org/",
+                    name: "Gilder Lehrman Collection: Civil Rights Movement Speeches and Papers",
+                    url: "https://www.gilderlehrman.org/collection/glc09630",
                     img: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600&auto=format&fit=crop",
-                    description: "Comprehensive historiographical essays linking African institutional foundations to diasporic culture."
+                    description: "Archival correspondence, organizing pamphlets, and photographs from grassroots Civil Rights campaigns."
                 },
-                simulationType: "source_analysis",
+                simulationType: "decision_sim",
                 simulationData: {
-                    prompt: "Synthesizing Unit 1: Historiographical Evaluation",
-                    question: "Why is mastering pre-colonial African history critical for analyzing the African American experience?",
+                    title: "Civil Rights & Grassroots Strategy Simulation",
+                    scenario: "Evaluating community organizing strategies during the height of the 1960s Civil Rights Movement.",
+                    decisionPrompt: "What combination of tactics proved most effective in dismantling legal segregation?",
                     options: [
-                        { text: "It reframes the narrative from enslavement origins to deep civilizational achievements, technological mastery, and cultural continuity.", correct: true, feedback: "Correct! It demonstrates that African Americans inherit a rich legacy of global statecraft, arts, and intellect." },
-                        { text: "It proves that African societies had no connection to the Americas.", correct: false, feedback: "Incorrect. Cultural retentions from Africa heavily influenced American history." }
+                        { text: "Combining direct-action boycotts and sit-ins with voter registration drives and federal legal challenges.", correct: true, feedback: "Correct! Multi-layered community mobilization forced legislative victories like the Civil Rights Act of 1964." },
+                        { text: "Relying exclusively on silent petitions without public demonstrations.", correct: false, feedback: "Incorrect. Direct action and mass mobilization were essential catalysts for systemic change." }
                     ]
                 }
             }
@@ -512,11 +360,11 @@
 
         window.onload = function() {
             updatePrintDate();
-            renderDashboardGrid();
+            renderDashboardGrid('all');
             renderWordBank();
             renderDiagnosticQuestions();
             renderReteachSelector();
-            renderReteachTopic(unitTopics[0].id);
+            renderReteachTopic(courseUnits[0].unitId);
         };
 
         function updatePrintDate() {
@@ -545,41 +393,66 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function renderDashboardGrid() {
+        function filterOverviewUnit(unitNum) {
+            // Update button styles
+            ['all', 1, 2, 3, 4].forEach(n => {
+                const b = document.getElementById(`overview-btn-${n}`);
+                if (b) {
+                    if (n === unitNum) {
+                        b.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-cb-blue text-white shadow-sm";
+                    } else {
+                        b.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50";
+                    }
+                }
+            });
+            renderDashboardGrid(unitNum);
+        }
+
+        function renderDashboardGrid(filter) {
             const grid = document.getElementById('topics-grid');
             grid.innerHTML = "";
-            unitTopics.forEach(t => {
+            
+            const filteredUnits = filter === 'all' ? courseUnits : courseUnits.filter(u => u.unitId === filter);
+
+            filteredUnits.forEach(u => {
                 const card = document.createElement('div');
-                card.className = "bg-white border border-cb-grayBorder rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+                card.className = "bg-white border border-cb-grayBorder rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
                 card.innerHTML = `
                     <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cb-lightBlue text-cb-blue">Topic ${t.id}</span>
-                            <a href="${t.source.url}" target="_blank" class="text-[10px] text-cb-blue font-semibold hover:underline flex items-center space-x-1"><i class="fas fa-external-link-alt"></i><span>Gilder Lehrman</span></a>
+                        <div class="h-48 overflow-hidden relative">
+                            <img src="${u.source.img}" alt="${u.unitTitle}" class="w-full h-full object-cover">
+                            <div class="absolute top-3 left-3 bg-cb-navy text-white text-xs font-bold px-2.5 py-1 rounded shadow">
+                                ${u.unitTitle.split(':')[0]} (${u.weight})
+                            </div>
                         </div>
-                        <h4 class="font-serif font-bold text-cb-navy text-base mb-1">${t.title}</h4>
-                        <p class="text-xs font-semibold text-cb-blue mb-2">${t.learningObjective}</p>
-                        <p class="text-gray-600 text-xs leading-relaxed mb-4">${t.essentialKnowledge}</p>
+                        <div class="p-5 space-y-3">
+                            <h4 class="font-serif font-bold text-cb-navy text-lg">${u.unitTitle}</h4>
+                            <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">${u.description}</p>
+                            <div class="p-3 bg-cb-cream rounded-lg border border-gray-200 flex items-center justify-between text-xs">
+                                <span class="font-semibold text-cb-blue truncate max-w-[220px]"><i class="fas fa-landmark text-cb-gold mr-1"></i>${u.source.name}</span>
+                                <a href="${u.source.url}" target="_blank" class="text-cb-blue font-bold hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Gilder Lehrman Link</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <span class="text-[11px] text-gray-500 italic truncate max-w-[180px]"><i class="fas fa-archive mr-1 text-cb-gold"></i>${t.source.name}</span>
-                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Review</span><i class="fas fa-arrow-right text-[10px]"></i></button>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between">
+                        <span class="text-[11px] text-gray-500 italic">Official CED Aligned</span>
+                        <button onclick="jumpToUnitReteach(${u.unitId})" class="text-xs bg-cb-lightBlue hover:bg-blue-100 text-cb-blue font-bold px-3 py-1.5 rounded transition-colors flex items-center space-x-1"><span>Open Reteach Module</span><i class="fas fa-arrow-right text-[10px]"></i></button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function jumpToTopicReteach(topicId) {
+        function jumpToUnitReteach(unitId) {
             switchTab('reteach');
-            document.getElementById('topic-selector').value = topicId;
-            renderReteachTopic(topicId);
+            document.getElementById('topic-selector').value = unitId;
+            renderReteachTopic(unitId);
         }
 
         function renderWordBank() {
             const container = document.getElementById('word-bank-container');
             container.innerHTML = "";
-            const terms = unitTopics.map(t => t.correctAnswer).sort(() => Math.random() - 0.5);
+            const terms = courseUnits.map(u => u.correctAnswer).sort(() => Math.random() - 0.5);
 
             terms.forEach(term => {
                 const badge = document.createElement('div');
@@ -602,14 +475,14 @@
             const container = document.getElementById('questions-container');
             container.innerHTML = "";
 
-            unitTopics.forEach((t, index) => {
-                const parts = t.blankQuestion.split("_____");
+            courseUnits.forEach((u, index) => {
+                const parts = u.blankQuestion.split("_____");
                 const qCard = document.createElement('div');
                 qCard.className = "bg-cb-cream border border-gray-200 rounded-xl p-5 shadow-sm";
                 qCard.innerHTML = `
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-cb-blue uppercase tracking-wider">Topic ${t.id} Diagnostic</span>
-                        <span class="text-xs text-gray-500 font-medium">Question ${index + 1} of 10</span>
+                        <span class="text-xs font-bold text-cb-blue uppercase tracking-wider">${u.unitTitle.split(':')[0]} Diagnostic</span>
+                        <span class="text-xs text-gray-500 font-medium">Question ${index + 1} of 4</span>
                     </div>
                     <p class="text-cb-dark text-sm sm:text-base leading-relaxed mb-3 font-medium">
                         ${parts[0]}
@@ -618,10 +491,9 @@
                         </span>
                         ${parts[1] || ''}
                     </p>
-                    <p class="text-xs text-gray-500 italic mb-3"><strong>Learning Objective:</strong> ${t.learningObjective}</p>
                     <div class="hint-container">
                         <div class="hint-icon"><i class="fas fa-lightbulb"></i></div>
-                        <div class="hint-text"><strong>AP Key Hint:</strong> ${t.hint}</div>
+                        <div class="hint-text"><strong>AP Key Hint:</strong> ${u.hint}</div>
                     </div>
                 `;
                 container.appendChild(qCard);
@@ -656,9 +528,9 @@
 
         function updateQuizProgress() {
             const filledCount = Object.keys(userAnswers).length;
-            document.getElementById('quiz-progress-text').innerText = `${filledCount} / 10`;
+            document.getElementById('quiz-progress-text').innerText = `${filledCount} / 4`;
             const badge = document.getElementById('diagnostic-status-badge');
-            if (filledCount === 10) {
+            if (filledCount === 4) {
                 badge.className = "inline-block text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold";
                 badge.innerText = "Completed (Ready to Submit)";
             } else if (filledCount > 0) {
@@ -679,27 +551,27 @@
             let correctCount = 0;
             const analysisResults = [];
 
-            unitTopics.forEach((t, index) => {
+            courseUnits.forEach((u, index) => {
                 const userAns = (userAnswers[index] || "").trim().toLowerCase();
-                const isCorrect = t.acceptedAnswers.includes(userAns);
+                const isCorrect = u.acceptedAnswers.includes(userAns);
                 if (isCorrect) correctCount++;
-                analysisResults.push({ topic: t, userAnswer: userAnswers[index] || "Unanswered", correct: isCorrect });
+                analysisResults.push({ unit: u, userAnswer: userAnswers[index] || "Unanswered", correct: isCorrect });
             });
 
-            const percentage = Math.round((correctCount / 10) * 100);
-            document.getElementById('header-score').innerText = `${correctCount} / 10`;
+            const percentage = Math.round((correctCount / 4) * 100);
+            document.getElementById('header-score').innerText = `${correctCount} / 4`;
             document.getElementById('score-percentage').innerText = `${percentage}%`;
-            document.getElementById('stat-correct').innerText = `${correctCount} / 10`;
-            document.getElementById('stat-mastered').innerText = `${correctCount} Topics`;
-            document.getElementById('stat-review').innerText = `${10 - correctCount} Topics`;
+            document.getElementById('stat-correct').innerText = `${correctCount} / 4`;
+            document.getElementById('stat-mastered').innerText = `${correctCount} Units`;
+            document.getElementById('stat-review').innerText = `${4 - correctCount} Units`;
 
             const msgEl = document.getElementById('score-feedback-msg');
             if (percentage === 100) {
-                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all official Unit 1 CED Learning Objectives.";
-            } else if (percentage >= 70) {
-                msgEl.innerText = "Great job! You have a strong grasp of Unit 1, with a few targeted topics to review.";
+                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all official AP Course Units 1–4.";
+            } else if (percentage >= 50) {
+                msgEl.innerText = "Great job! You have a solid grasp of the course framework, with a few units to review.";
             } else {
-                msgEl.innerText = "Review recommended! Complete the automated reteach modules and simulations below to strengthen your understanding.";
+                msgEl.innerText = "Review recommended! Complete the automated reteach modules and simulations below.";
             }
 
             const analysisList = document.getElementById('analysis-list');
@@ -711,14 +583,14 @@
                 item.innerHTML = `
                     <div class="space-y-1">
                         <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">Topic ${res.topic.id}</span>
-                            <h4 class="font-serif font-bold text-cb-navy text-sm">${res.topic.title}</h4>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">${res.unit.unitTitle.split(':')[0]}</span>
+                            <h4 class="font-serif font-bold text-cb-navy text-sm">${res.unit.unitTitle}</h4>
                         </div>
-                        <p class="text-xs text-gray-600">Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.userAnswer}</strong> ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.topic.correctAnswer}</strong>` : ''}</p>
+                        <p class="text-xs text-gray-600">Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.userAnswer}</strong> ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.unit.correctAnswer}</strong>` : ''}</p>
                     </div>
                     <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
                         <span class="text-xs font-bold px-3 py-1 rounded-full ${res.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${res.correct ? '<i class="fas fa-check-circle mr-1"></i> Mastered' : '<i class="fas fa-exclamation-circle mr-1"></i> Review Needed'}</span>
-                        <button onclick="jumpToTopicReteach('${res.topic.id}')" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">Reteach</button>
+                        <button onclick="jumpToUnitReteach(${res.unit.unitId})" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">Reteach</button>
                     </div>
                 `;
                 analysisList.appendChild(item);
@@ -731,68 +603,61 @@
         function renderReteachSelector() {
             const selector = document.getElementById('topic-selector');
             selector.innerHTML = "";
-            unitTopics.forEach(t => {
+            courseUnits.forEach(u => {
                 const opt = document.createElement('option');
-                opt.value = t.id;
-                opt.innerText = `Topic ${t.id}: ${t.title.replace(/^1\.\d+\s*/, '')}`;
+                opt.value = u.unitId;
+                opt.innerText = u.unitTitle;
                 selector.appendChild(opt);
             });
         }
 
-        function renderReteachTopic(topicId) {
-            const t = unitTopics.find(item => item.id === topicId);
-            if (!t) return;
+        function renderReteachTopic(unitId) {
+            const u = courseUnits.find(item => item.unitId == unitId);
+            if (!u) return;
             const container = document.getElementById('reteach-card-container');
             
             let simulationHTML = "";
-            if (t.simulationType === "timeline") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-stream"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.events.map((ev) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm"><span class="font-bold text-cb-navy">${ev.era}</span><span class="text-gray-700 flex-grow px-4">${ev.text}</span><span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span></div>`).join('')}</div></div>`;
-            } else if (t.simulationType === "source_analysis") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-scroll"></i><span>Primary Source & Historical Analysis Simulation</span></div>${t.simulationData.quote ? `<blockquote class="italic text-xs bg-white p-3 rounded border-l-4 border-cb-gold text-gray-800">${t.simulationData.quote}</blockquote>` : ''}<p class="text-xs font-semibold text-cb-navy">${t.simulationData.question || t.simulationData.prompt}</p><div class="space-y-2 pt-2" id="sim-options-${t.id}">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Select</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
-            } else if (t.simulationType === "decision_sim") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-chess-board"></i><span>Decision-Making Simulation</span></div><p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p><p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Choose</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
-            } else if (t.simulationType === "trade_navigator") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-compass"></i><span>Indian Ocean Trade Navigator</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.pairs.map((p) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/3">${p.wind}</span><span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span></div>`).join('')}</div></div>`;
-            } else if (t.simulationType === "match") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-network-wired"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/2">${opt.item}</span><span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span></div>`).join('')}</div></div>`;
+            if (u.simulationType === "timeline") {
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-stream"></i><span>${u.simulationData.title}</span></div><p class="text-xs text-gray-700">${u.simulationData.prompt}</p><div class="space-y-2 pt-2">${u.simulationData.events.map((ev) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm"><span class="font-bold text-cb-navy">${ev.era}</span><span class="text-gray-700 flex-grow px-4">${ev.text}</span><span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span></div>`).join('')}</div></div>`;
+            } else if (u.simulationType === "source_analysis") {
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-scroll"></i><span>Primary Source Analysis Simulation</span></div><p class="text-xs font-semibold text-cb-navy">${u.simulationData.question || u.simulationData.prompt}</p><div class="space-y-2 pt-2" id="sim-options-${u.unitId}">${u.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${u.unitId}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Select</span></button>`).join('')}</div><div id="sim-feedback-${u.unitId}" class="text-xs font-semibold pt-1"></div></div>`;
+            } else if (u.simulationType === "decision_sim") {
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-chess-board"></i><span>Decision-Making Simulation</span></div><p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${u.simulationData.scenario}</p><p class="text-xs font-bold text-cb-navy">${u.simulationData.decisionPrompt}</p><div class="space-y-2 pt-2">${u.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${u.unitId}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Choose</span></button>`).join('')}</div><div id="sim-feedback-${u.unitId}" class="text-xs font-semibold pt-1"></div></div>`;
+            } else if (u.simulationType === "match") {
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-network-wired"></i><span>${u.simulationData.title}</span></div><p class="text-xs text-gray-700">${u.simulationData.prompt}</p><div class="space-y-2 pt-2">${u.simulationData.options.map((opt) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/2">${opt.item}</span><span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span></div>`).join('')}</div></div>`;
             }
 
             container.innerHTML = `
                 <div class="bg-white border border-cb-grayBorder rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-2">
                         <div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">Topic ${t.id} Reteach Module</span>
-                            <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">${t.title}</h3>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">${u.unitTitle}</span>
+                            <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">Reteach & Archival Module</h3>
                         </div>
-                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> Official CED Aligned</span>
+                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> ${u.weight}</span>
                     </div>
 
                     <div class="space-y-4">
                         <div class="p-4 bg-amber-50 rounded-lg border border-amber-200">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">Learning Objective</h4>
-                            <p class="text-amber-900 text-sm font-semibold">${t.learningObjective}</p>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Essential Knowledge</h4>
-                            <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">${t.essentialKnowledge}</p>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">Unit Core Focus</h4>
+                            <p class="text-amber-900 text-sm font-semibold">${u.description}</p>
                         </div>
 
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Concept Breakdown & Historical Context</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">${t.breakdown}</p>
+                            <p class="text-gray-700 text-sm leading-relaxed">${u.breakdown}</p>
                         </div>
 
                         <!-- Gilder Lehrman Source Repository Integration Card with Image & Live Link -->
                         <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex flex-col md:flex-row items-start gap-4">
-                            <img src="${t.source.img}" alt="Gilder Lehrman Archival Source" class="w-full md:w-36 h-28 object-cover rounded-lg border border-blue-200 shadow-sm">
+                            <img src="${u.source.img}" alt="Gilder Lehrman Archival Source" class="w-full md:w-36 h-28 object-cover rounded-lg border border-blue-200 shadow-sm">
                             <div class="space-y-1.5 flex-grow">
                                 <div class="flex items-center justify-between">
                                     <h5 class="text-xs font-bold text-cb-navy uppercase"><i class="fas fa-landmark text-cb-blue mr-1"></i> Gilder Lehrman Source Repository</h5>
-                                    <a href="${t.source.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-2.5 py-1 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>View Source Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                    <a href="${u.source.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-2.5 py-1 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>View Source Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
                                 </div>
-                                <p class="text-xs font-bold text-cb-blue">${t.source.name}</p>
-                                <p class="text-xs text-gray-600">${t.source.description}</p>
+                                <p class="text-xs font-bold text-cb-blue">${u.source.name}</p>
+                                <p class="text-xs text-gray-600">${u.source.description}</p>
                             </div>
                         </div>
                     </div>
@@ -805,10 +670,10 @@
             `;
         }
 
-        function checkSimAnswer(topicId, optionIdx, isCorrect) {
-            const feedbackEl = document.getElementById(`sim-feedback-${topicId}`);
-            const t = unitTopics.find(item => item.id === topicId);
-            const chosenOption = t.simulationData.options[optionIdx];
+        function checkSimAnswer(unitId, optionIdx, isCorrect) {
+            const feedbackEl = document.getElementById(`sim-feedback-${unitId}`);
+            const u = courseUnits.find(item => item.unitId == unitId);
+            const chosenOption = u.simulationData.options[optionIdx];
 
             if (isCorrect) {
                 feedbackEl.className = "text-xs font-bold pt-2 text-emerald-700 bg-emerald-50 p-3 rounded border border-emerald-200";
