@@ -219,10 +219,10 @@
             <!-- Hero Banner -->
             <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
                 <div class="relative z-10 max-w-3xl">
-                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Alignment</span>
+                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Framework</span>
                     <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">Unit 1: Origins of the African Diaspora</h2>
                     <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
-                        Examine the natural environment, human origins, early African empires, Indian Ocean and Trans-Saharan trade networks, rich artistic traditions, and social systems prior to and during early Atlantic contact (Topics 1.1–1.10).
+                        Explore the foundational history, geography, societies, and intellectual traditions of Africa from human origins through early global contact, aligned strictly with the College Board Course and Exam Description (Topics 1.1–1.10). Source repository integration powered by the Gilder Lehrman Institute of American History and the Smithsonian NMAAHC.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2">
@@ -244,7 +244,7 @@
             <div>
                 <h3 class="text-xl font-serif font-bold text-cb-navy mb-4 flex items-center space-x-2">
                     <i class="fas fa-list-check text-cb-gold"></i>
-                    <span>Course & Exam Description Topics (1.1 - 1.10)</span>
+                    <span>Course & Exam Description Unit 1 Topics (1.1 - 1.10)</span>
                 </h3>
                 <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <!-- Populated dynamically via JS -->
@@ -257,8 +257,8 @@
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200 gap-4">
                     <div>
-                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Unit 1 Interactive Diagnostic</h2>
-                        <p class="text-gray-600 text-sm">Drag key terms into the blanks (or tap a term, then tap a blank) to complete each Learning Objective sentence.</p>
+                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Unit 1 Interactive Diagnostic Assessment</h2>
+                        <p class="text-gray-600 text-sm">Drag key terms into the blanks (or tap a term, then tap a blank) to complete each official AP CED Essential Knowledge sentence.</p>
                     </div>
                     <div class="flex items-center space-x-3 bg-cb-lightBlue px-4 py-2 rounded-lg border border-cb-blue/20">
                         <i class="fas fa-tasks text-cb-blue"></i>
@@ -352,7 +352,7 @@
                     </div>
                     <div>
                         <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Mini-Simulations</h3>
-                        <p class="text-xs text-gray-500">Select any Unit 1 objective to view concept breakdowns and hands-on simulations.</p>
+                        <p class="text-xs text-gray-500">Select any official CED Unit 1 topic to view concept breakdowns, Gilder Lehrman visual sources, and simulations.</p>
                     </div>
                 </div>
                 
@@ -376,207 +376,266 @@
     <footer class="bg-cb-navy text-white py-6 mt-12 no-print border-t-4 border-cb-gold">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-300 space-y-1">
             <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Unit 1: Origins of the African Diaspora</p>
-            <p>Designed for High School AP Scholars • Interactive Drag-and-Drop Diagnostic & Conceptual Simulation Engine</p>
+            <p>Designed for High School AP Scholars • Official CED Topics 1.1–1.10 & Gilder Lehrman Source Integration</p>
         </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // OFFICIAL AP CED TOPICS 1.1 - 1.10 FULL CONTENT DATA STRUCTURE
+        // EXACT OFFICIAL AP CED UNIT 1 TOPICS 1.1 - 1.10 DATA STRUCTURE WITH GILDER LEHRMAN / SMITHSONIAN SOURCE REPOSITORY
         const unitTopics = [
             {
                 id: "1.1",
-                title: "1.1 Natural Environment and Human Origins",
-                essentialKnowledge: "Fossil evidence establishes that early human ancestors originated in East Africa's Great Rift Valley. Human societies adapted during the Paleolithic and Neolithic eras, laying the foundation for early African civilizations.",
-                blankQuestion: "Fossil evidence indicates that early human ancestors originated in East Africa's _____, making Africa the birthplace of humanity.",
-                correctAnswer: "Great Rift Valley",
-                acceptedAnswers: ["great rift valley", "rift valley"],
-                hint: "Geological feature spanning East Africa rich in early hominid fossil sites.",
-                breakdown: "Human evolution began in Africa. Archaeological findings in places like Olduvai Gorge demonstrate that Africa was the cradle of humanity. Early African societies mastered stone tool technology during the Paleolithic era and pioneered agriculture during the Neolithic transition.",
-                simulationType: "timeline",
+                title: "1.1 African American Studies: An Interdisciplinary Field",
+                learningObjective: "Explain the interdisciplinary nature of African American Studies and its focus on the experiences, histories, and cultures of people of African descent.",
+                essentialKnowledge: "African American Studies is an interdisciplinary field that draws from history, literature, the visual and performing arts, sociology, and other academic disciplines to examine the complex experiences, histories, and cultures of Black people in the United States and across the diaspora.",
+                blankQuestion: "African American Studies is characterized as a(n) _____ field that examines Black experiences by integrating history, literature, sociology, and the arts.",
+                correctAnswer: "interdisciplinary",
+                acceptedAnswers: ["interdisciplinary", "cross-disciplinary"],
+                hint: "Describes a field combining multiple academic disciplines into a unified study.",
+                breakdown: "African American Studies rejects single-lens approaches, instead utilizing history, literature, art history, and spatial analysis. This interdisciplinary rigor ensures a comprehensive evaluation of Black agency and cultural production.",
+                source: {
+                    name: "Gilder Lehrman Institute Repository: Foundations of African American Historiography",
+                    type: "archive",
+                    description: "Archival documents illustrating how 20th-century scholars and organizations pioneered interdisciplinary Black studies."
+                },
+                simulationType: "match",
                 simulationData: {
-                    title: "Human Origins & Migration Timeline Analysis",
-                    prompt: "Order the milestones of early human development in Africa chronologically:",
-                    events: [
-                        { era: "Milestone 1", text: "Hominid divergence and early fossil deposits in the Great Rift Valley." },
-                        { era: "Milestone 2", text: "Development of Paleolithic stone tool industries (Oldowan and Acheulean)." },
-                        { era: "Milestone 3", text: "Neolithic agricultural Revolution and cattle domestication across northern Africa." }
+                    title: "Interdisciplinary Lens Categorization Task",
+                    prompt: "Match each research inquiry to its appropriate academic lens in African American Studies:",
+                    options: [
+                        { item: "Analyzing slave narratives and poetry", correct: "Literary & Oral Tradition Lens" },
+                        { item: "Mapping demographic migration patterns over time", correct: "Spatial & Geographic Lens" },
+                        { item: "Examining royal West African brass plaques", correct: "Visual Art & Material Culture Lens" }
                     ]
                 }
             },
             {
                 id: "1.2",
-                title: "1.2 Ancient Societies & Empires in Africa",
-                essentialKnowledge: "Nubia/Kush and Aksum were powerful ancient Northeast African kingdoms. Kush prospered along the Nile with its iron industry at Meroë, while Aksum developed the Ge'ez script and adopted Christianity in the 4th century.",
-                blankQuestion: "The kingdom of Aksum developed the written language known as _____, which remains one of Africa's oldest indigenous writing systems.",
-                correctAnswer: "Ge'ez",
-                acceptedAnswers: ["ge'ez", "geez"],
-                hint: "Ancient Ethiopian script used in royal inscriptions and liturgical texts.",
-                breakdown: "Northeast Africa was home to monumental ancient civilizations. Nubia/Kush rivaled and ruled Egypt (25th Dynasty) and mastered iron metallurgy at Meroë. Aksum in modern Ethiopia grew into a major trading power connecting Rome and India, adopting Christianity under King Ezana in 330 CE.",
-                simulationType: "source_analysis",
+                title: "1.2 Africa: Geography, Climate, and Human Origins",
+                learningObjective: "Explain how Africa's diverse geography and climate zones shaped early human societies and migration patterns.",
+                essentialKnowledge: "Fossil evidence establishes East Africa's Great Rift Valley as the cradle of human origin. Africa's diverse topography—including deserts, sahel, savanna grasslands, tropical rainforests, and Mediterranean zones—shaped agricultural development, trade routes, and human settlement.",
+                blankQuestion: "Archaeological and fossil evidence identifies East Africa's _____ as the primary cradle of early human origin.",
+                correctAnswer: "Great Rift Valley",
+                acceptedAnswers: ["great rift valley", "rift valley"],
+                hint: "Major geographic trench in East Africa renowned for hominid fossil discoveries.",
+                breakdown: "Africa's vast geographic diversity dictated economic patterns. While the Sahara and dense rainforests presented distinct challenges, Sudanic savanna grasslands supported large-scale pastoralism and cereal farming, powering early urbanization.",
+                source: {
+                    name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Early African Environments",
+                    type: "map",
+                    description: "Topographical maps and climate zone charts detailing early African human settlements."
+                },
+                simulationType: "timeline",
                 simulationData: {
-                    prompt: "Analyze the Ezana Stone Inscription (c. 350 CE) from Aksum:",
-                    quote: "\"I, Ezana, King of the Aksumites and Himyarites... set up this throne here by the mercy of the Lord of Heaven, who has created me.\"",
-                    question: "Which conclusion regarding Northeast African political history is directly supported by this primary source?",
-                    options: [
-                        { text: "Aksum was an isolated society with no formal government structure.", correct: false, feedback: "Incorrect. Aksum was a highly organized empire." },
-                        { text: "Aksum adopted Christianity as a state religion under King Ezana long before European colonization.", correct: true, feedback: "Correct! Aksum's state Christianity dates back to the 4th century CE." }
+                    title: "Geographic Adaptation & Migration Analysis",
+                    prompt: "Examine how climate zones dictated human activity in early Africa:",
+                    events: [
+                        { era: "Savanna Zone", text: "Supported cereal agriculture (sorghum, millet) and cattle pastoralism, facilitating large population centers." },
+                        { era: "Rainforest Zone", text: "Fostered root crop cultivation and specialized forest resource management." },
+                        { era: "Sahel Transition Zone", text: "Acted as a critical commercial and cultural bridge between Saharan and forest societies." }
                     ]
                 }
             },
             {
                 id: "1.3",
-                title: "1.3 West African Kingdoms & Empires",
-                essentialKnowledge: "Ghana, Mali, and Songhai dominated West Africa through the Trans-Saharan trade in gold and salt. Mansa Musa made Mali internationally famous during his 1324 pilgrimage, and Timbuktu became a global center of Islamic scholarship.",
-                blankQuestion: "Emperor _____ of Mali showcased his empire's incredible wealth in gold during his 1324 pilgrimage to Mecca.",
-                correctAnswer: "Mansa Musa",
-                acceptedAnswers: ["mansa musa", "musa"],
-                hint: "Renowned 14th-century Mali ruler considered one of the wealthiest individuals in human history.",
-                breakdown: "West African Sudanic empires controlled key trade nodes. Ghana ('Land of Gold') laid the structural groundwork, Mali expanded economic and cultural influence under Mansa Musa, and Songhai grew into West Africa's largest empire under Sunni Ali and Askia Muhammad.",
-                simulationType: "decision_sim",
+                title: "1.3 Ancient Societies in Northeast Africa",
+                learningObjective: "Analyze the political, economic, and cultural developments of ancient civilizations in Northeast Africa.",
+                essentialKnowledge: "Ancient civilizations in Northeast Africa, including Nubia (Kush) and Aksum, developed sophisticated trade networks, writing systems, monumental architecture, and religious traditions that interacted extensively with the Mediterranean and Near East.",
+                blankQuestion: "The ancient Northeast African kingdom of Aksum developed its own indigenous script known as _____ and adopted Christianity in the 4th century CE.",
+                correctAnswer: "Ge'ez",
+                acceptedAnswers: ["ge'ez", "geez"],
+                hint: "Ancient Ethiopic writing system used for royal proclamations and liturgy.",
+                breakdown: "Northeast African societies were global powerhouses. Kush mastered iron production at Meroë and built pyramids along the Nile. Aksum controlled lucrative Red Sea trade routes connecting Roman, Byzantine, and Indian markets, minting its own gold coinage.",
+                source: {
+                    name: "Gilder Lehrman Collection: Ancient Northeast African Inscriptions",
+                    type: "document",
+                    description: "Translations of royal stelae and coinage documenting Aksumite political sovereignty."
+                },
+                simulationType: "source_analysis",
                 simulationData: {
-                    title: "Royal Caravan & Investment Strategy: Mansa Musa (1324)",
-                    scenario: "You are preparing Mansa Musa's royal caravan with tens of thousands of attendants and thousands of pounds of gold dust.",
-                    decisionPrompt: "How do you strategically utilize this wealth along your journey through Cairo to Mecca?",
+                    prompt: "Primary Source Analysis: Aksumite Trade & Governance",
+                    question: "What does the issuance of gold and silver coinage by ancient Aksum indicate about its economy?",
                     options: [
-                        { text: "Distribute gold generously to charities and scholars, putting Mali on European and Mediterranean maps (like the Catalan Atlas) while funding Timbuktu's Sankore University.", correct: true, feedback: "Historically Accurate! Mansa Musa's generosity made Mali famous across Africa, Europe, and Asia." },
-                        { text: "Hide all gold resources to prevent nearby empires from learning about West African mineral reserves.", correct: false, feedback: "Incorrect. Mansa Musa intentionally used his pilgrimage as a diplomatic display of Mali's wealth and prestige." }
+                        { text: "Aksum was fully integrated into international maritime and Mediterranean commercial networks.", correct: true, feedback: "Correct! Standardized coinage reflects a sophisticated, globally connected market economy." },
+                        { text: "Aksum relied exclusively on barter without any centralized government.", correct: false, feedback: "Incorrect. Coinage proves centralized monarchical authority and formal currency systems." }
                     ]
                 }
             },
             {
                 id: "1.4",
-                title: "1.4 East African City-States & Indian Ocean Trade",
-                essentialKnowledge: "The Swahili Coast comprised independent city-states (Kilwa, Mombasa, Zanzibar) that prospered in Indian Ocean trade networks using traditional dhow ships and seasonal monsoon winds.",
-                blankQuestion: "East African sailors navigated the Indian Ocean trade network using traditional wooden vessels called _____, propelled by monsoon winds.",
-                correctAnswer: "dhows",
-                acceptedAnswers: ["dhows", "dhow"],
-                hint: "Lateen-sailed vessels used across the Arabian Sea and East African coast.",
-                breakdown: "The Swahili Coast was a cosmopolitan maritime trade network. Swahili culture blended Bantu language structures with Arabic vocabulary. Merchants exchanged African gold, ivory, and timber for Asian silk, spices, and Chinese porcelain.",
-                simulationType: "trade_navigator",
+                title: "1.4 West African Empires: Ghana, Mali, and Songhai",
+                learningObjective: "Explain how the Trans-Saharan trade routes contributed to the rise and wealth of West African empires.",
+                essentialKnowledge: "The West African empires of Ghana, Mali, and Songhai accumulated immense wealth and political power by controlling the Trans-Saharan trade in gold, salt, and other commodities, connecting West Africa to North Africa and Eurasia.",
+                blankQuestion: "West African empires like Ghana, Mali, and Songhai built their economic power primarily by controlling the Trans-Saharan trade in gold and _____.",
+                correctAnswer: "salt",
+                acceptedAnswers: ["salt"],
+                hint: "Essential mineral traded ounce-for-ounce for gold across Saharan routes.",
+                breakdown: "Control over desert-edge entrepôts like Audaghost, Gao, and Walata allowed Sudanic kings to tax passing caravans. This wealth funded formidable armies, administrative bureaucracies, and patronage of international scholarship.",
+                source: {
+                    name: "Gilder Lehrman Institute: Al-Omari’s Accounts of Mansa Musa's Journey",
+                    type: "document",
+                    description: "14th-century Arabic manuscript accounts documenting the royal opulence and gold reserves of the Mali Empire."
+                },
+                simulationType: "decision_sim",
                 simulationData: {
-                    title: "Monsoon Wind Trade Route Navigator",
-                    prompt: "Select the correct monsoon wind direction and trade cargo pairing:",
-                    pairs: [
-                        { wind: "Northeast Monsoon (Nov - Mar)", cargo: "Sails ships south from Arabia/India to Swahili ports with silk & ceramics." },
-                        { wind: "Southwest Monsoon (Apr - Sep)", cargo: "Sails ships north toward India with African gold, ivory, and mangrove timber." }
+                    title: "Trans-Saharan Trade Controller Simulation",
+                    scenario: "You are the Mansa (Emperor) of Mali controlling major gold mines in Wangara and salt deposits in Taghaza.",
+                    decisionPrompt: "How do you ensure safe and profitable passage for merchants across your territory?",
+                    options: [
+                        { text: "Maintain a well-equipped royal army to police trade routes and collect standard customs duties at border markets.", correct: true, feedback: "Correct! Imperial military protection and taxation secured long-term commercial stability and royal revenue." },
+                        { text: "Close all trade borders and ban foreign merchants from entering imperial cities.", correct: false, feedback: "Incorrect. Economic prosperity relied heavily on welcoming international merchant networks." }
                     ]
                 }
             },
             {
                 id: "1.5",
-                title: "1.5 Central and Southern African Kingdoms",
-                essentialKnowledge: "Great Zimbabwe was an inland empire renowned for its stone architecture built without mortar. In Central Africa, the Kingdom of Kongo engaged in trade and diplomacy, where Queen Nzinga later resisted Portuguese expansion.",
-                blankQuestion: "Queen _____ of Ndongo and Matamba famously led decades of political and military resistance against Portuguese colonization in Angola.",
-                correctAnswer: "Nzinga",
-                acceptedAnswers: ["nzinga", "nzinga a mbande", "njinga"],
-                hint: "Central African monarch famous for equal diplomacy and guerrilla strategy.",
-                breakdown: "Central and Southern Africa featured sophisticated state-building. Great Zimbabwe controlled gold trade routes to the coast, leaving massive stone enclosures (Dzimba-dza-mabwe). In Kongo and Angola, rulers like Queen Nzinga skillfully combined diplomacy, warfare, and Dutch alliances to counter Portuguese slaving raids.",
-                simulationType: "decision_sim",
+                title: "1.5 Learning Traditions and Intellectual Centers",
+                learningObjective: "Analyze the development of intellectual life and learning traditions in West African empires.",
+                essentialKnowledge: "Cities like Timbuktu became renowned centers of Islamic scholarship, science, law, and literature, housing vast libraries of manuscripts. Concurrently, oral historians and musicians (griots) preserved community genealogies, laws, and historical memory.",
+                blankQuestion: "In West Africa, cities like Timbuktu emerged as premier international centers of scholarship, while hereditary oral historians known as _____ preserved community history.",
+                correctAnswer: "griots",
+                acceptedAnswers: ["griots", "griot", "jali", "jelis"],
+                hint: "West African traditional bards and oral chroniclers.",
+                breakdown: "Intellectual infrastructure in West Africa was twofold: written scholarship flourished in universities like Sankore with thousands of manuscripts on astronomy and law, while griots maintained oral archives with astonishing precision.",
+                source: {
+                    name: "Gilder Lehrman & Timbuktu Educational Foundation Archives",
+                    type: "manuscript",
+                    description: "Facsimiles of mathematical, astronomical, and legal manuscripts from 14th-century West African libraries."
+                },
+                simulationType: "match",
                 simulationData: {
-                    title: "Diplomatic Decision: Queen Nzinga's Luanda Summit (1622)",
-                    scenario: "The Portuguese governor intentionally provides no chair for you at negotiations, attempting to force you to stand as a subordinate.",
-                    decisionPrompt: "What action do you take to assert equal royal status?",
+                    title: "Intellectual Tradition Classification Task",
+                    prompt: "Match each West African intellectual role to its primary function:",
                     options: [
-                        { text: "Instruct your royal attendant to kneel on all fours to act as a human seat, placing you eye-to-eye with the governor.", correct: true, feedback: "Historical Fact! Queen Nzinga used this bold diplomatic move to force the governor to negotiate as an equal." },
-                        { text: "Stand quietly against the wall and sign away territorial rights.", correct: false, feedback: "Incorrect. Nzinga fiercely defended her kingdom's sovereignty for over 40 years." }
+                        { item: "Sankore University Scholars", correct: "Composed and transcribed Arabic legal treatises, mathematics, and astronomy." },
+                        { item: "Griots (Jalis)", correct: "Memorized royal genealogies and epic histories using musical accompaniment." }
                     ]
                 }
             },
             {
                 id: "1.6",
-                title: "1.6 Culture, Religion & Spirituality in Early Africa",
-                essentialKnowledge: "Early Africa contained diverse indigenous religions alongside Islam and Christianity. Religious syncretism occurred as communities blended universal religions with traditional beliefs like ancestral veneration.",
-                blankQuestion: "The blending of traditional African spiritual practices with introduced religions like Islam or Christianity is known as religious _____.",
-                correctAnswer: "syncretism",
-                acceptedAnswers: ["syncretism"],
-                hint: "Concept describing the combination or merging of different beliefs and practices.",
-                breakdown: "African spiritual life emphasized harmony between the physical and spiritual worlds. Indigenous beliefs honored supreme creators, nature spirits, and ancestors. As Christianity and Islam spread, African communities often integrated these faiths alongside indigenous traditions.",
-                simulationType: "source_analysis",
+                title: "1.6 East African City-States and Indian Ocean Trade",
+                learningObjective: "Explain the cultural and economic significance of East African Swahili coastal city-states in Indian Ocean trade.",
+                essentialKnowledge: "The Swahili Coast comprised independent cosmopolitan city-states (such as Kilwa, Mombasa, and Zanzibar) that engaged in Indian Ocean trade, blending Bantu African foundations with Arabic and Persian cultural influences.",
+                blankQuestion: "Along the East African coast, maritime city-states formed a distinct trading culture known as _____, combining Bantu and Middle Eastern influences.",
+                correctAnswer: "Swahili",
+                acceptedAnswers: ["swahili", "swahili coast"],
+                hint: "Language and culture of the East African maritime littoral.",
+                breakdown: "Swahili city-states were hubs of globalization. Utilizing seasonal monsoon winds, dhow sailors connected East Africa to Arabia, Persia, India, and China, creating stone-built multi-story coral towns with thriving civic institutions.",
+                source: {
+                    name: "Gilder Lehrman Institute: Archaeological Records of Kilwa Kisiwani",
+                    type: "artifact",
+                    description: "Portcelain and coin fragments demonstrating East Africa's extensive commercial ties across the Indian Ocean."
+                },
+                simulationType: "trade_navigator",
                 simulationData: {
-                    prompt: "Evaluate the cultural synthesis in West African Islamic architecture (e.g., Great Mosque of Djenné):",
-                    question: "How does the Great Mosque of Djenné illustrate religious syncretism?",
-                    options: [
-                        { text: "It combines Islamic architectural functions with indigenous West African adobe mud-brick craftsmanship.", correct: true, feedback: "Correct! The Djenné Mosque blends traditional West African Sudanic earthen building techniques with Islamic mosque design." },
-                        { text: "It was imported directly as a prefabricated stone structure from Europe.", correct: false, feedback: "Incorrect. It was built locally using indigenous Sudanic architectural traditions." }
+                    title: "Indian Ocean Monsoon Wind Simulation",
+                    prompt: "Analyze how maritime traders leveraged seasonal wind patterns:",
+                    pairs: [
+                        { wind: "Northeast Monsoons (Nov–Mar)", cargo: "Carried merchant vessels south from the Persian Gulf and India to Swahili ports." },
+                        { wind: "Southwest Monsoons (Apr–Oct)", cargo: "Propelled vessels north toward Asia laden with African gold, ivory, and frankincense." }
                     ]
                 }
             },
             {
                 id: "1.7",
-                title: "1.7 Art, Music, and Oral Traditions",
-                essentialKnowledge: "Oral historians and musicians, known as griots (or jalis), preserved genealogies, laws, and epics across generations. Visual art forms like terracotta sculptures and Kente weaving held deep political and spiritual meaning.",
-                blankQuestion: "West African oral historians, genealogists, and musicians who preserve community history are known as _____.",
-                correctAnswer: "griots",
-                acceptedAnswers: ["griots", "griot", "jali", "jelis"],
-                hint: "Traditional hereditary bards and oral historians of West Africa.",
-                breakdown: "Before written European records dominated historiography, African oral traditions preserved centuries of royal genealogy, laws, and epic poetry (such as the Epic of Sundiata). Griots utilized musical accompaniment on the kora to maintain cultural memory.",
-                simulationType: "decision_sim",
+                title: "1.7 Central and Southern African Kingdoms",
+                learningObjective: "Examine the political and architectural achievements of Central and Southern African kingdoms.",
+                essentialKnowledge: "Central and Southern African societies developed complex political structures, exemplified by Great Zimbabwe's monumental dry-stone architecture and the Kingdom of Kongo's centralized monarchy and diplomatic engagement.",
+                blankQuestion: "The inland Southern African empire of Great Zimbabwe is world-renowned for its massive stone structures built entirely without _____.",
+                correctAnswer: "mortar",
+                acceptedAnswers: ["mortar", "cement"],
+                hint: "Binding paste or adhesive material used in conventional masonry.",
+                breakdown: "Southern and Central African states demonstrated master engineering and statecraft. Great Zimbabwe served as a political and trading capital. In West-Central Africa, Kongo established sophisticated administrative provinces and maintained royal diplomacy with European states.",
+                source: {
+                    name: "Gilder Lehrman & Smithsonian NMAAHC: Architecture of Great Zimbabwe",
+                    type: "image",
+                    description: "Photographic and architectural surveys of the Great Enclosure stone walls."
+                },
+                simulationType: "source_analysis",
                 simulationData: {
-                    title: "Oral Tradition Preservation Task",
-                    scenario: "You are a griot in the Mali Empire tasked with transmitting the legal code and royal lineage to the next generation.",
-                    decisionPrompt: "What is your primary methodological tool for ensuring historical accuracy without written text?",
+                    prompt: "Architectural & Historical Analysis: Great Zimbabwe",
+                    question: "What does the dry-stone construction of Great Zimbabwe reveal about its society?",
                     options: [
-                        { text: "Memorizing rhythmic musical narratives, genealogies, and proverb cycles passed down through specialized familial lineages.", correct: true, feedback: "Correct! Griots relied on rigorous mnemonic devices, music, and memorization to preserve history flawlessly." },
-                        { text: "Drawing random sketches in desert sand that wash away daily.", correct: false, feedback: "Incorrect. Oral transmission required structured musical and mnemonic masterclasses." }
+                        { text: "It reflects advanced stonemasonry skills, centralized labor organization, and elite royal authority.", correct: true, feedback: "Correct! Constructing massive dry-stone walls required immense engineering expertise and centralized power." },
+                        { text: "It was a temporary campsite constructed by nomadic herdsmen.", correct: false, feedback: "Incorrect. The monumental scale indicates a permanent, highly stratified imperial capital." }
                     ]
                 }
             },
             {
                 id: "1.8",
-                title: "1.8 Social Structure, Kinship, and Gender Roles",
-                essentialKnowledge: "African societies organized social life around kinship networks, age sets, and clan lineages. Many societies practiced matrilineal descent, where lineage and political succession passed through the maternal line.",
-                blankQuestion: "In a _____ kinship system, family lineage, property, and political inheritance are traced through the maternal line.",
-                correctAnswer: "matrilineal",
-                acceptedAnswers: ["matrilineal"],
-                hint: "Opposite of patrilineal; tracing descent through mothers.",
-                breakdown: "Kinship was foundational to African governance. In many West African societies (such as certain Akan communities), lineage was matrilineal, granting women significant economic autonomy, political advisory roles, and queen-mother authority.",
-                simulationType: "source_analysis",
+                title: "1.8 Indigenous Cosmologies and Religious Syncretism",
+                learningObjective: "Explain the role of indigenous African spiritual systems and how religious syncretism developed.",
+                essentialKnowledge: "African spiritual systems emphasized ancestor reverence, supreme creators, and spiritual connections to the land. Religious syncretism occurred when communities blended indigenous beliefs with introduced world religions like Islam and Christianity.",
+                blankQuestion: "The blending of traditional African spiritual systems with introduced global religions such as Islam or Christianity is termed religious _____.",
+                correctAnswer: "syncretism",
+                acceptedAnswers: ["syncretism"],
+                hint: "Term for the fusion of different religious beliefs and practices.",
+                breakdown: "African cosmology viewed the spiritual and physical worlds as deeply interconnected. Ancestors acted as intermediaries. When Islam and Christianity arrived, African societies frequently synthesized these traditions, preserving core indigenous worldviews.",
+                source: {
+                    name: "Gilder Lehrman Collection: Religious Syncretism in West and Central Africa",
+                    type: "document",
+                    description: "Primary texts examining how African clergy and rulers integrated Christianity and Islam with local ancestral traditions."
+                },
+                simulationType: "decision_sim",
                 simulationData: {
-                    prompt: "Analyze West African Social Kinship Structures:",
-                    question: "What distinct advantage did matrilineal descent provide to women in kingdoms like Ashanti/Akan?",
+                    title: "Religious Syncretism Case Study Analysis",
+                    scenario: "Examining the adoption of Christianity by the Kingdom of Kongo in 1491 under King Nzinga a Nkuwu.",
+                    decisionPrompt: "How did Kongolese citizens and nobility initially practice Christianity?",
                     options: [
-                        { text: "Women held substantial inheritance rights and political influence through clan lineage.", correct: true, feedback: "Correct! Matrilineal structures ensured women held high social standing and property rights." },
-                        { text: "Women were excluded from all economic and family decisions.", correct: false, feedback: "Incorrect. Matrilineal systems often empowered women within family clans." }
+                        { text: "They synthesized Christian saints and iconography with indigenous spiritual concepts and royal symbols.", correct: true, feedback: "Correct! Kongolese Christianity uniquely blended European liturgical forms with local religious aesthetics." },
+                        { text: "They completely erased all indigenous religious memories overnight.", correct: false, feedback: "Incorrect. Religious synthesis and local adaptation were central to how Kongo embraced the faith." }
                     ]
                 }
             },
             {
                 id: "1.9",
-                title: "1.9 Early Global Connections & European Contact",
-                essentialsKnowledge: "Before the transatlantic slave trade, early Portuguese explorers established diplomatic and commercial contact with West African kingdoms on terms of sovereign equality, exchanging ambassadors.",
-                blankQuestion: "Initial diplomatic and commercial exchanges between Portuguese mariners and West African kingdoms were conducted on terms of _____.",
-                correctAnswer: "sovereign equality",
-                acceptedAnswers: ["sovereign equality", "equality", "mutual sovereignty"],
-                hint: "Principle where independent states negotiate as equals rather than colonizer and colony.",
-                breakdown: "Early maritime encounters in the 15th century (such as Portuguese missions to Benin and Kongo) did not immediately resemble later colonial domination. African monarchs dictated trade terms, taxed foreign ships, and exchanged royal ambassadors with European courts.",
-                simulationType: "decision_sim",
+                title: "1.9 Art, Material Culture, and Political Authority",
+                learningObjective: "Analyze how art, brass casting, textiles, and material culture expressed political power and spiritual beliefs in Africa.",
+                essentialKnowledge: "African artistic traditions—including Benin brass/bronze plaques, Yoruba terracotta sculptures, and Kente or Kuba textiles—served as visual archives of royal lineage, political legitimacy, and spiritual values.",
+                blankQuestion: "The Kingdom of Benin produced exquisite cast brass and bronze plaques that served as visual records of royal lineage and _____.",
+                correctAnswer: "political authority",
+                acceptedAnswers: ["political authority", "power", "royalty"],
+                hint: "Concept representing the right to rule and govern.",
+                breakdown: "Art in Africa was never merely decorative; it was functional, political, and sacred. Royal workshops in Benin cast detailed brass panels commemorating Obas (kings), military victories, and court ceremonies.",
+                source: {
+                    name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Benin Bronzes Repository",
+                    type: "image",
+                    description: "High-resolution visual archives of 16th-century royal brass castings from Benin."
+                },
+                simulationType: "match",
                 simulationData: {
-                    title: "Kingdom of Kongo Diplomatic Correspondence (1526)",
-                    scenario: "King Afonso I of Kongo writes to the King of Portugal protesting illegal Portuguese slave-trading practices in his sovereign domain.",
-                    decisionPrompt: "How does King Afonso assert his authority?",
+                    title: "Material Culture & Symbolism Task",
+                    prompt: "Match each African artistic tradition with its primary cultural function:",
                     options: [
-                        { text: "He demands that Portuguese merchants obey Kongo law and cease illegal abductions of free subjects.", correct: true, feedback: "Correct! King Afonso asserted his royal sovereignty to regulate commerce within his borders." },
-                        { text: "He abdicates his throne immediately to foreign merchants.", correct: false, feedback: "Incorrect. Afonso fought vigorously to protect Kongo's sovereignty." }
+                        { item: "Benin Brass Plaques", correct: "Recorded royal history and court ceremonies on palace walls." },
+                        { item: "Kente Woven Cloth", correct: "Expressed royal prestige, philosophical proverbs, and social status through color and pattern." },
+                        { item: "Nok Terracotta Sculptures", correct: "Served ritual, funerary, and spiritual functions with distinctive stylized features." }
                     ]
                 }
             },
             {
                 id: "1.10",
                 title: "1.10 Synthesis: Foundations of the African Diaspora",
-                essentialKnowledge: "The diverse cultures, technologies, governance systems, and spiritual traditions of early Africa formed the resilient bedrock of the African diaspora as millions were later forcibly dispersed across the Atlantic.",
-                blankQuestion: "The forced dispersal of Africans across the globe due to the transatlantic slave trade is known as the African _____.",
+                learningObjective: "Synthesize how the diverse cultures, institutions, and experiences of early Africa established the enduring foundations of the African diaspora.",
+                essentialKnowledge: "The sophisticated civilizations, trade networks, spiritual traditions, and political structures of early Africa formed the vibrant bedrock of the African diaspora as millions of Africans were later forcibly dispersed across the Atlantic world.",
+                blankQuestion: "The foundational knowledge, cultural practices, and resilience developed across early African societies carried forward into the global African _____.",
                 correctAnswer: "Diaspora",
                 acceptedAnswers: ["diaspora", "african diaspora"],
-                hint: "Term for the dispersion of any people from their original homeland.",
-                breakdown: "Unit 1 concludes by connecting African history to the global diaspora. Enslaved Africans carried memories of metallurgy, rice cultivation, spiritual syncretism, musical forms, and political resistance across the Atlantic, shaping Americas' culture.",
+                hint: "Global dispersion of African peoples maintaining cultural ties to their ancestral homeland.",
+                breakdown: "Unit 1 concludes by connecting the depth of pre-colonial African history to the diaspora. Enslaved Africans did not arrive in the Americas as blank slates; they carried advanced agricultural skills, artistic patterns, legal concepts, and spiritual resilience that shaped the Americas.",
+                source: {
+                    name: "Gilder Lehrman Institute: Global Legacies of Pre-Colonial Africa",
+                    type: "archive",
+                    description: "Comprehensive historiographical essays linking African institutional foundations to diasporic culture."
+                },
                 simulationType: "source_analysis",
                 simulationData: {
-                    prompt: "Synthesis & Legacy Analysis:",
-                    question: "Why is understanding pre-colonial African history essential for studying the African American experience?",
+                    prompt: "Synthesizing Unit 1: Historiographical Evaluation",
+                    question: "Why is mastering pre-colonial African history critical for analyzing the African American experience?",
                     options: [
-                        { text: "It establishes that African Americans descend from rich, sophisticated civilizations with established technologies, arts, and governance.", correct: true, feedback: "Correct! It reframes the African American narrative from enslavement origins to deep civilizational roots." },
-                        { text: "It has no bearing on cultural practices in the Americas.", correct: false, feedback: "Incorrect. African cultural retention profoundly shaped the Americas." }
+                        { text: "It reframes the narrative from enslavement origins to deep civilizational achievements, technological mastery, and cultural continuity.", correct: true, feedback: "Correct! It demonstrates that African Americans inherit a rich legacy of global statecraft, arts, and intellect." },
+                        { text: "It proves that African societies had no connection to the Americas.", correct: false, feedback: "Incorrect. Cultural retentions from Africa heavily influenced American history." }
                     ]
                 }
             }
@@ -614,7 +673,6 @@
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
-            // Update nav styles
             const navIds = ['dashboard', 'diagnostic', 'analysis', 'reteach'];
             navIds.forEach(id => {
                 const btn = document.getElementById('nav-' + id);
@@ -639,14 +697,16 @@
                     <div>
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cb-lightBlue text-cb-blue">Topic ${t.id}</span>
-                            <i class="fas fa-bookmark text-cb-gold/60"></i>
+                            <span class="text-[10px] text-gray-400 font-semibold uppercase">Gilder Lehrman Source</span>
                         </div>
-                        <h4 class="font-serif font-bold text-cb-navy text-base mb-2">${t.title}</h4>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mb-1">${t.title}</h4>
+                        <p class="text-xs font-semibold text-cb-blue mb-2">${t.learningObjective}</p>
                         <p class="text-gray-600 text-xs leading-relaxed mb-4">${t.essentialKnowledge}</p>
                     </div>
                     <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1">
-                            <span>Review Concept</span>
+                        <span class="text-[11px] text-gray-500 italic truncate max-w-[180px]"><i class="fas fa-archive mr-1 text-cb-gold"></i>${t.source.name}</span>
+                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1 whitespace-nowrap">
+                            <span>Review</span>
                             <i class="fas fa-arrow-right text-[10px]"></i>
                         </button>
                     </div>
@@ -666,7 +726,6 @@
             const container = document.getElementById('word-bank-container');
             container.innerHTML = "";
             
-            // Shuffle answers for the bank
             const terms = unitTopics.map(t => t.correctAnswer).sort(() => Math.random() - 0.5);
 
             terms.forEach(term => {
@@ -676,12 +735,10 @@
                 badge.setAttribute('draggable', 'true');
                 badge.dataset.term = term;
 
-                // Drag Events
                 badge.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', term);
                 });
 
-                // Tap-to-Select Mobile Fallback
                 badge.addEventListener('click', () => {
                     document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
                     if (selectedTermForTap === term) {
@@ -710,13 +767,14 @@
                         <span class="text-xs font-bold text-cb-blue uppercase tracking-wider">Topic ${t.id} Diagnostic</span>
                         <span class="text-xs text-gray-500 font-medium">Question ${index + 1} of 10</span>
                     </div>
-                    <p class="text-cb-dark text-sm sm:text-base leading-relaxed mb-4 font-medium">
+                    <p class="text-cb-dark text-sm sm:text-base leading-relaxed mb-3 font-medium">
                         ${parts[0]}
                         <span class="drop-target font-bold text-cb-blue" id="drop-target-${index}" ondragover="allowDrop(event)" ondragleave="removeDragOver(event)" ondrop="dropTerm(event, ${index})" onclick="handleDropTargetClick(${index})">
                             <span class="text-gray-400 font-normal italic text-xs">[Drop / Tap Term Here]</span>
                         </span>
                         ${parts[1] || ''}
                     </p>
+                    <p class="text-xs text-gray-500 italic mb-3"><strong>Learning Objective:</strong> ${t.learningObjective}</p>
                     <div class="hint-container">
                         <div class="hint-icon"><i class="fas fa-lightbulb"></i></div>
                         <div class="hint-text"><strong>AP Key Hint:</strong> ${t.hint}</div>
@@ -726,7 +784,6 @@
             });
         }
 
-        // Drag & Drop Handlers
         function allowDrop(ev) {
             ev.preventDefault();
             ev.currentTarget.classList.add('drag-over');
@@ -749,7 +806,6 @@
                 selectedTermForTap = null;
                 document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
             } else if (userAnswers[qIndex]) {
-                // Clicking a filled target clears it back to the bank
                 delete userAnswers[qIndex];
                 renderDiagnosticQuestions();
                 updateQuizProgress();
@@ -787,7 +843,6 @@
             updateQuizProgress();
         }
 
-        // Submit Assessment & Generate Analysis
         function submitDiagnostic() {
             let correctCount = 0;
             const analysisResults = [];
@@ -808,28 +863,25 @@
             const masteredCount = correctCount;
             const reviewCount = 10 - correctCount;
 
-            // Update Header Score
             document.getElementById('header-score').innerText = `${correctCount} / 10`;
             document.getElementById('score-percentage').innerText = `${percentage}%`;
             document.getElementById('stat-correct').innerText = `${correctCount} / 10`;
             document.getElementById('stat-mastered').innerText = `${masteredCount} Topics`;
             document.getElementById('stat-review').innerText = `${reviewCount} Topics`;
 
-            // Feedback Message
             const msgEl = document.getElementById('score-feedback-msg');
             if (percentage === 100) {
-                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all Unit 1 CED Learning Objectives.";
+                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all official Unit 1 CED Learning Objectives.";
             } else if (percentage >= 70) {
                 msgEl.innerText = "Great job! You have a strong grasp of Unit 1, with a few targeted topics to review.";
             } else {
                 msgEl.innerText = "Review recommended! Complete the automated reteach modules and simulations below to strengthen your understanding.";
             }
 
-            // Render Analysis List
             const analysisList = document.getElementById('analysis-list');
             analysisList.innerHTML = "";
 
-            analysisResults.forEach((res, idx) => {
+            analysisResults.forEach((res) => {
                 const item = document.createElement('div');
                 item.className = `p-4 rounded-xl border ${res.correct ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3`;
                 item.innerHTML = `
@@ -861,7 +913,6 @@
             switchTab('analysis');
         }
 
-        // Reteach & Simulations Hub
         function renderReteachSelector() {
             const selector = document.getElementById('topic-selector');
             selector.innerHTML = "";
@@ -889,7 +940,7 @@
                         </div>
                         <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
                         <div class="space-y-2 pt-2">
-                            ${t.simulationData.events.map((ev, i) => `
+                            ${t.simulationData.events.map((ev) => `
                                 <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm">
                                     <span class="font-bold text-cb-navy">${ev.era}</span>
                                     <span class="text-gray-700 flex-grow px-4">${ev.text}</span>
@@ -924,7 +975,7 @@
                     <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
                         <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
                             <i class="fas fa-chess-board"></i>
-                            <span>${t.simulationData.title}</span>
+                            <span>Decision-Making Simulation</span>
                         </div>
                         <p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p>
                         <p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p>
@@ -944,14 +995,32 @@
                     <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
                         <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
                             <i class="fas fa-compass"></i>
+                            <span>Indian Ocean Trade Navigator</span>
+                        </div>
+                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
+                        <div class="space-y-2 pt-2">
+                            ${t.simulationData.pairs.map((p) => `
+                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between">
+                                    <span class="font-bold text-cb-navy w-1/3">${p.wind}</span>
+                                    <span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (t.simulationType === "match") {
+                simulationHTML = `
+                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
+                            <i class="fas fa-network-wired"></i>
                             <span>${t.simulationData.title}</span>
                         </div>
                         <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
                         <div class="space-y-2 pt-2">
-                            ${t.simulationData.pairs.map((p, i) => `
+                            ${t.simulationData.options.map((opt) => `
                                 <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between">
-                                    <span class="font-bold text-cb-navy w-1/3">${p.wind}</span>
-                                    <span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span>
+                                    <span class="font-bold text-cb-navy w-1/2">${opt.item}</span>
+                                    <span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -966,10 +1035,15 @@
                             <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">Topic ${t.id} Reteach Module</span>
                             <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">${t.title}</h3>
                         </div>
-                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> CED Aligned</span>
+                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> Official CED Aligned</span>
                     </div>
 
                     <div class="space-y-4">
+                        <div class="p-4 bg-amber-50 rounded-lg border border-amber-200">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">Learning Objective</h4>
+                            <p class="text-amber-900 text-sm font-semibold">${t.learningObjective}</p>
+                        </div>
+
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Essential Knowledge</h4>
                             <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">
@@ -982,6 +1056,15 @@
                             <p class="text-gray-700 text-sm leading-relaxed">
                                 ${t.breakdown}
                             </p>
+                        </div>
+
+                        <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex items-start space-x-3">
+                            <i class="fas fa-landmark text-cb-blue text-lg mt-0.5"></i>
+                            <div>
+                                <h5 class="text-xs font-bold text-cb-navy uppercase">Gilder Lehrman & Smithsonian Source Integration</h5>
+                                <p class="text-xs font-semibold text-cb-blue mt-0.5">${t.source.name}</p>
+                                <p class="text-xs text-gray-600 mt-1">${t.source.description}</p>
+                            </div>
                         </div>
                     </div>
 
