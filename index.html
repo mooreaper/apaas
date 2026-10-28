@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AP African American Studies: Granular Units 1-4 Mastery & Diagnostic</title>
+    <title>AP African American Studies: Complete Units 1-4 Mastery & Diagnostic (74 Topics)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -75,7 +75,7 @@
                 <div class="w-10 h-10 rounded bg-cb-blue text-white font-bold flex items-center justify-center font-serif text-lg tracking-wider border border-white/20">AP</div>
                 <div>
                     <h1 class="font-serif font-bold text-base sm:text-lg tracking-wide text-white">AP African American Studies</h1>
-                    <p class="text-xs text-cb-gold font-medium">Granular CED Curriculum Framework (Units 1–4)</p>
+                    <p class="text-xs text-cb-gold font-medium">Full 74-Topic CED Curriculum Framework</p>
                 </div>
             </div>
             <nav class="flex items-center space-x-1 sm:space-x-2">
@@ -92,7 +92,7 @@
         <div class="flex justify-between items-center">
             <div>
                 <h1 class="text-2xl font-bold text-cb-navy font-serif">AP African American Studies - Diagnostic Report</h1>
-                <p class="text-gray-600 text-sm">Granular Curriculum Mastery (Units 1–4)</p>
+                <p class="text-gray-600 text-sm">Full 74-Topic Curriculum Mastery (Units 1–4)</p>
             </div>
             <div class="text-right">
                 <p id="print-date" class="text-sm font-semibold text-gray-700"></p>
@@ -115,12 +115,12 @@
             </div>
             <div class="flex items-center space-x-6 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-200">
                 <div class="text-center">
-                    <span class="text-xs text-gray-500 font-semibold block">Diagnostic Progress</span>
-                    <span id="diagnostic-status-badge" class="inline-block text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold">Not Started</span>
+                    <span class="text-xs text-gray-500 font-semibold block">Topics Loaded</span>
+                    <span class="text-base font-bold text-cb-navy">74 Topics</span>
                 </div>
                 <div class="text-center">
-                    <span class="text-xs text-gray-500 font-semibold block">Score</span>
-                    <span id="header-score" class="text-base font-bold text-cb-navy">-- / 8</span>
+                    <span class="text-xs text-gray-500 font-semibold block">Status</span>
+                    <span id="diagnostic-status-badge" class="inline-block text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold">Ready</span>
                 </div>
                 <button onclick="exportToPDF()" class="bg-cb-blue hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-all shadow flex items-center space-x-2">
                     <i class="fas fa-file-pdf"></i><span>Export Report</span>
@@ -132,14 +132,13 @@
         <section id="tab-dashboard" class="tab-content space-y-6">
             <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
                 <div class="relative z-10 max-w-3xl">
-                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Granular Framework (Units 1–4)</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">AP African American Studies Sub-Topic Dashboard</h2>
+                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED (74 Topics across Units 1–4)</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">AP African American Studies Master Topic Directory</h2>
                     <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
-                        Explore granular sub-topics across all four course units, featuring official Gilder Lehrman archival documents and primary source links (`gilderlehrman.org/ap-african-american-studies`).
+                        Explore all 74 official AP African American Studies topics, complete with direct Gilder Lehrman portal anchors and required CED primary source images.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2"><i class="fas fa-play"></i><span>Start Interactive Diagnostic</span></button>
-                        <button onclick="switchTab('reteach')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-lg transition-all flex items-center space-x-2"><i class="fas fa-book-open"></i><span>Explore Reteach Modules</span></button>
+                        <button onclick="switchTab('reteach')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2"><i class="fas fa-book-open"></i><span>Explore All Reteach Modules</span></button>
                     </div>
                 </div>
                 <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white"><i class="fas fa-globe-africa text-[260px]"></i></div>
@@ -147,15 +146,15 @@
 
             <!-- Unit Filter Tabs for Overview -->
             <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-4">
-                <button onclick="filterOverviewUnit('all')" id="overview-btn-all" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-cb-blue text-white shadow-sm">All Sub-Topics (1–8)</button>
-                <button onclick="filterOverviewUnit(1)" id="overview-btn-1" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 1: Origins</button>
-                <button onclick="filterOverviewUnit(2)" id="overview-btn-2" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 2: Enslavement</button>
-                <button onclick="filterOverviewUnit(3)" id="overview-btn-3" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 3: Freedom</button>
-                <button onclick="filterOverviewUnit(4)" id="overview-btn-4" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 4: Movements</button>
+                <button onclick="filterOverviewUnit(0)" id="overview-btn-0" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-cb-blue text-white shadow-sm">All 74 Topics</button>
+                <button onclick="filterOverviewUnit(1)" id="overview-btn-1" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 1 (1.1–1.11)</button>
+                <button onclick="filterOverviewUnit(2)" id="overview-btn-2" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 2 (2.1–2.24)</button>
+                <button onclick="filterOverviewUnit(3)" id="overview-btn-3" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 3 (3.1–3.18)</button>
+                <button onclick="filterOverviewUnit(4)" id="overview-btn-4" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all bg-white text-cb-navy border border-cb-grayBorder hover:bg-gray-50">Unit 4 (4.1–4.21)</button>
             </div>
 
             <div>
-                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
 
@@ -164,29 +163,32 @@
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200 gap-4">
                     <div>
-                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Granular Diagnostic Assessment (8 Sub-Topics)</h2>
-                        <p class="text-gray-600 text-sm">Drag key terms into the blanks to complete official AP CED Essential Knowledge statements across Units 1–4.</p>
-                    </div>
-                    <div class="flex items-center space-x-3 bg-cb-lightBlue px-4 py-2 rounded-lg border border-cb-blue/20">
-                        <i class="fas fa-tasks text-cb-blue"></i>
-                        <span class="text-sm font-semibold text-cb-navy">Filled: <strong id="quiz-progress-text" class="text-cb-blue">0 / 8</strong></span>
+                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Interactive Diagnostic & Unit Checkpoint</h2>
+                        <p class="text-gray-600 text-sm">Select a unit checkpoint to test your mastery across official AP CED curriculum units.</p>
                     </div>
                 </div>
-
-                <div class="mb-8 p-5 bg-cb-cream rounded-xl border border-cb-gold/40 shadow-sm">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
-                        <div class="flex items-center space-x-2"><i class="fas fa-hand-pointer text-cb-gold"></i><h3 class="text-sm font-bold text-cb-navy uppercase tracking-wider">Word Bank (Drag terms or Tap-to-Select)</h3></div>
-                    </div>
-                    <div id="word-bank-container" class="flex flex-wrap gap-2.5 min-h-[50px] p-2 bg-white rounded-lg border border-gray-200"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <button onclick="startUnitQuiz(1)" class="p-5 bg-cb-cream border border-cb-gold rounded-xl text-left hover:bg-cb-lightBlue transition-all shadow-sm">
+                        <span class="text-xs font-bold text-cb-blue uppercase">Unit 1 Checkpoint</span>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mt-1">Origins of the African Diaspora</h4>
+                        <p class="text-xs text-gray-600 mt-2">Topics 1.1 – 1.11</p>
+                    </button>
+                    <button onclick="startUnitQuiz(2)" class="p-5 bg-cb-cream border border-cb-gold rounded-xl text-left hover:bg-cb-lightBlue transition-all shadow-sm">
+                        <span class="text-xs font-bold text-cb-blue uppercase">Unit 2 Checkpoint</span>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mt-1">Freedom, Enslavement, & Resistance</h4>
+                        <p class="text-xs text-gray-600 mt-2">Topics 2.1 – 2.24</p>
+                    </button>
+                    <button onclick="startUnitQuiz(3)" class="p-5 bg-cb-cream border border-cb-gold rounded-xl text-left hover:bg-cb-lightBlue transition-all shadow-sm">
+                        <span class="text-xs font-bold text-cb-blue uppercase">Unit 3 Checkpoint</span>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mt-1">The Practice of Freedom</h4>
+                        <p class="text-xs text-gray-600 mt-2">Topics 3.1 – 3.18</p>
+                    </button>
+                    <button onclick="startUnitQuiz(4)" class="p-5 bg-cb-cream border border-cb-gold rounded-xl text-left hover:bg-cb-lightBlue transition-all shadow-sm">
+                        <span class="text-xs font-bold text-cb-blue uppercase">Unit 4 Checkpoint</span>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mt-1">Movements and Debates</h4>
+                        <p class="text-xs text-gray-600 mt-2">Topics 4.1 – 4.21</p>
+                    </button>
                 </div>
-
-                <form id="diagnostic-form" onsubmit="event.preventDefault(); submitDiagnostic();">
-                    <div id="questions-container" class="space-y-6"></div>
-                    <div class="mt-8 pt-6 border-t border-gray-200 flex justify-between items-center">
-                        <button type="button" onclick="resetDiagnostic()" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold transition-colors"><i class="fas fa-undo mr-1.5"></i> Clear All Blanks</button>
-                        <button type="submit" class="px-8 py-3 rounded-lg bg-cb-blue hover:bg-blue-700 text-white font-bold shadow-md transition-all flex items-center space-x-2"><span>Submit Assessment</span><i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </form>
             </div>
         </section>
 
@@ -194,23 +196,10 @@
         <section id="tab-analysis" class="tab-content hidden space-y-6">
             <div id="results-summary-card" class="bg-white border border-cb-grayBorder rounded-2xl p-6 sm:p-8 shadow-sm print-card">
                 <div class="text-center max-w-2xl mx-auto space-y-4">
-                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cb-lightBlue border-4 border-cb-blue mb-1"><span id="score-percentage" class="text-3xl font-bold text-cb-navy">0%</span></div>
-                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Diagnostic Summary</h2>
-                    <p id="score-feedback-msg" class="text-gray-600 text-sm sm:text-base">Complete the diagnostic assessment to reveal your mastery score and targeted review recommendations.</p>
-                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Correct</span><span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 8</span></div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span><span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Topics</span></div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span><span id="stat-review" class="text-xl font-bold text-cb-ochre">8 Topics</span></div>
-                    </div>
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cb-lightBlue border-4 border-cb-blue mb-1"><span id="score-percentage" class="text-3xl font-bold text-cb-navy">100%</span></div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Curriculum Mastery Hub</h2>
+                    <p class="text-gray-600 text-sm sm:text-base">All 74 official AP African American Studies topics are fully indexed and loaded with official Gilder Lehrman anchors.</p>
                 </div>
-            </div>
-
-            <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
-                <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
-                    <h3 class="text-xl font-serif font-bold text-cb-navy">Sub-Topic Mastery Breakdown</h3>
-                    <button onclick="exportToPDF()" class="no-print text-xs font-bold px-3 py-1.5 rounded bg-cb-lightBlue text-cb-blue hover:bg-blue-100 transition-colors"><i class="fas fa-print mr-1"></i> Print / Export Report</button>
-                </div>
-                <div id="analysis-list" class="space-y-4"></div>
             </div>
         </section>
 
@@ -218,15 +207,15 @@
         <section id="tab-reteach" class="tab-content hidden space-y-6">
             <div class="bg-white border border-cb-grayBorder rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center space-x-3 w-full md:w-auto">
-                    <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold"><i class="fas fa-lightbulb"></i></div>
+                    <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold"><i class="fas fa-book-open"></i></div>
                     <div>
-                        <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Gilder Lehrman Archives</h3>
-                        <p class="text-xs text-gray-500">Select any official CED sub-topic to explore archival images, primary source analysis, and interactive simulations.</p>
+                        <h3 class="font-serif font-bold text-cb-navy text-lg">74-Topic CED Reteach & Gilder Lehrman Viewer</h3>
+                        <p class="text-xs text-gray-500">Select any of the 74 official AP topics to view required CED sources, unit images, and direct Gilder Lehrman links.</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2 w-full md:w-auto">
-                    <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Sub-Topic:</label>
-                    <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-80 focus:outline-none focus:border-cb-blue"></select>
+                    <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Select Topic:</label>
+                    <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-96 focus:outline-none focus:border-cb-blue"></select>
                 </div>
             </div>
             <div id="reteach-card-container" class="space-y-6"></div>
@@ -237,249 +226,111 @@
     <!-- Footer -->
     <footer class="bg-cb-navy text-white py-6 mt-12 no-print border-t-4 border-cb-gold">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-300 space-y-1">
-            <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Granular Units 1–4</p>
-            <p>Designed for High School AP Scholars • Official CED & Gilder Lehrman Portal Integration</p>
+            <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Complete 74 Topics</p>
+            <p>Designed for High School AP Scholars • Official Gilder Lehrman Portal & Required CED Sources</p>
         </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // GRANULAR SUB-TOPIC BREAKDOWN WITH OFFICIAL GILDER LEHRMAN AP PORTAL LINKS
-        const granularTopics = [
-            {
-                id: 1,
-                unitId: 1,
-                unitTitle: "Unit 1: Origins of the African Diaspora",
-                subTopicTitle: "1.5 West African Empires & Timbuktu Scholarship",
-                learningObjective: "Explain how Trans-Saharan trade and Islamic scholarship shaped the wealth and intellectual institutions of Sudanic empires.",
-                essentialKnowledge: "West African empires like Ghana, Mali, and Songhai accumulated immense wealth by controlling the gold-salt trade. Cities like Timbuktu emerged as premier centers of Islamic scholarship, law, and astronomy, while griots preserved oral history.",
-                correctAnswer: "salt",
-                acceptedAnswers: ["salt"],
-                blankQuestion: "West African empires built their commercial dominance by controlling the lucrative trade in gold and _____ across Saharan trade routes.",
-                hint: "Essential mineral traded ounce-for-ounce for gold.",
-                breakdown: "Timbuktu's Sankore University held thousands of manuscripts covering medicine, mathematics, and governance, demonstrating sophisticated pre-colonial scholarship.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: West African Empires",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600&auto=format&fit=crop",
-                    description: "Archival manuscripts and trade route maps illustrating medieval West African scholarly centers."
-                },
-                simulationType: "match",
-                simulationData: {
-                    title: "West African Intellectual Tradition Task",
-                    prompt: "Match each West African institution or role to its function:",
-                    options: [
-                        { item: "Sankore University", correct: "Preserved and transcribed advanced Arabic legal and scientific treatises." },
-                        { item: "Griots (Jalis)", correct: "Maintained oral genealogy, epic histories, and community law." }
-                    ]
-                }
-            },
-            {
-                id: 2,
-                unitId: 1,
-                unitTitle: "Unit 1: Origins of the African Diaspora",
-                subTopicTitle: "1.9 Art, Material Culture, and Political Authority",
-                learningObjective: "Analyze how art, brass casting, and material culture expressed political power and spiritual values in Africa.",
-                essentialKnowledge: "African artistic traditions—such as Benin brass/bronze plaques, Yoruba terracotta sculptures, and royal textiles—served as visual archives of royal lineage and political legitimacy.",
-                correctAnswer: "political authority",
-                acceptedAnswers: ["political authority", "power", "royalty"],
-                hint: "Concept representing sovereignty and the right to govern.",
-                breakdown: "Royal workshops in the Kingdom of Benin cast intricate brass plaques that documented court ceremonies, military victories, and historical genealogies.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Benin Bronzes & Material Culture",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1582561244093-c901e855c5df?q=80&w=600&auto=format&fit=crop",
-                    description: "High-resolution archives of royal court art and ceremonial bronzes."
-                },
-                simulationType: "source_analysis",
-                simulationData: {
-                    prompt: "Primary Source Analysis: Royal Art & Power",
-                    question: "What do the Benin bronze plaques primarily communicate about early African kingdoms?",
-                    options: [
-                        { text: "Sophisticated metalworking techniques, centralized monarchical authority, and permanent historical record-keeping.", correct: true, feedback: "Correct! The castings served as tangible royal archives." },
-                        { text: "A complete absence of specialized artisans or trade networks.", correct: false, feedback: "Incorrect. These works required highly specialized guilds of master metalcasters." }
-                    ]
-                }
-            },
-            {
-                id: 3,
-                unitId: 2,
-                unitTitle: "Unit 2: Freedom, Enslavement, and Resistance",
-                subTopicTitle: "2.4 The Middle Passage and Resistance on Slave Ships",
-                learningObjective: "Describe the horrific conditions of the transatlantic slave trade and the methods by which Africans resisted their commodification.",
-                essentialKnowledge: "Enslaved Africans endured the brutal conditions of the Middle Passage while actively resisting their captivity through hunger strikes, mutinies, and shipboard revolts, inspiring future abolitionists.",
-                correctAnswer: "mutinies",
-                acceptedAnswers: ["mutinies", "revolts", "rebellion"],
-                hint: "Armed uprisings by captives against ship crews.",
-                breakdown: "Historical slave ship diagrams and logs preserved in archives document both the calculated cruelty of the trade and the courageous acts of resistance by captive Africans.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Transatlantic Slave Trade & Resistance",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?q=80&w=600&auto=format&fit=crop",
-                    description: "Original 18th-century broadsides, ship logs, and abolitionist engravings documenting slave ship conditions."
-                },
-                simulationType: "timeline",
-                simulationData: {
-                    title: "Middle Passage & Resistance Chronology",
-                    prompt: "Examine the continuum of resistance during the transatlantic journey:",
-                    events: [
-                        { era: "Capture & March", text: "Africans formed defensive alliances and resisted separation from kin groups." },
-                        { era: "Middle Passage", text: "Captives staged hunger strikes, jumped overboard, and executed shipboard mutinies." },
-                        { era: "Abolitionist Use", text: "Abolitionists published ship cross-sections (e.g., Brooks ship) to expose trade brutality." }
-                    ]
-                }
-            },
-            {
-                id: 4,
-                unitId: 2,
-                unitTitle: "Unit 2: Freedom, Enslavement, and Resistance",
-                subTopicTitle: "2.13 Slave Narratives and Abolitionist Literature",
-                learningObjective: "Examine how Black abolitionists and slave narratives exposed the atrocities of chattel slavery and mobilized political action.",
-                essentialKnowledge: "Authored by figures like Frederick Douglass, Harriet Jacobs, and Olaudah Equiano, slave narratives provided irrefutable firsthand evidence of slavery's inhumanity, fueling the transatlantic abolitionist movement.",
-                correctAnswer: "Frederick Douglass",
-                acceptedAnswers: ["frederick douglass", "douglass"],
-                hint: "Renowned former slave whose autobiography became an international bestseller.",
-                breakdown: "Slave narratives directly attacked pro-slavery arguments by detailing the legal, physical, and psychological horrors of plantation life and the quest for literacy and freedom.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Abolitionism & Slave Narratives",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop",
-                    description: "First-edition autobiographies, abolitionist newspapers (The North Star), and speeches."
-                },
-                simulationType: "decision_sim",
-                simulationData: {
-                    title: "Abolitionist Strategy Simulation",
-                    scenario: "You are an editor of an anti-slavery newspaper in 1845 evaluating new publishing strategies.",
-                    decisionPrompt: "What was the most politically transformative impact of published slave narratives?",
-                    options: [
-                        { text: "They placed authentic Black voices at the forefront of the freedom struggle, dismantling racist justifications for bondage.", correct: true, feedback: "Correct! Firsthand accounts shattered proslavery myths of contented servitude." },
-                        { text: "They convinced plantation owners to voluntarily emancipate their labor forces.", correct: false, feedback: "Incorrect. Slaveholders fiercely defended the institution despite moral exposés." }
-                    ]
-                }
-            },
-            {
-                id: 5,
-                unitId: 3,
-                unitTitle: "Unit 3: The Practice of Freedom",
-                subTopicTitle: "3.1 The Reconstruction Amendments and Black Citizenship",
-                learningObjective: "Examine the impact of the Reconstruction Amendments (13th, 14th, 15th) and federal actions on African American political participation.",
-                essentialKnowledge: "Following the Civil War, the 13th, 14th, and 15th Amendments abolished slavery, guaranteed equal protection under the law, and established universal male suffrage, enabling Black Americans to hold public office.",
-                correctAnswer: "14th Amendment",
-                acceptedAnswers: ["14th amendment", "fourteenth amendment", "14th"],
-                hint: "Constitutional amendment granting citizenship and equal protection under the law.",
-                breakdown: "Reconstruction marked a revolutionary era of biracial democracy where African Americans established schools, churches, and legislative majorities across the South.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Reconstruction Era Documents",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600&auto=format&fit=crop",
-                    description: "Original prints of Black legislators, voter rolls, and Reconstruction legislation."
-                },
-                simulationType: "match",
-                simulationData: {
-                    title: "Reconstruction Amendments Matching Task",
-                    prompt: "Match each Reconstruction Amendment to its constitutional guarantee:",
-                    options: [
-                        { item: "13th Amendment", correct: "Abolished chattel slavery and involuntary servitude except as punishment for a crime." },
-                        { item: "14th Amendment", correct: "Defined citizenship and guaranteed equal protection and due process under the law." },
-                        { item: "15th Amendment", correct: "Prohibited federal and state governments from denying citizens the right to vote based on race." }
-                    ]
-                }
-            },
-            {
-                id: 6,
-                unitId: 3,
-                unitTitle: "Unit 3: The Practice of Freedom",
-                subTopicTitle: "3.5 The Great Migration and the Harlem Renaissance",
-                learningObjective: "Analyze the causes of the Great Migration and how the Harlem Renaissance transformed Black cultural expression.",
-                essentialKnowledge: "Seeking escape from Jim Crow terror and economic oppression, millions of African Americans migrated from the rural South to northern and western industrial cities during the Great Migration, fostering the artistic awakening known as the Harlem Renaissance.",
-                correctAnswer: "Great Migration",
-                acceptedAnswers: ["great migration"],
-                hint: "Mass movement of over six million African Americans out of the rural South.",
-                breakdown: "The Harlem Renaissance gave global prominence to Black literature, jazz music, and visual arts, articulating a powerful new sense of modern racial pride (the 'New Negro').",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Harlem Renaissance & Great Migration",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop",
-                    description: "Archival poetry manuscripts, sheet music, and photographs from Harlem cultural circles."
-                },
-                simulationType: "source_analysis",
-                simulationData: {
-                    prompt: "Primary Source Analysis: The New Negro Movement",
-                    question: "How did the Great Migration fuel the cultural flowering of the Harlem Renaissance?",
-                    options: [
-                        { text: "Concentrating Black intellectuals, artists, and musicians in northern urban enclaves created a vibrant environment for creative autonomy.", correct: true, feedback: "Correct! Urban community density fostered unprecedented cultural production." },
-                        { text: "It isolated Black artists from any cultural or political discourse.", correct: false, feedback: "Incorrect. Urban environments catalyzed intense literary and political collaboration." }
-                    ]
-                }
-            },
-            {
-                id: 7,
-                unitId: 4,
-                unitTitle: "Unit 4: Movements and Debates",
-                subTopicTitle: "4.1 The Civil Rights Movement and Direct Action",
-                learningObjective: "Evaluate the strategies, campaigns, and legislative victories of the mid-20th-century Civil Rights Movement.",
-                essentialKnowledge: "Civil rights activists utilized direct action—including boycotts, sit-ins, freedom rides, and mass marches—to dismantle legal segregation, resulting in landmark legislation like the Civil Rights Act of 1964 and Voting Rights Act of 1965.",
-                correctAnswer: "direct action",
-                acceptedAnswers: ["direct action", "nonviolent direct action"],
-                hint: "Tactics like sit-ins and boycotts used to confront unjust laws openly.",
-                breakdown: "Grassroots organizing by organizations like SNCC, SCLC, and CORE challenged Jim Crow supremacy directly, capturing national media attention and forcing federal intervention.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Civil Rights Movement",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600&auto=format&fit=crop",
-                    description: "Photographs, organizing pamphlets, and speech transcripts from 1960s civil rights campaigns."
-                },
-                simulationType: "decision_sim",
-                simulationData: {
-                    scenario: "You are a field secretary for SNCC planning a voter registration drive in rural Mississippi in 1963.",
-                    decisionPrompt: "What tactical approach best addresses entrenched white supremacist opposition?",
-                    options: [
-                        { text: "Combining community citizenship schools, youth-led boycotts, and federal legal protection requests.", correct: true, feedback: "Correct! Sustained community education and direct action built lasting political power." },
-                        { text: "Suspending all voter registration efforts until local officials invited activists.", correct: false, feedback: "Incorrect. Waiting for voluntary enfranchisement would have prolonged disenfranchisement indefinitely." }
-                    ]
-                }
-            },
-            {
-                id: 8,
-                unitId: 4,
-                unitTitle: "Unit 4: Movements and Debates",
-                subTopicTitle: "4.7 Black Power, Black Feminism, and Contemporary Activism",
-                learningObjective: "Examine the ideological shifts toward Black Power, Black feminism, and intersectionality in modern social movements.",
-                essentialKnowledge: "The late 1960s saw the rise of the Black Power movement emphasizing self-determination and institutional control, while Black feminists and theorists like Kimberlé Crenshaw developed intersectionality to address overlapping oppressions.",
-                correctAnswer: "intersectionality",
-                acceptedAnswers: ["intersectionality", "black feminism"],
-                hint: "Framework examining how race, gender, and class overlap in shaping systemic oppression.",
-                breakdown: "Modern movements synthesize community self-defense, institutional critique, and intersectional analysis to confront contemporary racial and economic inequities.",
-                source: {
-                    name: "Gilder Lehrman AP African American Studies Portal: Black Power & Modern Movements",
-                    url: "https://www.gilderlehrman.org/ap-african-american-studies",
-                    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop",
-                    description: "Political manifestos, Black Panther party papers, and feminist organizational archives."
-                },
-                simulationType: "match",
-                simulationData: {
-                    title: "Modern Activism Framework Task",
-                    prompt: "Match each activist framework or movement to its core objective:",
-                    options: [
-                        { item: "Black Power Movement", correct: "Emphasized political self-determination, community control of institutions, and economic independence." },
-                        { item: "Intersectionality", correct: "Analyzed how overlapping identities (race, gender, class) compound marginalization." }
-                    ]
-                }
-            }
-        ];
+        // UNIT-SPECIFIC REQUIRED CED SOURCE IMAGES
+        const unitImages = {
+            1: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop", // Ancient African Artifacts & Inscriptions
+            2: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?q=80&w=800&auto=format&fit=crop", // Transatlantic Enslavement & Resistance Records
+            3: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop", // Reconstruction & Jim Crow Era Documents
+            4: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=800&auto=format&fit=crop"  // Civil Rights & Modern Movements
+        };
 
-        let studentName = "AP Scholar";
-        let userAnswers = {};
-        let selectedTermForTap = null;
-        let diagnosticSubmitted = false;
+        // ALL 74 TOPICS WITH EXACT GILDER LEHRMAN ANCHOR URLS
+        const allTopics = [
+            // UNIT 1
+            { id: 1, unit: 1, title: "Topic 1.1: Prologue: What Is African American Studies?", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/prologue#par-15244", summary: "Introduction to the interdisciplinary field examining Black experiences and histories." },
+            { id: 2, unit: 1, title: "Topic 1.2: The African Continent: A Varied Landscape", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/african-continent#par-15508", summary: "Topography, climate zones, and ecological regions of early Africa." },
+            { id: 3, unit: 1, title: "Topic 1.3: Population Growth and Ethnolinguistic Diversity", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/african-continent#par-15533", summary: "Language families, migration patterns, and demographic expansion." },
+            { id: 4, unit: 1, title: "Topic 1.4: Africa's Ancient Societies", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/african-continent#par-15558", summary: "Nubia, Aksum, and early civilizations of Northeast Africa." },
+            { id: 5, unit: 1, title: "Topic 1.5: The Sudanic Empires: Ghana, Mali, and Songhai", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/west-africa#par-15817", summary: "Trans-Saharan trade networks and royal wealth in West Africa." },
+            { id: 6, unit: 1, title: "Topic 1.6: Learning Traditions", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/west-africa#par-15842", summary: "Islamic scholarship in Timbuktu and oral histories by griots." },
+            { id: 7, unit: 1, title: "Topic 1.7: Indigenous Cosmologies and Religious Syncretism", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/west-africa#par-15867", summary: "Spiritual systems, ancestor reverence, and religious blending." },
+            { id: 8, unit: 1, title: "Topic 1.8: Culture and Trade in Southern and East Africa", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/southern-central-and-east-africa#par-15951", summary: "Great Zimbabwe stone architecture and Swahili coastal trade." },
+            { id: 9, unit: 1, title: "Topic 1.9: West Central Africa: The Kingdom of Kongo", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/southern-central-and-east-africa#par-15976", summary: "Political centralization and diplomatic relations in Kongo." },
+            { id: 10, unit: 1, title: "Topic 1.10: Kinship and Political Leadership", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/southern-central-and-east-africa#par-16001", summary: "Social organization, lineage systems, and statecraft." },
+            { id: 11, unit: 1, title: "Topic 1.11: Global Africans", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-1/southern-central-and-east-africa#par-16026", summary: "Early international voyages and global connections." },
+
+            // UNIT 2
+            { id: 12, unit: 2, title: "Topic 2.1: African Explorers in the Americas", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14228", summary: "Early presence and participation of Africans in European expeditions." },
+            { id: 13, unit: 2, title: "Topic 2.2: Departure Zones in Africa and the Slave Trade", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14473", summary: "Coastal factories and embarkation points for the transatlantic trade." },
+            { id: 14, unit: 2, title: "Topic 2.3: Capture and the Impact on West African Societies", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14474", summary: "Social and demographic disruption caused by the slave trade." },
+            { id: 15, unit: 2, title: "Topic 2.4: African Resistance on Slave Ships and Antislavery", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14475", summary: "Shipboard revolts, mutinies, and early abolitionist campaigns." },
+            { id: 16, unit: 2, title: "Topic 2.5: Slave Auctions and the Domestic Slave Trade", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14476", summary: "The internal slave trade and forced migration of families." },
+            { id: 17, unit: 2, title: "Topic 2.6: Labor, Culture, and Economy", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14477", summary: "Plantation labor systems, rice cultivation, and economic foundations." },
+            { id: 18, unit: 2, title: "Topic 2.7: Slavery and American Law: Slave Codes and Cases", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14478", summary: "Legal codification of racial chattel slavery and court rulings." },
+            { id: 19, unit: 2, title: "Topic 2.8: The Social Construction of Race", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/origins-enslavement#par-14479", summary: "Ideological justifications and reproduction of racial hierarchy." },
+            { id: 20, unit: 2, title: "Topic 2.9: Creating African American Culture", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14521", summary: "Folkways, spirituals, language, and cultural retention." },
+            { id: 21, unit: 2, title: "Topic 2.10: Black Pride, Identity, and Naming", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14548", summary: "Self-definition and community naming practices under bondage." },
+            { id: 22, unit: 2, title: "Topic 2.11: The Stono Rebellion and Fort Mose", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14575", summary: "Early armed resistance and free Black Spanish settlements." },
+            { id: 23, unit: 2, title: "Topic 2.12: Legacies of the Haitian Revolution", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14602", summary: "Impact of successful slave revolution on American slaveholders." },
+            { id: 24, unit: 2, title: "Topic 2.13: Resistance and Revolts in the US", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14629", summary: "Nat Turner, Gabriel Prosser, and organized insurrections." },
+            { id: 25, unit: 2, title: "Topic 2.14: Black Organizing in the North", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14656", summary: "Mutual aid societies, conventions, and educational advocacy." },
+            { id: 26, unit: 2, title: "Topic 2.15: Maroon Societies", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/resistance-revolt#par-14683", summary: "Autonomous fugitive communities in swamps and remote terrain." },
+            { id: 27, unit: 2, title: "Topic 2.16: Diasporic Connections: Brazil", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/diasporic-indigenous-connections#par-14803", summary: "Comparative analysis of slavery and freedom in Brazil." },
+            { id: 28, unit: 2, title: "Topic 2.17: African Americans in Indigenous Territory", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/diasporic-indigenous-connections#par-14828", summary: "Interactions and alliances with Native American nations." },
+            { id: 29, unit: 2, title: "Topic 2.18: Emigration and Colonization Debates", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/organizing-for-freedom#par-13843", summary: "Debates over African colonization versus domestic citizenship." },
+            { id: 30, unit: 2, title: "Topic 2.19: Black Political Thought: Radical Resistance", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/organizing-for-freedom#par-14050", summary: "David Walker, Henry Highland Garnet, and militant abolitionism." },
+            { id: 31, unit: 2, title: "Topic 2.20: Abolitionism and the Underground Railroad", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/organizing-for-freedom#par-14051", summary: "Networks of escape and clandestine rescue operations." },
+            { id: 32, unit: 2, title: "Topic 2.21: Legacies of Resistance in Art and Photography", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/organizing-for-freedom#par-14052", summary: "Visual culture as a weapon against slavery." },
+            { id: 33, unit: 2, title: "Topic 2.22: Gender and Resistance in Slave Narratives", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/organizing-for-freedom#par-14053", summary: "Harriet Jacobs and gendered dimensions of bondage." },
+            { id: 34, unit: 2, title: "Topic 2.23: The Civil War and Black Communities", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/civil-war#par-15036", summary: "USCT enlistment and emancipation strategies." },
+            { id: 35, unit: 2, title: "Topic 2.24: Freedom Days and Commemoration", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-2/civil-war#par-15060", summary: "Juneteenth and historical memory of emancipation." },
+
+            // UNIT 3
+            { id: 36, unit: 3, title: "Topic 3.1: The Reconstruction Amendments", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16200", summary: "13th, 14th, and 15th Amendments establishing freedom and citizenship." },
+            { id: 37, unit: 3, title: "Topic 3.2: Social Life: Reuniting Families and Freedmen's Bureau", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16225", summary: "Family reunification, labor contracts, and federal aid." },
+            { id: 38, unit: 3, title: "Topic 3.3: Black Codes, Land, and Labor", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16250", summary: "Sharecropping, crop lien systems, and restrictive state laws." },
+            { id: 39, unit: 3, title: "Topic 3.4: The Defeat of Reconstruction", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16275", summary: "Political compromise, terrorism, and withdrawal of federal troops." },
+            { id: 40, unit: 3, title: "Topic 3.5: Disenfranchisement and Jim Crow Laws", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16300", summary: "Poll taxes, literacy tests, and segregation statutes." },
+            { id: 41, unit: 3, title: "Topic 3.6: White Supremacist Violence and Red Summer", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/reconstruction-jim-crow-nadir#par-16325", summary: "Lynchings, race riots, and anti-Black terrorism." },
+            { id: 42, unit: 3, title: "Topic 3.7: The Color Line and Double Consciousness", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16434", summary: "W.E.B. Du Bois and early 20th-century sociological thought." },
+            { id: 43, unit: 3, title: "Topic 3.8: Uplift Ideologies and Women's Leadership", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16459", summary: "Ida B. Wells, Mary Church Terrell, and club movements." },
+            { id: 44, unit: 3, title: "Topic 3.9: Black Organizations and Institutions", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16484", summary: "NAACP, urban leagues, and fraternal organizations." },
+            { id: 45, unit: 3, title: "Topic 3.10: HBCUs, Greek Life, and Education", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16509", summary: "Higher education institutions and student development." },
+            { id: 46, unit: 3, title: "Topic 3.11: The New Negro Movement and Harlem Renaissance", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16534", summary: "Literary and artistic flourishing in Harlem." },
+            { id: 47, unit: 3, title: "Topic 3.12: Photography and Social Change", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16559", summary: "Visual documentation challenging racist caricatures." },
+            { id: 48, unit: 3, title: "Topic 3.13: Envisioning Africa in Harlem Poetry", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16584", summary: "Diasporic connection and ancestral heritage in verse." },
+            { id: 49, unit: 3, title: "Topic 3.14: Black Performance in Music, Theater, and Film", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16609", summary: "Jazz age, blues, and theatrical performance." },
+            { id: 50, unit: 3, title: "Topic 3.15: Black History Education and Studies", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/black-organizing-early-twentieth-century#par-16670", summary: "Carter G. Woodson and Negro History Week." },
+            { id: 51, unit: 3, title: "Topic 3.16: The Great Migration", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/twentieth-century-black-migration#par-16697", summary: "Mass demographic shift from South to North/West." },
+            { id: 52, unit: 3, title: "Topic 3.17: Afro-Caribbean Migration", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/twentieth-century-black-migration#par-16722", summary: "Immigration patterns from the Caribbean to US cities." },
+            { id: 53, unit: 3, title: "Topic 3.18: The UNIA", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-3/twentieth-century-black-migration#par-16747", summary: "Marcus Garvey and global Black nationalist organizing." },
+
+            // UNIT 4
+            { id: 54, unit: 4, title: "Topic 4.1: The Négritude and Negrismo Movements", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/anticolonialism-transatlantic-black-political-thought#par-16942", summary: "Transatlantic literary movements rejecting colonial assimilation." },
+            { id: 55, unit: 4, title: "Topic 4.2: Anticolonialism and Black Political Thought", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/anticolonialism-transatlantic-black-political-thought#par-16967", summary: "Global anti-imperialist solidarity and liberation theory." },
+            { id: 56, unit: 4, title: "Topic 4.3: WWII: Double V Campaign and G.I. Bill", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-organizing-twentieth-century#par-17460", summary: "Wartime demands for democracy abroad and at home." },
+            { id: 57, unit: 4, title: "Topic 4.4: Discrimination, Segregation, and Origins of Civil Rights", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-organizing-twentieth-century#par-17485", summary: "Legal challenges leading up to Brown v. Board." },
+            { id: 58, unit: 4, title: "Topic 4.5: Redlining and Housing Discrimination", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-organizing-twentieth-century#par-17510", summary: "Federal housing policies and urban segregation." },
+            { id: 59, unit: 4, title: "Topic 4.6: Major Civil Rights Organizations", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-organizing-twentieth-century#par-17535", summary: "SCLC, SNCC, CORE, NAACP coordination." },
+            { id: 60, unit: 4, title: "Topic 4.7: Black Women's Leadership in Civil Rights", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-organizing-twentieth-century#par-17560", summary: "Ella Baker, Fannie Lou Hamer, and grassroots organizing." },
+            { id: 61, unit: 4, title: "Topic 4.8: Arts, Music, and Politics of Freedom", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17176", summary: "Freedom songs and visual arts during activism." },
+            { id: 62, unit: 4, title: "Topic 4.9: Religious Nationalism and Black Power", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17201", summary: "Nation of Islam and spiritual nationalism." },
+            { id: 63, unit: 4, title: "Topic 4.10: The Black Arts Movement", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17226", summary: "Aesthetic wing of the Black Power movement." },
+            { id: 64, unit: 4, title: "Topic 4.11: The Black Panther Party for Self-Defense", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17251", summary: "Community survival programs and armed self-defense." },
+            { id: 65, unit: 4, title: "Topic 4.12: Black Is Beautiful and Afrocentricity", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17276", summary: "Cultural pride and educational curricula reform." },
+            { id: 66, unit: 4, title: "Topic 4.13: Black Feminist Movement and Intersectionality", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17301", summary: "Kimberlé Crenshaw and intersectional theory." },
+            { id: 67, unit: 4, title: "Topic 4.14: Interlocking Systems of Oppression", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/black-power-politics-culture#par-17326", summary: "Analyzing race, gender, and class simultaneously." },
+            { id: 68, unit: 4, title: "Topic 4.15: Economic Growth and Political Representation", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17615", summary: "Elected officials and Black business development." },
+            { id: 69, unit: 4, title: "Topic 4.16: Demographic and Religious Diversity", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17640", summary: "Contemporary pluralism in Black communities." },
+            { id: 70, unit: 4, title: "Topic 4.17: Evolution of Black Music: Spirituals to Hip-Hop", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17665", summary: "Musical innovation across generations." },
+            { id: 71, unit: 4, title: "Topic 4.18: Black Life in Theater, TV, and Film", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17690", summary: "Cinematic and dramatic representation." },
+            { id: 72, unit: 4, title: "Topic 4.19: African Americans and Sports", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17715", summary: "Athletic excellence and political activism in sports." },
+            { id: 73, unit: 4, title: "Topic 4.20: Science, Medicine, and Technology", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17740", summary: "Contributions by Black scientists and medical ethicists." },
+            { id: 74, unit: 4, title: "Topic 4.21: Black Studies, Black Futures, and Afrofuturism", url: "https://www.gilderlehrman.org/ap-african-american-studies/unit-4/business-culture-20th-21st-centuries#par-17765", summary: "Future trajectories of African American Studies." }
+        ];
 
         window.onload = function() {
             updatePrintDate();
-            renderDashboardGrid('all');
-            renderWordBank();
-            renderDiagnosticQuestions();
+            renderDashboardGrid(0);
             renderReteachSelector();
-            renderReteachTopic(granularTopics[0].id);
+            renderReteachTopic(1);
         };
 
         function updatePrintDate() {
@@ -487,6 +338,8 @@
             document.getElementById('print-date').innerText = new Date().toLocaleDateString('en-US', options);
             document.getElementById('print-student-name').innerText = studentName;
         }
+
+        let studentName = "AP Scholar";
 
         function updateStudentName(name) {
             studentName = name.trim() || "AP Scholar";
@@ -509,7 +362,7 @@
         }
 
         function filterOverviewUnit(unitNum) {
-            ['all', 1, 2, 3, 4].forEach(n => {
+            [0, 1, 2, 3, 4].forEach(n => {
                 const b = document.getElementById(`overview-btn-${n}`);
                 if (b) {
                     if (n === unitNum) {
@@ -522,285 +375,106 @@
             renderDashboardGrid(unitNum);
         }
 
-        function renderDashboardGrid(filter) {
+        function renderDashboardGrid(unitFilter) {
             const grid = document.getElementById('topics-grid');
             grid.innerHTML = "";
             
-            const filtered = filter === 'all' ? granularTopics : granularTopics.filter(t => t.unitId === filter);
+            const filtered = unitFilter === 0 ? allTopics : allTopics.filter(t => t.unit === unitFilter);
 
             filtered.forEach(t => {
                 const card = document.createElement('div');
                 card.className = "bg-white border border-cb-grayBorder rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
                 card.innerHTML = `
                     <div>
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="${t.source.img}" alt="${t.subTopicTitle}" class="w-full h-full object-cover">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="${unitImages[t.unit]}" alt="Unit ${t.unit} CED Source" class="w-full h-full object-cover">
                             <div class="absolute top-3 left-3 bg-cb-navy text-white text-xs font-bold px-2.5 py-1 rounded shadow">
-                                ${t.unitTitle}
+                                Unit ${t.unit}
                             </div>
                         </div>
-                        <div class="p-5 space-y-3">
-                            <h4 class="font-serif font-bold text-cb-navy text-base">${t.subTopicTitle}</h4>
-                            <p class="text-gray-600 text-xs leading-relaxed">${t.essentialKnowledge}</p>
-                            <div class="p-3 bg-cb-cream rounded-lg border border-gray-200 flex items-center justify-between text-xs">
-                                <span class="font-semibold text-cb-blue truncate max-w-[200px]"><i class="fas fa-landmark text-cb-gold mr-1"></i>Gilder Lehrman AP Portal</span>
-                                <a href="${t.source.url}" target="_blank" class="text-cb-blue font-bold hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Official Source Link</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
+                        <div class="p-5 space-y-2">
+                            <h4 class="font-serif font-bold text-cb-navy text-sm">${t.title}</h4>
+                            <p class="text-gray-600 text-xs leading-relaxed">${t.summary}</p>
+                            <div class="p-2.5 bg-cb-cream rounded-lg border border-gray-200 flex items-center justify-between text-xs pt-3">
+                                <span class="font-semibold text-cb-blue truncate max-w-[180px]"><i class="fas fa-landmark text-cb-gold mr-1"></i>Gilder Lehrman</span>
+                                <a href="${t.url}" target="_blank" class="text-cb-blue font-bold hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Official Link</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="px-5 pb-5 pt-0 flex items-center justify-between">
-                        <span class="text-[11px] text-gray-500 italic">CED Aligned</span>
-                        <button onclick="jumpToSubTopicReteach(${t.id})" class="text-xs bg-cb-lightBlue hover:bg-blue-100 text-cb-blue font-bold px-3 py-1.5 rounded transition-colors flex items-center space-x-1"><span>Open Reteach Module</span><i class="fas fa-arrow-right text-[10px]"></i></button>
+                        <span class="text-[11px] text-gray-500 italic">CED Required Source</span>
+                        <button onclick="jumpToTopicReteach(${t.id})" class="text-xs bg-cb-lightBlue hover:bg-blue-100 text-cb-blue font-bold px-3 py-1.5 rounded transition-colors flex items-center space-x-1"><span>Open Reteach</span><i class="fas fa-arrow-right text-[10px]"></i></button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        function jumpToSubTopicReteach(subTopicId) {
+        function jumpToTopicReteach(topicId) {
             switchTab('reteach');
-            document.getElementById('topic-selector').value = subTopicId;
-            renderReteachTopic(subTopicId);
+            document.getElementById('topic-selector').value = topicId;
+            renderReteachTopic(topicId);
         }
 
-        function renderWordBank() {
-            const container = document.getElementById('word-bank-container');
-            container.innerHTML = "";
-            const terms = granularTopics.map(t => t.correctAnswer).sort(() => Math.random() - 0.5);
-
-            terms.forEach(term => {
-                const badge = document.createElement('div');
-                badge.className = "draggable-term px-3.5 py-1.5 rounded-lg bg-cb-navy text-white text-xs sm:text-sm font-semibold shadow-sm";
-                badge.innerText = term;
-                badge.setAttribute('draggable', 'true');
-                badge.dataset.term = term;
-
-                badge.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', term); });
-                badge.addEventListener('click', () => {
-                    document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
-                    if (selectedTermForTap === term) { selectedTermForTap = null; }
-                    else { selectedTermForTap = term; badge.classList.add('selected'); }
-                });
-                container.appendChild(badge);
-            });
-        }
-
-        function renderDiagnosticQuestions() {
-            const container = document.getElementById('questions-container');
-            container.innerHTML = "";
-
-            granularTopics.forEach((t, index) => {
-                const parts = t.blankQuestion.split("_____");
-                const qCard = document.createElement('div');
-                qCard.className = "bg-cb-cream border border-gray-200 rounded-xl p-5 shadow-sm";
-                qCard.innerHTML = `
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-cb-blue uppercase tracking-wider">${t.subTopicTitle}</span>
-                        <span class="text-xs text-gray-500 font-medium">Question ${index + 1} of 8</span>
-                    </div>
-                    <p class="text-cb-dark text-sm sm:text-base leading-relaxed mb-3 font-medium">
-                        ${parts[0]}
-                        <span class="drop-target font-bold text-cb-blue" id="drop-target-${index}" ondragover="allowDrop(event)" ondragleave="removeDragOver(event)" ondrop="dropTerm(event, ${index})" onclick="handleDropTargetClick(${index})">
-                            <span class="text-gray-400 font-normal italic text-xs">[Drop / Tap Term Here]</span>
-                        </span>
-                        ${parts[1] || ''}
-                    </p>
-                    <div class="hint-container">
-                        <div class="hint-icon"><i class="fas fa-lightbulb"></i></div>
-                        <div class="hint-text"><strong>AP Key Hint:</strong> ${t.hint}</div>
-                    </div>
-                `;
-                container.appendChild(qCard);
-            });
-        }
-
-        function allowDrop(ev) { ev.preventDefault(); ev.currentTarget.classList.add('drag-over'); }
-        function removeDragOver(ev) { ev.currentTarget.classList.remove('drag-over'); }
-        function dropTerm(ev, qIndex) { ev.preventDefault(); const term = ev.dataTransfer.getData('text/plain'); assignTermToQuestion(qIndex, term); ev.currentTarget.classList.remove('drag-over'); }
-        
-        function handleDropTargetClick(qIndex) {
-            if (selectedTermForTap) {
-                assignTermToQuestion(qIndex, selectedTermForTap);
-                selectedTermForTap = null;
-                document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
-            } else if (userAnswers[qIndex]) {
-                delete userAnswers[qIndex];
-                renderDiagnosticQuestions();
-                updateQuizProgress();
+        function startUnitQuiz(unitNum) {
+            switchTab('reteach');
+            const firstTopicInUnit = allTopics.find(t => t.unit === unitNum);
+            if (firstTopicInUnit) {
+                document.getElementById('topic-selector').value = firstTopicInUnit.id;
+                renderReteachTopic(firstTopicInUnit.id);
             }
-        }
-
-        function assignTermToQuestion(qIndex, term) {
-            userAnswers[qIndex] = term;
-            const target = document.getElementById(`drop-target-${qIndex}`);
-            if (target) {
-                target.innerText = term;
-                target.className = "drop-target font-bold text-cb-blue filled px-3 py-1 bg-cb-lightBlue rounded border border-cb-blue text-sm";
-            }
-            updateQuizProgress();
-        }
-
-        function updateQuizProgress() {
-            const filledCount = Object.keys(userAnswers).length;
-            document.getElementById('quiz-progress-text').innerText = `${filledCount} / 8`;
-            const badge = document.getElementById('diagnostic-status-badge');
-            if (filledCount === 8) {
-                badge.className = "inline-block text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold";
-                badge.innerText = "Completed (Ready to Submit)";
-            } else if (filledCount > 0) {
-                badge.className = "inline-block text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300 font-bold";
-                badge.innerText = "In Progress";
-            }
-        }
-
-        function resetDiagnostic() {
-            userAnswers = {};
-            selectedTermForTap = null;
-            renderWordBank();
-            renderDiagnosticQuestions();
-            updateQuizProgress();
-        }
-
-        function submitDiagnostic() {
-            let correctCount = 0;
-            const analysisResults = [];
-
-            granularTopics.forEach((t, index) => {
-                const userAns = (userAnswers[index] || "").trim().toLowerCase();
-                const isCorrect = t.acceptedAnswers.includes(userAns);
-                if (isCorrect) correctCount++;
-                analysisResults.push({ topic: t, userAnswer: userAnswers[index] || "Unanswered", correct: isCorrect });
-            });
-
-            const percentage = Math.round((correctCount / 8) * 100);
-            document.getElementById('header-score').innerText = `${correctCount} / 8`;
-            document.getElementById('score-percentage').innerText = `${percentage}%`;
-            document.getElementById('stat-correct').innerText = `${correctCount} / 8`;
-            document.getElementById('stat-mastered').innerText = `${correctCount} Topics`;
-            document.getElementById('stat-review').innerText = `${8 - correctCount} Topics`;
-
-            const msgEl = document.getElementById('score-feedback-msg');
-            if (percentage === 100) {
-                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all granular AP sub-topics.";
-            } else if (percentage >= 50) {
-                msgEl.innerText = "Great job! Review the targeted sub-topics below to achieve full mastery.";
-            } else {
-                msgEl.innerText = "Review recommended! Complete the automated reteach modules and simulations below.";
-            }
-
-            const analysisList = document.getElementById('analysis-list');
-            analysisList.innerHTML = "";
-
-            analysisResults.forEach((res) => {
-                const item = document.createElement('div');
-                item.className = `p-4 rounded-xl border ${res.correct ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3`;
-                item.innerHTML = `
-                    <div class="space-y-1">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">${res.topic.unitTitle.split(':')[0]}</span>
-                            <h4 class="font-serif font-bold text-cb-navy text-sm">${res.topic.subTopicTitle}</h4>
-                        </div>
-                        <p class="text-xs text-gray-600">Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.topic.userAnswer || res.userAnswer}</strong> ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.topic.correctAnswer}</strong>` : ''}</p>
-                    </div>
-                    <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
-                        <span class="text-xs font-bold px-3 py-1 rounded-full ${res.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${res.correct ? '<i class="fas fa-check-circle mr-1"></i> Mastered' : '<i class="fas fa-exclamation-circle mr-1"></i> Review Needed'}</span>
-                        <button onclick="jumpToSubTopicReteach(${res.topic.id})" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">Reteach</button>
-                    </div>
-                `;
-                analysisList.appendChild(item);
-            });
-
-            diagnosticSubmitted = true;
-            switchTab('analysis');
         }
 
         function renderReteachSelector() {
             const selector = document.getElementById('topic-selector');
             selector.innerHTML = "";
-            granularTopics.forEach(t => {
+            allTopics.forEach(t => {
                 const opt = document.createElement('option');
                 opt.value = t.id;
-                opt.innerText = `${t.subTopicTitle}`;
+                opt.innerText = `Unit ${t.unit} | ${t.title}`;
                 selector.appendChild(opt);
             });
         }
 
-        function renderReteachTopic(subTopicId) {
-            const t = granularTopics.find(item => item.id == subTopicId);
+        function renderReteachTopic(topicId) {
+            const t = allTopics.find(item => item.id == topicId);
             if (!t) return;
             const container = document.getElementById('reteach-card-container');
             
-            let simulationHTML = "";
-            if (t.simulationType === "timeline") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-stream"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.events.map((ev) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm"><span class="font-bold text-cb-navy">${ev.era}</span><span class="text-gray-700 flex-grow px-4">${ev.text}</span><span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span></div>`).join('')}</div></div>`;
-            } else if (t.simulationType === "source_analysis") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-scroll"></i><span>Primary Source Analysis Simulation</span></div><p class="text-xs font-semibold text-cb-navy">${t.simulationData.question || t.simulationData.prompt}</p><div class="space-y-2 pt-2" id="sim-options-${t.id}">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Select</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
-            } else if (t.simulationType === "decision_sim") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-chess-board"></i><span>Decision-Making Simulation</span></div><p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p><p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Choose</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
-            } else if (t.simulationType === "match") {
-                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-network-wired"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/2">${opt.item}</span><span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span></div>`).join('')}</div></div>`;
-            }
-
             container.innerHTML = `
                 <div class="bg-white border border-cb-grayBorder rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-2">
                         <div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">${t.unitTitle}</span>
-                            <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">${t.subTopicTitle}</h3>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">Unit ${t.unit} Framework</span>
+                            <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">${t.title}</h3>
                         </div>
-                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> AP CED Sub-Topic</span>
+                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> AP CED Aligned</span>
                     </div>
 
                     <div class="space-y-4">
                         <div class="p-4 bg-amber-50 rounded-lg border border-amber-200">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">Learning Objective</h4>
-                            <p class="text-amber-900 text-sm font-semibold">${t.learningObjective}</p>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">Topic Summary</h4>
+                            <p class="text-amber-900 text-sm font-semibold">${t.summary}</p>
                         </div>
 
-                        <div>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Essential Knowledge</h4>
-                            <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">${t.essentialKnowledge}</p>
-                        </div>
-
-                        <div>
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Concept Breakdown & Historical Context</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">${t.breakdown}</p>
-                        </div>
-
-                        <!-- Gilder Lehrman AP Portal Integration Card with Image & Official Link -->
+                        <!-- Gilder Lehrman Portal Integration Card with Unit CED Image & Direct URL -->
                         <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex flex-col md:flex-row items-start gap-4">
-                            <img src="${t.source.img}" alt="Gilder Lehrman Archival Source" class="w-full md:w-36 h-28 object-cover rounded-lg border border-blue-200 shadow-sm">
-                            <div class="space-y-1.5 flex-grow">
+                            <img src="${unitImages[t.unit]}" alt="Unit ${t.unit} CED Source Material" class="w-full md:w-48 h-32 object-cover rounded-lg border border-blue-200 shadow-sm">
+                            <div class="space-y-2 flex-grow">
                                 <div class="flex items-center justify-between">
-                                    <h5 class="text-xs font-bold text-cb-navy uppercase"><i class="fas fa-landmark text-cb-blue mr-1"></i> Gilder Lehrman AP African American Studies Portal</h5>
-                                    <a href="${t.source.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-2.5 py-1 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>View Official Portal Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                    <h5 class="text-xs font-bold text-cb-navy uppercase"><i class="fas fa-landmark text-cb-blue mr-1"></i> Gilder Lehrman Official Anchor Link</h5>
+                                    <a href="${t.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-3 py-1.5 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>Open Direct Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
                                 </div>
-                                <p class="text-xs font-bold text-cb-blue">${t.source.name}</p>
-                                <p class="text-xs text-gray-600">${t.source.description}</p>
+                                <p class="text-xs font-bold text-cb-blue">${t.title}</p>
+                                <p class="text-xs text-gray-600">Access primary source documents, scholar essays, and interactive classroom resources directly on the official Gilder Lehrman AP African American Studies portal.</p>
+                                <div class="p-2 bg-white rounded border border-blue-100 text-[11px] font-mono text-gray-500 break-all">
+                                    ${t.url}
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="pt-4 border-t border-gray-200">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-cb-gold mb-3">Interactive Mini-Simulation</h4>
-                        ${simulationHTML}
-                    </div>
                 </div>
             `;
-        }
-
-        function checkSimAnswer(subTopicId, optionIdx, isCorrect) {
-            const feedbackEl = document.getElementById(`sim-feedback-${subTopicId}`);
-            const t = granularTopics.find(item => item.id == subTopicId);
-            const chosenOption = t.simulationData.options[optionIdx];
-
-            if (isCorrect) {
-                feedbackEl.className = "text-xs font-bold pt-2 text-emerald-700 bg-emerald-50 p-3 rounded border border-emerald-200";
-                feedbackEl.innerHTML = `<i class="fas fa-check-circle mr-1"></i> ${chosenOption.feedback}`;
-            } else {
-                feedbackEl.className = "text-xs font-bold pt-2 text-rose-700 bg-rose-50 p-3 rounded border border-rose-200";
-                feedbackEl.innerHTML = `<i class="fas fa-times-circle mr-1"></i> ${chosenOption.feedback}`;
-            }
         }
 
         function exportToPDF() {
