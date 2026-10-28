@@ -41,135 +41,53 @@
     </script>
 
     <style>
-        body {
-            background-color: #F9F8F3;
-            color: #2B2D42;
-        }
-
-        /* Drag and Drop Custom Styles */
-        .draggable-term {
-            cursor: grab;
-            user-select: none;
-            touch-action: manipulation;
-            transition: all 0.2s ease;
-        }
-        .draggable-term:active {
-            cursor: grabbing;
-        }
-        .draggable-term.selected {
-            box-shadow: 0 0 0 3px #0056B3;
-            background-color: #0056B3 !important;
-            color: white !important;
-        }
-
+        body { background-color: #F9F8F3; color: #2B2D42; }
+        .draggable-term { cursor: grab; user-select: none; touch-action: manipulation; transition: all 0.2s ease; }
+        .draggable-term:active { cursor: grabbing; }
+        .draggable-term.selected { box-shadow: 0 0 0 3px #0056B3; background-color: #0056B3 !important; color: white !important; }
         .drop-target {
-            min-width: 140px;
-            min-height: 38px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 2px solid #0056B3;
-            background-color: rgba(0, 86, 179, 0.05);
-            transition: all 0.2s ease;
-            vertical-align: middle;
-            padding: 2px 10px;
-            border-radius: 4px;
+            min-width: 140px; min-height: 38px; display: inline-flex; align-items: center; justify-content: center;
+            border-bottom: 2px solid #0056B3; background-color: rgba(0, 86, 179, 0.05); transition: all 0.2s ease;
+            vertical-align: middle; padding: 2px 10px; border-radius: 4px;
         }
-        .drop-target.drag-over {
-            background-color: rgba(217, 155, 38, 0.2);
-            border-color: #D99B26;
-            transform: scale(1.03);
-        }
-        .drop-target.filled {
-            background-color: #E6F0FA;
-            border-color: #0056B3;
-        }
-
-        /* Green Hint Styling */
+        .drop-target.drag-over { background-color: rgba(217, 155, 38, 0.2); border-color: #D99B26; transform: scale(1.03); }
+        .drop-target.filled { background-color: #E6F0FA; border-color: #0056B3; }
         .hint-container {
-            background-color: #f0fdf4;
-            border: 1px solid #86efac;
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            margin-top: 0.75rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
+            background-color: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 0.75rem 1rem; margin-top: 0.75rem; display: flex; align-items: flex-start; gap: 0.5rem;
         }
-        .hint-icon {
-            color: #15803d;
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-        .hint-text {
-            color: #15803d;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        /* Print Styling for PDF Export */
+        .hint-icon { color: #15803d; font-size: 1.2rem; line-height: 1; }
+        .hint-text { color: #15803d; font-size: 0.875rem; font-weight: 500; }
         @media print {
-            body {
-                background: white !important;
-                color: black !important;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-only {
-                display: block !important;
-            }
-            .print-card {
-                border: 1px solid #ccc !important;
-                background: white !important;
-                color: black !important;
-                box-shadow: none !important;
-                margin-bottom: 1rem !important;
-            }
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .print-card { border: 1px solid #ccc !important; background: white !important; color: black !important; box-shadow: none !important; margin-bottom: 1rem !important; }
         }
-        .print-only {
-            display: none;
-        }
+        .print-only { display: none; }
     </style>
 </head>
 <body class="font-sans min-h-screen flex flex-col selection:bg-cb-gold selection:text-white">
 
-    <!-- College Board Style Top Header -->
+    <!-- Header -->
     <header class="bg-cb-navy text-white border-b-4 border-cb-gold sticky top-0 z-50 shadow-md no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
-                <div class="w-10 h-10 rounded bg-cb-blue text-white font-bold flex items-center justify-center font-serif text-lg tracking-wider border border-white/20">
-                    AP
-                </div>
+                <div class="w-10 h-10 rounded bg-cb-blue text-white font-bold flex items-center justify-center font-serif text-lg tracking-wider border border-white/20">AP</div>
                 <div>
                     <h1 class="font-serif font-bold text-base sm:text-lg tracking-wide text-white">AP African American Studies</h1>
                     <p class="text-xs text-cb-gold font-medium">Unit 1: Origins of the African Diaspora</p>
                 </div>
             </div>
-
-            <!-- Navigation Tabs -->
             <nav class="flex items-center space-x-1 sm:space-x-2">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm">
-                    <i class="fas fa-home"></i>
-                    <span class="hidden md:inline">Overview</span>
-                </button>
-                <button onclick="switchTab('diagnostic')" id="nav-diagnostic" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
-                    <i class="fas fa-edit"></i>
-                    <span class="hidden md:inline">Diagnostic Quiz</span>
-                </button>
-                <button onclick="switchTab('analysis')" id="nav-analysis" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
-                    <i class="fas fa-chart-bar"></i>
-                    <span class="hidden md:inline">Results & Diagnostics</span>
-                </button>
-                <button onclick="switchTab('reteach')" id="nav-reteach" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
-                    <i class="fas fa-book-open"></i>
-                    <span class="hidden md:inline">Reteach & Simulations</span>
-                </button>
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm"><i class="fas fa-home"></i><span class="hidden md:inline">Overview</span></button>
+                <button onclick="switchTab('diagnostic')" id="nav-diagnostic" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-edit"></i><span class="hidden md:inline">Diagnostic Quiz</span></button>
+                <button onclick="switchTab('analysis')" id="nav-analysis" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-chart-bar"></i><span class="hidden md:inline">Results & Diagnostics</span></button>
+                <button onclick="switchTab('reteach')" id="nav-reteach" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10"><i class="fas fa-book-open"></i><span class="hidden md:inline">Reteach & Simulations</span></button>
             </nav>
         </div>
     </header>
 
-    <!-- Printable Header (Only shows during PDF/Print) -->
+    <!-- Print Header -->
     <div class="print-only p-6 border-b-2 border-cb-navy">
         <div class="flex justify-between items-center">
             <div>
@@ -183,21 +101,18 @@
         </div>
     </div>
 
-    <!-- Main Container -->
+    <!-- Main Content -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-        <!-- STUDENT INFO & STATUS BAR -->
+        <!-- Student Info Bar -->
         <div class="bg-white border border-cb-grayBorder rounded-xl p-4 mb-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
             <div class="flex items-center space-x-3 w-full sm:w-auto">
-                <div class="w-10 h-10 rounded-full bg-cb-lightBlue text-cb-blue flex items-center justify-center font-bold">
-                    <i class="fas fa-user-graduate text-lg"></i>
-                </div>
+                <div class="w-10 h-10 rounded-full bg-cb-lightBlue text-cb-blue flex items-center justify-center font-bold"><i class="fas fa-user-graduate text-lg"></i></div>
                 <div>
                     <label for="student-name-input" class="block text-xs font-bold text-gray-500 uppercase tracking-wider">AP Student Identifier</label>
                     <input type="text" id="student-name-input" placeholder="Enter full name..." value="AP Scholar" oninput="updateStudentName(this.value)" class="bg-cb-cream border border-gray-300 rounded px-3 py-1 text-sm text-cb-dark font-bold focus:outline-none focus:border-cb-blue w-full sm:w-60">
                 </div>
             </div>
-            
             <div class="flex items-center space-x-6 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-200">
                 <div class="text-center">
                     <span class="text-xs text-gray-500 font-semibold block">Diagnostic Progress</span>
@@ -208,57 +123,41 @@
                     <span id="header-score" class="text-base font-bold text-cb-navy">-- / 10</span>
                 </div>
                 <button onclick="exportToPDF()" class="bg-cb-blue hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-all shadow flex items-center space-x-2">
-                    <i class="fas fa-file-pdf"></i>
-                    <span>Export Report</span>
+                    <i class="fas fa-file-pdf"></i><span>Export Report</span>
                 </button>
             </div>
         </div>
 
-        <!-- TAB 1: DASHBOARD / OVERVIEW -->
+        <!-- TAB 1: DASHBOARD -->
         <section id="tab-dashboard" class="tab-content space-y-6">
-            <!-- Hero Banner -->
             <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
                 <div class="relative z-10 max-w-3xl">
                     <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Framework</span>
                     <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">Unit 1: Origins of the African Diaspora</h2>
                     <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
-                        Explore the foundational history, geography, societies, and intellectual traditions of Africa from human origins through early global contact, aligned strictly with the College Board Course and Exam Description (Topics 1.1–1.10). Source repository integration powered by the Gilder Lehrman Institute of American History and the Smithsonian NMAAHC.
+                        Explore foundational African history, geography, societies, and intellectual traditions from human origins through early global contact, aligned strictly with the College Board Course and Exam Description (Topics 1.1–1.10). Features integrated archival sources from the Gilder Lehrman Institute of American History.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2">
-                            <i class="fas fa-play"></i>
-                            <span>Start Interactive Diagnostic</span>
-                        </button>
-                        <button onclick="switchTab('reteach')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-lg transition-all flex items-center space-x-2">
-                            <i class="fas fa-book-open"></i>
-                            <span>Explore Reteach Modules</span>
-                        </button>
+                        <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2"><i class="fas fa-play"></i><span>Start Interactive Diagnostic</span></button>
+                        <button onclick="switchTab('reteach')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-lg transition-all flex items-center space-x-2"><i class="fas fa-book-open"></i><span>Explore Reteach Modules</span></button>
                     </div>
                 </div>
-                <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white">
-                    <i class="fas fa-globe-africa text-[260px]"></i>
-                </div>
+                <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white"><i class="fas fa-globe-africa text-[260px]"></i></div>
             </div>
 
-            <!-- CED Topics Grid -->
             <div>
-                <h3 class="text-xl font-serif font-bold text-cb-navy mb-4 flex items-center space-x-2">
-                    <i class="fas fa-list-check text-cb-gold"></i>
-                    <span>Course & Exam Description Unit 1 Topics (1.1 - 1.10)</span>
-                </h3>
-                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Populated dynamically via JS -->
-                </div>
+                <h3 class="text-xl font-serif font-bold text-cb-navy mb-4 flex items-center space-x-2"><i class="fas fa-list-check text-cb-gold"></i><span>Course & Exam Description Unit 1 Topics (1.1 - 1.10)</span></h3>
+                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
         </section>
 
-        <!-- TAB 2: DIAGNOSTIC ASSESSMENT (DRAG & DROP) -->
+        <!-- TAB 2: DIAGNOSTIC QUIZ -->
         <section id="tab-diagnostic" class="tab-content hidden space-y-6">
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200 gap-4">
                     <div>
                         <h2 class="text-2xl font-serif font-bold text-cb-navy">Unit 1 Interactive Diagnostic Assessment</h2>
-                        <p class="text-gray-600 text-sm">Drag key terms into the blanks (or tap a term, then tap a blank) to complete each official AP CED Essential Knowledge sentence.</p>
+                        <p class="text-gray-600 text-sm">Drag key terms into the blanks to complete each official AP CED Essential Knowledge sentence.</p>
                     </div>
                     <div class="flex items-center space-x-3 bg-cb-lightBlue px-4 py-2 rounded-lg border border-cb-blue/20">
                         <i class="fas fa-tasks text-cb-blue"></i>
@@ -266,108 +165,63 @@
                     </div>
                 </div>
 
-                <!-- DRAG AND DROP WORD BANK -->
                 <div class="mb-8 p-5 bg-cb-cream rounded-xl border border-cb-gold/40 shadow-sm">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-hand-pointer text-cb-gold"></i>
-                            <h3 class="text-sm font-bold text-cb-navy uppercase tracking-wider">Word Bank (Drag terms or Tap-to-Select)</h3>
-                        </div>
-                        <span class="text-xs text-gray-500 italic">Drag to drop box or click term then target blank</span>
+                        <div class="flex items-center space-x-2"><i class="fas fa-hand-pointer text-cb-gold"></i><h3 class="text-sm font-bold text-cb-navy uppercase tracking-wider">Word Bank (Drag terms or Tap-to-Select)</h3></div>
                     </div>
-                    <div id="word-bank-container" class="flex flex-wrap gap-2.5 min-h-[50px] p-2 bg-white rounded-lg border border-gray-200">
-                        <!-- Populated dynamically -->
-                    </div>
+                    <div id="word-bank-container" class="flex flex-wrap gap-2.5 min-h-[50px] p-2 bg-white rounded-lg border border-gray-200"></div>
                 </div>
 
-                <!-- Diagnostic Questions -->
                 <form id="diagnostic-form" onsubmit="event.preventDefault(); submitDiagnostic();">
-                    <div id="questions-container" class="space-y-6">
-                        <!-- Populated dynamically -->
-                    </div>
-
+                    <div id="questions-container" class="space-y-6"></div>
                     <div class="mt-8 pt-6 border-t border-gray-200 flex justify-between items-center">
-                        <button type="button" onclick="resetDiagnostic()" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold transition-colors">
-                            <i class="fas fa-undo mr-1.5"></i> Clear All Blanks
-                        </button>
-                        <button type="submit" class="px-8 py-3 rounded-lg bg-cb-blue hover:bg-blue-700 text-white font-bold shadow-md transition-all flex items-center space-x-2">
-                            <span>Submit Assessment</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
+                        <button type="button" onclick="resetDiagnostic()" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold transition-colors"><i class="fas fa-undo mr-1.5"></i> Clear All Blanks</button>
+                        <button type="submit" class="px-8 py-3 rounded-lg bg-cb-blue hover:bg-blue-700 text-white font-bold shadow-md transition-all flex items-center space-x-2"><span>Submit Assessment</span><i class="fas fa-arrow-right"></i></button>
                     </div>
                 </form>
             </div>
         </section>
 
-        <!-- TAB 3: DIAGNOSTIC RESULTS & DIAGNOSTICS -->
+        <!-- TAB 3: ANALYSIS -->
         <section id="tab-analysis" class="tab-content hidden space-y-6">
-            <!-- Score Overview Card -->
             <div id="results-summary-card" class="bg-white border border-cb-grayBorder rounded-2xl p-6 sm:p-8 shadow-sm print-card">
                 <div class="text-center max-w-2xl mx-auto space-y-4">
-                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cb-lightBlue border-4 border-cb-blue mb-1">
-                        <span id="score-percentage" class="text-3xl font-bold text-cb-navy">0%</span>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Diagnostic Diagnostic Summary</h2>
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cb-lightBlue border-4 border-cb-blue mb-1"><span id="score-percentage" class="text-3xl font-bold text-cb-navy">0%</span></div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Diagnostic Summary</h2>
                     <p id="score-feedback-msg" class="text-gray-600 text-sm sm:text-base">Complete the diagnostic assessment to reveal your mastery score and targeted review recommendations.</p>
-
                     <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
-                            <span class="block text-xs text-gray-500 font-bold uppercase">Correct</span>
-                            <span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 10</span>
-                        </div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
-                            <span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span>
-                            <span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Topics</span>
-                        </div>
-                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
-                            <span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span>
-                            <span id="stat-review" class="text-xl font-bold text-cb-ochre">10 Topics</span>
-                        </div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Correct</span><span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 10</span></div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span><span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Topics</span></div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200"><span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span><span id="stat-review" class="text-xl font-bold text-cb-ochre">10 Topics</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Topic-by-Topic Breakdown -->
             <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
                 <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
                     <h3 class="text-xl font-serif font-bold text-cb-navy">Objective Mastery Breakdown</h3>
-                    <button onclick="exportToPDF()" class="no-print text-xs font-bold px-3 py-1.5 rounded bg-cb-lightBlue text-cb-blue hover:bg-blue-100 transition-colors">
-                        <i class="fas fa-print mr-1"></i> Print / Export Report
-                    </button>
+                    <button onclick="exportToPDF()" class="no-print text-xs font-bold px-3 py-1.5 rounded bg-cb-lightBlue text-cb-blue hover:bg-blue-100 transition-colors"><i class="fas fa-print mr-1"></i> Print / Export Report</button>
                 </div>
-
-                <div id="analysis-list" class="space-y-4">
-                    <!-- Populated dynamically -->
-                </div>
+                <div id="analysis-list" class="space-y-4"></div>
             </div>
         </section>
 
-        <!-- TAB 4: RETEACH MODULES & MINI-SIMULATIONS -->
+        <!-- TAB 4: RETEACH & SIMULATIONS -->
         <section id="tab-reteach" class="tab-content hidden space-y-6">
-            <!-- Topic Selector Header -->
             <div class="bg-white border border-cb-grayBorder rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="flex items-center space-x-3 w-full md:w-auto">
-                    <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
+                    <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold"><i class="fas fa-lightbulb"></i></div>
                     <div>
                         <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Mini-Simulations</h3>
-                        <p class="text-xs text-gray-500">Select any official CED Unit 1 topic to view concept breakdowns, Gilder Lehrman visual sources, and simulations.</p>
+                        <p class="text-xs text-gray-500">Select any official CED Unit 1 topic to view concept breakdowns, Gilder Lehrman visual sources, and interactive simulations.</p>
                     </div>
                 </div>
-                
                 <div class="flex items-center space-x-2 w-full md:w-auto">
                     <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Topic:</label>
-                    <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-80 focus:outline-none focus:border-cb-blue">
-                        <!-- Populated dynamically -->
-                    </select>
+                    <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-80 focus:outline-none focus:border-cb-blue"></select>
                 </div>
             </div>
-
-            <!-- Reteach Content Card -->
-            <div id="reteach-card-container" class="space-y-6">
-                <!-- Active Topic Reteach populated dynamically -->
-            </div>
+            <div id="reteach-card-container" class="space-y-6"></div>
         </section>
 
     </main>
@@ -382,7 +236,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // EXACT OFFICIAL AP CED UNIT 1 TOPICS 1.1 - 1.10 DATA STRUCTURE WITH GILDER LEHRMAN / SMITHSONIAN SOURCE REPOSITORY
+        // OFFICIAL AP CED UNIT 1 TOPICS 1.1 - 1.10 DATA WITH GILDER LEHRMAN REPOSITORY IMAGES & LINKS
         const unitTopics = [
             {
                 id: "1.1",
@@ -393,11 +247,12 @@
                 correctAnswer: "interdisciplinary",
                 acceptedAnswers: ["interdisciplinary", "cross-disciplinary"],
                 hint: "Describes a field combining multiple academic disciplines into a unified study.",
-                breakdown: "African American Studies rejects single-lens approaches, instead utilizing history, literature, art history, and spatial analysis. This interdisciplinary rigor ensures a comprehensive evaluation of Black agency and cultural production.",
+                breakdown: "African American Studies rejects single-lens approaches, instead utilizing history, literature, art history, and spatial analysis to evaluate Black agency and cultural production.",
                 source: {
                     name: "Gilder Lehrman Institute Repository: Foundations of African American Historiography",
-                    type: "archive",
-                    description: "Archival documents illustrating how 20th-century scholars and organizations pioneered interdisciplinary Black studies."
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=600&auto=format&fit=crop",
+                    description: "Archival documents illustrating how scholars pioneered interdisciplinary Black studies."
                 },
                 simulationType: "match",
                 simulationData: {
@@ -419,10 +274,11 @@
                 correctAnswer: "Great Rift Valley",
                 acceptedAnswers: ["great rift valley", "rift valley"],
                 hint: "Major geographic trench in East Africa renowned for hominid fossil discoveries.",
-                breakdown: "Africa's vast geographic diversity dictated economic patterns. While the Sahara and dense rainforests presented distinct challenges, Sudanic savanna grasslands supported large-scale pastoralism and cereal farming, powering early urbanization.",
+                breakdown: "Africa's vast geographic diversity dictated economic patterns. While the Sahara and dense rainforests presented distinct challenges, Sudanic savanna grasslands supported large-scale pastoralism and cereal farming.",
                 source: {
                     name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Early African Environments",
-                    type: "map",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=600&auto=format&fit=crop",
                     description: "Topographical maps and climate zone charts detailing early African human settlements."
                 },
                 simulationType: "timeline",
@@ -445,10 +301,11 @@
                 correctAnswer: "Ge'ez",
                 acceptedAnswers: ["ge'ez", "geez"],
                 hint: "Ancient Ethiopic writing system used for royal proclamations and liturgy.",
-                breakdown: "Northeast African societies were global powerhouses. Kush mastered iron production at Meroë and built pyramids along the Nile. Aksum controlled lucrative Red Sea trade routes connecting Roman, Byzantine, and Indian markets, minting its own gold coinage.",
+                breakdown: "Northeast African societies were global powerhouses. Kush mastered iron production at Meroë and built pyramids along the Nile. Aksum controlled lucrative Red Sea trade routes, minting its own gold coinage.",
                 source: {
                     name: "Gilder Lehrman Collection: Ancient Northeast African Inscriptions",
-                    type: "document",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=600&auto=format&fit=crop",
                     description: "Translations of royal stelae and coinage documenting Aksumite political sovereignty."
                 },
                 simulationType: "source_analysis",
@@ -470,11 +327,12 @@
                 correctAnswer: "salt",
                 acceptedAnswers: ["salt"],
                 hint: "Essential mineral traded ounce-for-ounce for gold across Saharan routes.",
-                breakdown: "Control over desert-edge entrepôts like Audaghost, Gao, and Walata allowed Sudanic kings to tax passing caravans. This wealth funded formidable armies, administrative bureaucracies, and patronage of international scholarship.",
+                breakdown: "Control over desert-edge entrepôts allowed Sudanic kings to tax passing caravans. This wealth funded formidable armies, administrative bureaucracies, and patronage of international scholarship.",
                 source: {
                     name: "Gilder Lehrman Institute: Al-Omari’s Accounts of Mansa Musa's Journey",
-                    type: "document",
-                    description: "14th-century Arabic manuscript accounts documenting the royal opulence and gold reserves of the Mali Empire."
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=600&auto=format&fit=crop",
+                    description: "14th-century Arabic manuscript accounts documenting royal opulence and gold reserves of the Mali Empire."
                 },
                 simulationType: "decision_sim",
                 simulationData: {
@@ -496,10 +354,11 @@
                 correctAnswer: "griots",
                 acceptedAnswers: ["griots", "griot", "jali", "jelis"],
                 hint: "West African traditional bards and oral chroniclers.",
-                breakdown: "Intellectual infrastructure in West Africa was twofold: written scholarship flourished in universities like Sankore with thousands of manuscripts on astronomy and law, while griots maintained oral archives with astonishing precision.",
+                breakdown: "Intellectual infrastructure in West Africa was twofold: written scholarship flourished in universities like Sankore with thousands of manuscripts on astronomy and law, while griots maintained oral archives.",
                 source: {
                     name: "Gilder Lehrman & Timbuktu Educational Foundation Archives",
-                    type: "manuscript",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=600&auto=format&fit=crop",
                     description: "Facsimiles of mathematical, astronomical, and legal manuscripts from 14th-century West African libraries."
                 },
                 simulationType: "match",
@@ -521,10 +380,11 @@
                 correctAnswer: "Swahili",
                 acceptedAnswers: ["swahili", "swahili coast"],
                 hint: "Language and culture of the East African maritime littoral.",
-                breakdown: "Swahili city-states were hubs of globalization. Utilizing seasonal monsoon winds, dhow sailors connected East Africa to Arabia, Persia, India, and China, creating stone-built multi-story coral towns with thriving civic institutions.",
+                breakdown: "Swahili city-states were hubs of globalization. Utilizing seasonal monsoon winds, dhow sailors connected East Africa to Arabia, Persia, India, and China, creating multi-story coral towns.",
                 source: {
                     name: "Gilder Lehrman Institute: Archaeological Records of Kilwa Kisiwani",
-                    type: "artifact",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600&auto=format&fit=crop",
                     description: "Portcelain and coin fragments demonstrating East Africa's extensive commercial ties across the Indian Ocean."
                 },
                 simulationType: "trade_navigator",
@@ -546,10 +406,11 @@
                 correctAnswer: "mortar",
                 acceptedAnswers: ["mortar", "cement"],
                 hint: "Binding paste or adhesive material used in conventional masonry.",
-                breakdown: "Southern and Central African states demonstrated master engineering and statecraft. Great Zimbabwe served as a political and trading capital. In West-Central Africa, Kongo established sophisticated administrative provinces and maintained royal diplomacy with European states.",
+                breakdown: "Southern and Central African states demonstrated master engineering. Great Zimbabwe served as a political capital. In West-Central Africa, Kongo established sophisticated administrative provinces and maintained diplomacy with Europe.",
                 source: {
                     name: "Gilder Lehrman & Smithsonian NMAAHC: Architecture of Great Zimbabwe",
-                    type: "image",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?q=80&w=600&auto=format&fit=crop",
                     description: "Photographic and architectural surveys of the Great Enclosure stone walls."
                 },
                 simulationType: "source_analysis",
@@ -571,10 +432,11 @@
                 correctAnswer: "syncretism",
                 acceptedAnswers: ["syncretism"],
                 hint: "Term for the fusion of different religious beliefs and practices.",
-                breakdown: "African cosmology viewed the spiritual and physical worlds as deeply interconnected. Ancestors acted as intermediaries. When Islam and Christianity arrived, African societies frequently synthesized these traditions, preserving core indigenous worldviews.",
+                breakdown: "African cosmology viewed the spiritual and physical worlds as deeply interconnected. When Islam and Christianity arrived, African societies frequently synthesized these traditions, preserving core indigenous worldviews.",
                 source: {
                     name: "Gilder Lehrman Collection: Religious Syncretism in West and Central Africa",
-                    type: "document",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?q=80&w=600&auto=format&fit=crop",
                     description: "Primary texts examining how African clergy and rulers integrated Christianity and Islam with local ancestral traditions."
                 },
                 simulationType: "decision_sim",
@@ -597,10 +459,11 @@
                 correctAnswer: "political authority",
                 acceptedAnswers: ["political authority", "power", "royalty"],
                 hint: "Concept representing the right to rule and govern.",
-                breakdown: "Art in Africa was never merely decorative; it was functional, political, and sacred. Royal workshops in Benin cast detailed brass panels commemorating Obas (kings), military victories, and court ceremonies.",
+                breakdown: "Art in Africa was functional, political, and sacred. Royal workshops in Benin cast detailed brass panels commemorating Obas (kings), military victories, and court ceremonies.",
                 source: {
                     name: "Gilder Lehrman Institute & Smithsonian NMAAHC: Benin Bronzes Repository",
-                    type: "image",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1582561244093-c901e855c5df?q=80&w=600&auto=format&fit=crop",
                     description: "High-resolution visual archives of 16th-century royal brass castings from Benin."
                 },
                 simulationType: "match",
@@ -623,10 +486,11 @@
                 correctAnswer: "Diaspora",
                 acceptedAnswers: ["diaspora", "african diaspora"],
                 hint: "Global dispersion of African peoples maintaining cultural ties to their ancestral homeland.",
-                breakdown: "Unit 1 concludes by connecting the depth of pre-colonial African history to the diaspora. Enslaved Africans did not arrive in the Americas as blank slates; they carried advanced agricultural skills, artistic patterns, legal concepts, and spiritual resilience that shaped the Americas.",
+                breakdown: "Unit 1 concludes by connecting the depth of pre-colonial African history to the diaspora. Enslaved Africans carried advanced agricultural skills, artistic patterns, legal concepts, and spiritual resilience that shaped the Americas.",
                 source: {
                     name: "Gilder Lehrman Institute: Global Legacies of Pre-Colonial Africa",
-                    type: "archive",
+                    url: "https://www.gilderlehrman.org/",
+                    img: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=600&auto=format&fit=crop",
                     description: "Comprehensive historiographical essays linking African institutional foundations to diasporic culture."
                 },
                 simulationType: "source_analysis",
@@ -641,13 +505,11 @@
             }
         ];
 
-        // App State
         let studentName = "AP Scholar";
         let userAnswers = {};
         let selectedTermForTap = null;
         let diagnosticSubmitted = false;
 
-        // Initialize App on Load
         window.onload = function() {
             updatePrintDate();
             renderDashboardGrid();
@@ -668,13 +530,11 @@
             document.getElementById('print-student-name').innerText = studentName;
         }
 
-        // Tab Navigation Switcher
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
 
-            const navIds = ['dashboard', 'diagnostic', 'analysis', 'reteach'];
-            navIds.forEach(id => {
+            ['dashboard', 'diagnostic', 'analysis', 'reteach'].forEach(id => {
                 const btn = document.getElementById('nav-' + id);
                 if (id === tabId) {
                     btn.className = "px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm";
@@ -682,11 +542,9 @@
                     btn.className = "px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10";
                 }
             });
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Dashboard Overview Grid
         function renderDashboardGrid() {
             const grid = document.getElementById('topics-grid');
             grid.innerHTML = "";
@@ -697,7 +555,7 @@
                     <div>
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cb-lightBlue text-cb-blue">Topic ${t.id}</span>
-                            <span class="text-[10px] text-gray-400 font-semibold uppercase">Gilder Lehrman Source</span>
+                            <a href="${t.source.url}" target="_blank" class="text-[10px] text-cb-blue font-semibold hover:underline flex items-center space-x-1"><i class="fas fa-external-link-alt"></i><span>Gilder Lehrman</span></a>
                         </div>
                         <h4 class="font-serif font-bold text-cb-navy text-base mb-1">${t.title}</h4>
                         <p class="text-xs font-semibold text-cb-blue mb-2">${t.learningObjective}</p>
@@ -705,10 +563,7 @@
                     </div>
                     <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
                         <span class="text-[11px] text-gray-500 italic truncate max-w-[180px]"><i class="fas fa-archive mr-1 text-cb-gold"></i>${t.source.name}</span>
-                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1 whitespace-nowrap">
-                            <span>Review</span>
-                            <i class="fas fa-arrow-right text-[10px]"></i>
-                        </button>
+                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Review</span><i class="fas fa-arrow-right text-[10px]"></i></button>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -721,11 +576,9 @@
             renderReteachTopic(topicId);
         }
 
-        // Render Word Bank (Drag & Drop + Tap Support)
         function renderWordBank() {
             const container = document.getElementById('word-bank-container');
             container.innerHTML = "";
-            
             const terms = unitTopics.map(t => t.correctAnswer).sort(() => Math.random() - 0.5);
 
             terms.forEach(term => {
@@ -735,25 +588,16 @@
                 badge.setAttribute('draggable', 'true');
                 badge.dataset.term = term;
 
-                badge.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', term);
-                });
-
+                badge.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', term); });
                 badge.addEventListener('click', () => {
                     document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
-                    if (selectedTermForTap === term) {
-                        selectedTermForTap = null;
-                    } else {
-                        selectedTermForTap = term;
-                        badge.classList.add('selected');
-                    }
+                    if (selectedTermForTap === term) { selectedTermForTap = null; }
+                    else { selectedTermForTap = term; badge.classList.add('selected'); }
                 });
-
                 container.appendChild(badge);
             });
         }
 
-        // Render Diagnostic Questions with Drop Targets
         function renderDiagnosticQuestions() {
             const container = document.getElementById('questions-container');
             container.innerHTML = "";
@@ -784,22 +628,10 @@
             });
         }
 
-        function allowDrop(ev) {
-            ev.preventDefault();
-            ev.currentTarget.classList.add('drag-over');
-        }
-
-        function removeDragOver(ev) {
-            ev.currentTarget.classList.remove('drag-over');
-        }
-
-        function dropTerm(ev, qIndex) {
-            ev.preventDefault();
-            const term = ev.dataTransfer.getData('text/plain');
-            assignTermToQuestion(qIndex, term);
-            ev.currentTarget.classList.remove('drag-over');
-        }
-
+        function allowDrop(ev) { ev.preventDefault(); ev.currentTarget.classList.add('drag-over'); }
+        function removeDragOver(ev) { ev.currentTarget.classList.remove('drag-over'); }
+        function dropTerm(ev, qIndex) { ev.preventDefault(); const term = ev.dataTransfer.getData('text/plain'); assignTermToQuestion(qIndex, term); ev.currentTarget.classList.remove('drag-over'); }
+        
         function handleDropTargetClick(qIndex) {
             if (selectedTermForTap) {
                 assignTermToQuestion(qIndex, selectedTermForTap);
@@ -851,23 +683,15 @@
                 const userAns = (userAnswers[index] || "").trim().toLowerCase();
                 const isCorrect = t.acceptedAnswers.includes(userAns);
                 if (isCorrect) correctCount++;
-
-                analysisResults.push({
-                    topic: t,
-                    userAnswer: userAnswers[index] || "Unanswered",
-                    correct: isCorrect
-                });
+                analysisResults.push({ topic: t, userAnswer: userAnswers[index] || "Unanswered", correct: isCorrect });
             });
 
             const percentage = Math.round((correctCount / 10) * 100);
-            const masteredCount = correctCount;
-            const reviewCount = 10 - correctCount;
-
             document.getElementById('header-score').innerText = `${correctCount} / 10`;
             document.getElementById('score-percentage').innerText = `${percentage}%`;
             document.getElementById('stat-correct').innerText = `${correctCount} / 10`;
-            document.getElementById('stat-mastered').innerText = `${masteredCount} Topics`;
-            document.getElementById('stat-review').innerText = `${reviewCount} Topics`;
+            document.getElementById('stat-mastered').innerText = `${correctCount} Topics`;
+            document.getElementById('stat-review').innerText = `${10 - correctCount} Topics`;
 
             const msgEl = document.getElementById('score-feedback-msg');
             if (percentage === 100) {
@@ -887,23 +711,14 @@
                 item.innerHTML = `
                     <div class="space-y-1">
                         <div class="flex items-center space-x-2">
-                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">
-                                Topic ${res.topic.id}
-                            </span>
+                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">Topic ${res.topic.id}</span>
                             <h4 class="font-serif font-bold text-cb-navy text-sm">${res.topic.title}</h4>
                         </div>
-                        <p class="text-xs text-gray-600">
-                            Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.userAnswer}</strong> 
-                            ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.topic.correctAnswer}</strong>` : ''}
-                        </p>
+                        <p class="text-xs text-gray-600">Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.userAnswer}</strong> ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.topic.correctAnswer}</strong>` : ''}</p>
                     </div>
                     <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
-                        <span class="text-xs font-bold px-3 py-1 rounded-full ${res.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
-                            ${res.correct ? '<i class="fas fa-check-circle mr-1"></i> Mastered' : '<i class="fas fa-exclamation-circle mr-1"></i> Review Needed'}
-                        </span>
-                        <button onclick="jumpToTopicReteach('${res.topic.id}')" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">
-                            Reteach
-                        </button>
+                        <span class="text-xs font-bold px-3 py-1 rounded-full ${res.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${res.correct ? '<i class="fas fa-check-circle mr-1"></i> Mastered' : '<i class="fas fa-exclamation-circle mr-1"></i> Review Needed'}</span>
+                        <button onclick="jumpToTopicReteach('${res.topic.id}')" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">Reteach</button>
                     </div>
                 `;
                 analysisList.appendChild(item);
@@ -927,105 +742,19 @@
         function renderReteachTopic(topicId) {
             const t = unitTopics.find(item => item.id === topicId);
             if (!t) return;
-
             const container = document.getElementById('reteach-card-container');
             
             let simulationHTML = "";
             if (t.simulationType === "timeline") {
-                simulationHTML = `
-                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
-                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
-                            <i class="fas fa-stream"></i>
-                            <span>${t.simulationData.title}</span>
-                        </div>
-                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
-                        <div class="space-y-2 pt-2">
-                            ${t.simulationData.events.map((ev) => `
-                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm">
-                                    <span class="font-bold text-cb-navy">${ev.era}</span>
-                                    <span class="text-gray-700 flex-grow px-4">${ev.text}</span>
-                                    <span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-stream"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.events.map((ev) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm"><span class="font-bold text-cb-navy">${ev.era}</span><span class="text-gray-700 flex-grow px-4">${ev.text}</span><span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span></div>`).join('')}</div></div>`;
             } else if (t.simulationType === "source_analysis") {
-                simulationHTML = `
-                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
-                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
-                            <i class="fas fa-scroll"></i>
-                            <span>Primary Source & Historical Analysis Simulation</span>
-                        </div>
-                        ${t.simulationData.quote ? `<blockquote class="italic text-xs bg-white p-3 rounded border-l-4 border-cb-gold text-gray-800">${t.simulationData.quote}</blockquote>` : ''}
-                        <p class="text-xs font-semibold text-cb-navy">${t.simulationData.question || t.simulationData.prompt}</p>
-                        <div class="space-y-2 pt-2" id="sim-options-${t.id}">
-                            ${t.simulationData.options.map((opt, oIdx) => `
-                                <button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between">
-                                    <span>${opt.text}</span>
-                                    <span class="sim-feedback-icon text-gray-400 font-bold">Select</span>
-                                </button>
-                            `).join('')}
-                        </div>
-                        <div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div>
-                    </div>
-                `;
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-scroll"></i><span>Primary Source & Historical Analysis Simulation</span></div>${t.simulationData.quote ? `<blockquote class="italic text-xs bg-white p-3 rounded border-l-4 border-cb-gold text-gray-800">${t.simulationData.quote}</blockquote>` : ''}<p class="text-xs font-semibold text-cb-navy">${t.simulationData.question || t.simulationData.prompt}</p><div class="space-y-2 pt-2" id="sim-options-${t.id}">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Select</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
             } else if (t.simulationType === "decision_sim") {
-                simulationHTML = `
-                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
-                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
-                            <i class="fas fa-chess-board"></i>
-                            <span>Decision-Making Simulation</span>
-                        </div>
-                        <p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p>
-                        <p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p>
-                        <div class="space-y-2 pt-2">
-                            ${t.simulationData.options.map((opt, oIdx) => `
-                                <button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between">
-                                    <span>${opt.text}</span>
-                                    <span class="sim-feedback-icon text-gray-400 font-bold">Choose</span>
-                                </button>
-                            `).join('')}
-                        </div>
-                        <div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div>
-                    </div>
-                `;
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-chess-board"></i><span>Decision-Making Simulation</span></div><p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p><p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt, oIdx) => `<button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between"><span>${opt.text}</span><span class="sim-feedback-icon text-gray-400 font-bold">Choose</span></button>`).join('')}</div><div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div></div>`;
             } else if (t.simulationType === "trade_navigator") {
-                simulationHTML = `
-                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
-                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
-                            <i class="fas fa-compass"></i>
-                            <span>Indian Ocean Trade Navigator</span>
-                        </div>
-                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
-                        <div class="space-y-2 pt-2">
-                            ${t.simulationData.pairs.map((p) => `
-                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between">
-                                    <span class="font-bold text-cb-navy w-1/3">${p.wind}</span>
-                                    <span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-compass"></i><span>Indian Ocean Trade Navigator</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.pairs.map((p) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/3">${p.wind}</span><span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span></div>`).join('')}</div></div>`;
             } else if (t.simulationType === "match") {
-                simulationHTML = `
-                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
-                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
-                            <i class="fas fa-network-wired"></i>
-                            <span>${t.simulationData.title}</span>
-                        </div>
-                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
-                        <div class="space-y-2 pt-2">
-                            ${t.simulationData.options.map((opt) => `
-                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between">
-                                    <span class="font-bold text-cb-navy w-1/2">${opt.item}</span>
-                                    <span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
+                simulationHTML = `<div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3"><div class="flex items-center space-x-2 text-cb-blue font-bold text-sm"><i class="fas fa-network-wired"></i><span>${t.simulationData.title}</span></div><p class="text-xs text-gray-700">${t.simulationData.prompt}</p><div class="space-y-2 pt-2">${t.simulationData.options.map((opt) => `<div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between"><span class="font-bold text-cb-navy w-1/2">${opt.item}</span><span class="text-cb-blue font-semibold w-1/2 border-l pl-3">${opt.correct}</span></div>`).join('')}</div></div>`;
             }
 
             container.innerHTML = `
@@ -1046,29 +775,28 @@
 
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Essential Knowledge</h4>
-                            <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">
-                                ${t.essentialKnowledge}
-                            </p>
+                            <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">${t.essentialKnowledge}</p>
                         </div>
 
                         <div>
                             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Concept Breakdown & Historical Context</h4>
-                            <p class="text-gray-700 text-sm leading-relaxed">
-                                ${t.breakdown}
-                            </p>
+                            <p class="text-gray-700 text-sm leading-relaxed">${t.breakdown}</p>
                         </div>
 
-                        <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex items-start space-x-3">
-                            <i class="fas fa-landmark text-cb-blue text-lg mt-0.5"></i>
-                            <div>
-                                <h5 class="text-xs font-bold text-cb-navy uppercase">Gilder Lehrman & Smithsonian Source Integration</h5>
-                                <p class="text-xs font-semibold text-cb-blue mt-0.5">${t.source.name}</p>
-                                <p class="text-xs text-gray-600 mt-1">${t.source.description}</p>
+                        <!-- Gilder Lehrman Source Repository Integration Card with Image & Live Link -->
+                        <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex flex-col md:flex-row items-start gap-4">
+                            <img src="${t.source.img}" alt="Gilder Lehrman Archival Source" class="w-full md:w-36 h-28 object-cover rounded-lg border border-blue-200 shadow-sm">
+                            <div class="space-y-1.5 flex-grow">
+                                <div class="flex items-center justify-between">
+                                    <h5 class="text-xs font-bold text-cb-navy uppercase"><i class="fas fa-landmark text-cb-blue mr-1"></i> Gilder Lehrman Source Repository</h5>
+                                    <a href="${t.source.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-2.5 py-1 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>View Source Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                </div>
+                                <p class="text-xs font-bold text-cb-blue">${t.source.name}</p>
+                                <p class="text-xs text-gray-600">${t.source.description}</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Interactive Simulation / Mini-Task -->
                     <div class="pt-4 border-t border-gray-200">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-cb-gold mb-3">Interactive Mini-Simulation</h4>
                         ${simulationHTML}
@@ -1091,7 +819,6 @@
             }
         }
 
-        // PDF Export Utility
         function exportToPDF() {
             updatePrintDate();
             window.print();
