@@ -1,754 +1,1018 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AP African American Studies: Units 1–4 Interactive Review</title>
-  <style>
-    :root {
-      --cb-navy: #1A2B4C;
-      --cb-blue: #0056B3;
-      --cb-blue-light: #e8f0fe;
-      --cb-gold: #D99B26;
-      --cb-ochre: #E07A5F;
-      --cb-cream: #F9F8F3;
-      --cb-card-bg: #FFFFFF;
-      --cb-text: #222222;
-      --cb-subtext: #555555;
-      --hint-green: #15803d;
-      --hint-bg: #f0fdf4;
-      --hint-border: #86efac;
-      --correct-bg: #dcfce7;
-      --correct-text: #166534;
-      --incorrect-bg: #fee2e2;
-      --incorrect-text: #991b1b;
-      --radius: 8px;
-    }
-
-    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-    body { background-color: var(--cb-cream); color: var(--cb-text); margin: 0; padding: 0; line-height: 1.5; }
-
-    header {
-      background-color: var(--cb-navy);
-      color: white;
-      padding: 1.5rem 2rem;
-      border-bottom: 5px solid var(--cb-gold);
-    }
-    header h1 { margin: 0; font-size: 1.8rem; letter-spacing: -0.5px; }
-    header p { margin: 0.5rem 0 0; color: #d0d7de; font-size: 0.95rem; }
-    .badge {
-      display: inline-block;
-      background: var(--cb-blue);
-      color: white;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
-
-    .card {
-      background: var(--cb-card-bg);
-      border: 1px solid #e1e4e8;
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    /* Controls Bar */
-    .controls-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: space-between;
-      align-items: center;
-      background: white;
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius);
-      border: 1px solid #cbd5e1;
-      margin-bottom: 1.5rem;
-    }
-
-    .unit-selector, .timer-controls {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    select, button, input {
-      font-size: 0.95rem;
-      padding: 0.5rem 0.8rem;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-    }
-
-    .btn {
-      background-color: var(--cb-blue);
-      color: white;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn:hover { background-color: #004085; }
-    .btn-gold { background-color: var(--cb-gold); color: #000; }
-    .btn-gold:hover { background-color: #b8821f; }
-    .btn-outline { background: transparent; border: 2px solid var(--cb-blue); color: var(--cb-blue); }
-    .btn-outline:hover { background: var(--cb-blue-light); }
-
-    .timer-display {
-      font-weight: bold;
-      font-family: monospace;
-      font-size: 1.1rem;
-      color: var(--cb-navy);
-      background: #f1f5f9;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-    }
-
-    /* Word Bank Styles */
-    .word-bank-container {
-      background: #f1f5f9;
-      border: 2px dashed #cbd5e1;
-      padding: 1rem;
-      border-radius: var(--radius);
-      margin-bottom: 1.5rem;
-      position: sticky;
-      top: 10px;
-      z-index: 100;
-    }
-    .word-bank-title { font-size: 0.85rem; font-weight: bold; text-transform: uppercase; color: var(--cb-subtext); margin-bottom: 0.5rem; }
-    .word-bank { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .draggable-term {
-      background: var(--cb-navy);
-      color: white;
-      padding: 0.4rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: grab;
-      user-select: none;
-      transition: transform 0.1s, opacity 0.2s;
-    }
-    .draggable-term.selected { outline: 3px solid var(--cb-gold); transform: scale(1.05); }
-    .draggable-term.used { opacity: 0.3; cursor: not-allowed; }
-
-    /* Question Card Styles */
-    .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-    .q-topic { font-size: 0.8rem; font-weight: bold; color: var(--cb-blue); text-transform: uppercase; }
-    .q-source { font-size: 0.8rem; font-style: italic; color: var(--cb-subtext); margin-bottom: 0.5rem; }
-    .q-text { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
-
-    .drop-target {
-      display: inline-block;
-      min-width: 140px;
-      height: 1.8rem;
-      border-bottom: 2px solid var(--cb-blue);
-      background: #f8fafc;
-      vertical-align: middle;
-      text-align: center;
-      line-height: 1.6rem;
-      font-weight: bold;
-      color: var(--cb-navy);
-      margin: 0 0.3rem;
-      padding: 0 0.5rem;
-      border-radius: 4px 4px 0 0;
-      cursor: pointer;
-    }
-    .drop-target.hovered { background: #e2e8f0; border-color: var(--cb-gold); }
-    .drop-target.filled { background: #e0f2fe; }
-
-    /* Green Hint Bulb Section */
-    .hint-container {
-      background-color: var(--hint-bg);
-      border: 1px solid var(--hint-border);
-      border-radius: var(--radius);
-      padding: 0.75rem 1rem;
-      margin-top: 0.75rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-    .hint-icon { color: var(--hint-green); font-size: 1.2rem; line-height: 1; }
-    .hint-text { color: var(--hint-green); font-size: 0.875rem; font-weight: 500; }
-
-    /* Results Dashboard */
-    .results-header { text-align: center; border-bottom: 2px solid var(--cb-cream); padding-bottom: 1.5rem; }
-    .score-badge { font-size: 3rem; font-weight: 800; color: var(--cb-navy); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AP African American Studies: Unit 1 Mastery & Diagnostic</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
     
-    /* Reteach & Simulations */
-    .reteach-module { border-top: 4px solid var(--cb-blue); }
-    .reteach-module.missed { border-top-color: var(--cb-ochre); }
-    .sim-box {
-      background: #f8fafc;
-      border: 1px solid #cbd5e1;
-      border-radius: var(--radius);
-      padding: 1rem;
-      margin-top: 1rem;
-    }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cb: {
+                            navy: '#1A2B4C',
+                            blue: '#0056B3',
+                            lightBlue: '#E6F0FA',
+                            gold: '#D99B26',
+                            goldLight: '#FEF8EC',
+                            ochre: '#E07A5F',
+                            cream: '#F9F8F3',
+                            dark: '#2B2D42',
+                            grayBorder: '#E2E8F0',
+                            cardBg: '#FFFFFF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-    @media print {
-      body { background: white; color: black; }
-      .no-print { display: none !important; }
-      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-    }
-  </style>
+    <style>
+        body {
+            background-color: #F9F8F3;
+            color: #2B2D42;
+        }
+
+        /* Drag and Drop Custom Styles */
+        .draggable-term {
+            cursor: grab;
+            user-select: none;
+            touch-action: manipulation;
+            transition: all 0.2s ease;
+        }
+        .draggable-term:active {
+            cursor: grabbing;
+        }
+        .draggable-term.selected {
+            box-shadow: 0 0 0 3px #0056B3;
+            background-color: #0056B3 !important;
+            color: white !important;
+        }
+
+        .drop-target {
+            min-width: 140px;
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid #0056B3;
+            background-color: rgba(0, 86, 179, 0.05);
+            transition: all 0.2s ease;
+            vertical-align: middle;
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+        .drop-target.drag-over {
+            background-color: rgba(217, 155, 38, 0.2);
+            border-color: #D99B26;
+            transform: scale(1.03);
+        }
+        .drop-target.filled {
+            background-color: #E6F0FA;
+            border-color: #0056B3;
+        }
+
+        /* Green Hint Styling */
+        .hint-container {
+            background-color: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-top: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .hint-icon {
+            color: #15803d;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .hint-text {
+            color: #15803d;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Print Styling for PDF Export */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            .print-card {
+                border: 1px solid #ccc !important;
+                background: white !important;
+                color: black !important;
+                box-shadow: none !important;
+                margin-bottom: 1rem !important;
+            }
+        }
+        .print-only {
+            display: none;
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans min-h-screen flex flex-col selection:bg-cb-gold selection:text-white">
 
-<header>
-  <div class="badge">Advanced Placement® Program</div>
-  <h1>AP African American Studies</h1>
-  <p>Interactive Diagnostic Engine & Reteach Suite — Units 1–4</p>
-</header>
+    <!-- College Board Style Top Header -->
+    <header class="bg-cb-navy text-white border-b-4 border-cb-gold sticky top-0 z-50 shadow-md no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
+                <div class="w-10 h-10 rounded bg-cb-blue text-white font-bold flex items-center justify-center font-serif text-lg tracking-wider border border-white/20">
+                    AP
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-base sm:text-lg tracking-wide text-white">AP African American Studies</h1>
+                    <p class="text-xs text-cb-gold font-medium">Unit 1: Origins of the African Diaspora</p>
+                </div>
+            </div>
 
-<div class="container">
-
-  <!-- CONTROLS BAR -->
-  <div class="controls-bar no-print">
-    <div class="unit-selector">
-      <label for="unit-select"><strong>Select Unit:</strong></label>
-      <select id="unit-select" onchange="changeUnit(this.value)">
-        <option value="1">Unit 1: Origins of the African Diaspora</option>
-        <option value="2">Unit 2: Freedom, Enslavement, and Resistance</option>
-        <option value="3">Unit 3: The Practice of Freedom</option>
-        <option value="4">Unit 4: Movements and Modern Africa</option>
-      </select>
-    </div>
-
-    <div class="timer-controls">
-      <label><input type="checkbox" id="timer-toggle" onchange="toggleTimer()"> Enable Timer</label>
-      <select id="timer-mode" style="display:none;" onchange="resetTimer()">
-        <option value="countup">Count Up</option>
-        <option value="15">15 Min Countdown</option>
-        <option value="30">30 Min Countdown</option>
-      </select>
-      <span class="timer-display" id="timer-display" style="display:none;">00:00</span>
-    </div>
-  </div>
-
-  <!-- DIAGNOSTIC VIEW -->
-  <div id="diagnostic-view">
-    <div class="card">
-      <h2 id="unit-title-display">Unit 1 Diagnostic Assessment</h2>
-      <p>Drag each key term from the word bank into its correct primary source or essential knowledge context below. You can also tap a term and tap a blank to place it.</p>
-      
-      <div class="word-bank-container no-print">
-        <div class="word-bank-title">Word Bank (Drag or Tap to Select)</div>
-        <div class="word-bank" id="word-bank"></div>
-      </div>
-
-      <div id="questions-container"></div>
-
-      <div style="text-align: right; margin-top: 1.5rem;">
-        <button class="btn btn-gold" onclick="submitDiagnostic()">Submit & Generate Report</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- RESULTS & RETEACH VIEW -->
-  <div id="results-view" style="display:none;">
-    <div class="card results-header">
-      <h2>Diagnostic Results & Action Plan</h2>
-      <div class="score-badge" id="score-display">0%</div>
-      <p id="score-summary"></p>
-      <p id="time-taken-summary" style="font-weight: 500; color: var(--cb-subtext);"></p>
-      <div class="no-print" style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center;">
-        <button class="btn" onclick="window.print()">Export Results PDF / Print</button>
-        <button class="btn btn-outline" onclick="resetDiagnostic()">Retake Assessment</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Automated Reteach & Mini-Simulations</h3>
-      <p>Targeted review modules based on your diagnostic performance. Complete interactive mini-simulations for mastery.</p>
-      <div id="reteach-container"></div>
-    </div>
-  </div>
-
-</div>
-
-<script>
-// Official AP CED Units 1 - 4 Comprehensive Data Structure
-const unitsData = {
-  "1": {
-    title: "Unit 1: Origins of the African Diaspora",
-    topics: [
-      {
-        topic: "1.1",
-        title: "Introduction to African American Studies & Interdisciplinarity",
-        ced_ek: "EK 1.1.A: African American Studies is an interdisciplinary field that examines Black experiences using historical, literary, visual, and spatial lenses.",
-        required_source: "Smithsonian NMAAHC / Visual Analysis of West African Artifacts",
-        answer: "Interdisciplinary",
-        question_text: "AP African American Studies utilizes a(n) ________ framework, combining literary analysis, historical inquiry, and visual artifacts to examine Black communities globally.",
-        hint: "This approach draws on multiple academic fields—such as history, geography, and art—rather than just one single subject.",
-        simulation: {
-          type: "match",
-          prompt: "Simulate an interdisciplinary analysis: Match each primary artifact to its proper analytical lens.",
-          options: [
-            { item: "Terracotta Head from Nok Culture", correct: "Visual Art & Material Culture" },
-            { item: "Map of Trans-Saharan Trade Routes", correct: "Spatial & Geographic Analysis" },
-            { item: "Griot Oral Tradition Narrative", correct: "Literary & Oral Tradition" }
-          ]
-        }
-      },
-      {
-        topic: "1.2",
-        title: "Africa: Geography, Climate, and Human Origins",
-        ced_ek: "EK 1.2.B: Africa's diverse topography (savannas, rainforests, deserts) shaped trade, agriculture, and settlement patterns.",
-        required_source: "Gilder Lehrman Institute: Geographic Perspectives on Early Africa",
-        answer: "Savanna",
-        question_text: "The vast tropical grasslands known as the ________ supported large-scale pastoralism and agricultural communities in early West African societies.",
-        hint: "This geographic zone lies between the Sahara Desert and the dense tropical rainforests of West Africa.",
-        simulation: {
-          type: "decision",
-          prompt: "Geography Scenario: Select the optimal settlement zone for a kingdom relying on cattle pastoralism and cereal agriculture.",
-          choices: [
-            { text: "Dense Rainforest", correct: false, feedback: "Incorrect: Dense forest canopies limited large cattle herds." },
-            { text: "Sudanic Savanna", correct: true, feedback: "Correct! The open grassland accommodated both cattle grazing and crop farming." },
-            { text: "Sahara Desert Center", correct: false, feedback: "Incorrect: Arid conditions restricted long-term permanent settlements." }
-          ]
-        }
-      },
-      {
-        topic: "1.3",
-        title: "Ancient Societies and World Heritage",
-        ced_ek: "EK 1.3.A: Ancient African civilizations like Kush and Aksum engaged in regional trade networks and religious adaptations.",
-        required_source: "Smithsonian NMAAHC: Ancient Nubia and Aksum Exhibit",
-        answer: "Aksum",
-        question_text: "The kingdom of ________ became a major international trade power in Northeast Africa, adopting Christianity in the 4th century CE and issuing gold coinage.",
-        hint: "This kingdom was located in modern-day Ethiopia and Eritrea, controlling Red Sea trade routes.",
-        simulation: {
-          type: "decision",
-          prompt: "Trade & Empire Decision: As ruler of 4th-century Aksum, how do you secure diplomatic alliances with the Mediterranean world?",
-          choices: [
-            { text: "Control Red Sea ports and issue official gold coinage", correct: true, feedback: "Correct! Aksum's currency and control of Adulis made it a global trade hub." },
-            { text: "Isolate the kingdom behind mountain fortresses", correct: false, feedback: "Incorrect: Isolation reduced trade influence." }
-          ]
-        }
-      },
-      {
-        topic: "1.4",
-        title: "Great Empires of West Africa: Ghana, Mali, and Songhai",
-        ced_ek: "EK 1.4.A: West African empires accumulated wealth through control of the trans-Saharan gold-salt trade routes.",
-        required_source: "Al-Omari's account of Mansa Musa's pilgrimage (1324 CE) / Gilder Lehrman",
-        answer: "Mansa Musa",
-        question_text: "Mali ruler ________ brought international attention to West Africa's immense wealth during his 1324 pilgrimage to Mecca, distributing vast gold.",
-        hint: "His famous pilgrimage flooded Cairo with gold and caused temporary inflation in Egypt.",
-        simulation: {
-          type: "decision",
-          prompt: "Economy Simulation: Calculate the economic strategy of West African empires controlling Trans-Saharan trade.",
-          choices: [
-            { text: "Tax trade goods (Gold and Salt) passing through imperial territory", correct: true, feedback: "Correct! The Gold-Salt tax funded Mali and Ghana's armies and administration." },
-            { text: "Ban foreign merchants from entering market cities", correct: false, feedback: "Incorrect: Excluding traders reduced revenue." }
-          ]
-        }
-      },
-      {
-        topic: "1.5",
-        title: "Learning Traditions and Intellectual Centers",
-        ced_ek: "EK 1.5.A: Timbuktu served as a global hub of Islamic learning, housing thousands of manuscripts in science, law, and literature.",
-        required_source: "Timbuktu Manuscripts Project / Smithsonian & CED Required Sources",
-        answer: "Timbuktu",
-        question_text: "The city of ________ grew into a premier intellectual center in the Islamic world, attracting scholars to the University of Sankore.",
-        hint: "Located along the Niger River curve in Mali, famous for its libraries and Islamic universities.",
-        simulation: {
-          type: "match",
-          prompt: "Manuscript Classification: Categorize the subjects addressed in preserved Timbuktu manuscripts.",
-          options: [
-            { item: "Astronomy & Math", correct: "Empirical Sciences" },
-            { item: "Islamic Jurisprudence (Fiqh)", correct: "Legal Studies" },
-            { item: "Poetry & Historical Chronicles", correct: "Humanities & History" }
-          ]
-        }
-      }
-    ]
-  },
-  "2": {
-    title: "Unit 2: Freedom, Enslavement, and Resistance",
-    topics: [
-      {
-        topic: "2.1",
-        title: "The Transatlantic Slave Trade and Middle Passage",
-        ced_ek: "EK 2.1.A: European powers developed plantation economies in the Americas reliant on forced labor, transporting millions of Africans across the Atlantic.",
-        required_source: "Equiano's Narrative (1789) / Gilder Lehrman Collection",
-        answer: "Middle Passage",
-        question_text: "The brutal forced ocean voyage of enslaved Africans across the Atlantic Ocean to the Americas is known as the ________.",
-        hint: "This was the middle leg of the Triangular Trade route connecting Europe, Africa, and the Americas.",
-        simulation: {
-          type: "decision",
-          prompt: "Primary Source Analysis: Olaudah Equiano described the Middle Passage. What was a primary physical tool of resistance aboard ships?",
-          choices: [
-            { text: "Organizing shipboard revolts and hunger strikes", correct: true, feedback: "Correct! Captives resisted through active insurrections and refusing food." },
-            { text: "Petitioning European monarchs while at sea", correct: false, feedback: "Incorrect: Captives had no legal avenues during transport." }
-          ]
-        }
-      },
-      {
-        topic: "2.2",
-        title: "Chesapeake and Lowcountry Slavery Systems",
-        ced_ek: "EK 2.2.B: Regional variations in slavery saw task systems in rice-growing South Carolina and gang systems in Virginia tobacco fields.",
-        required_source: "South Carolina Slave Codes / CED Required Sources",
-        answer: "Task System",
-        question_text: "In Carolina lowcountry rice plantations, the ________ allowed enslaved individuals some autonomy after completing a daily assigned labor quota.",
-        hint: "Unlike the continuous gang system, this arrangement granted free hours once daily tasks were finished.",
-        simulation: {
-          type: "decision",
-          prompt: "Comparative Labor Analysis: Compare the Gang System vs Task System.",
-          choices: [
-            { text: "Task System allowed more retention of Gullah Geechee cultural traditions", correct: true, feedback: "Correct! Task system autonomy enabled stronger community and cultural preservation." },
-            { text: "Gang System paid enslaved workers hourly wages", correct: false, feedback: "Incorrect: Enslaved workers were unfree labor in both systems." }
-          ]
-        }
-      }
-    ]
-  },
-  "3": {
-    title: "Unit 3: The Practice of Freedom",
-    topics: [
-      {
-        topic: "3.1",
-        title: "Reconstruction and Black Political Empowerment",
-        ced_ek: "EK 3.1.A: During Reconstruction, Black Americans held state and federal office, establishing public school systems and constitutional amendments.",
-        required_source: "13th, 14th, and 15th Amendments / Gilder Lehrman Documents",
-        answer: "Reconstruction",
-        question_text: "The era immediately following the Civil War known as ________ saw unprecedented Black political participation and the election of Black leaders to Congress.",
-        hint: "Spanning 1865 to 1877, this period aimed to rebuild the Union and integrate formerly enslaved people into civic life.",
-        simulation: {
-          type: "decision",
-          prompt: "Constitutional Analysis: Which amendment guaranteed equal protection and citizenship rights to Black Americans?",
-          choices: [
-            { text: "14th Amendment", correct: true, feedback: "Correct! The 14th Amendment granted citizenship and equal protection under the law." },
-            { text: "12th Amendment", correct: false, feedback: "Incorrect: The 12th Amendment deals with presidential election procedures." }
-          ]
-        }
-      }
-    ]
-  },
-  "4": {
-    title: "Unit 4: Movements and Modern Africa",
-    topics: [
-      {
-        topic: "4.1",
-        title: "The Modern Civil Rights Movement and Global Anti-Colonialism",
-        ced_ek: "EK 4.1.A: The Black Freedom Movement in the U.S. interconnected with Pan-Africanism and global decolonization movements in Africa and the Caribbean.",
-        required_source: "Smithsonian NMAAHC Civil Rights and Global Pan-Africanism Archives",
-        answer: "Pan-Africanism",
-        question_text: "The movement promoting worldwide solidarity among people of African descent and opposing colonialism is known as ________.",
-        hint: "This global ideology connects African independence movements with civil rights struggles in the Americas.",
-        simulation: {
-          type: "decision",
-          prompt: "Global Connection Analysis: How did the 1957 independence of Ghana (led by Kwame Nkrumah) impact U.S. civil rights leaders?",
-          choices: [
-            { text: "It inspired Black leaders like Martin Luther King Jr. that global freedom was achievable", correct: true, feedback: "Correct! MLK Jr. attended Ghana's independence ceremony and cited it as a beacon of freedom." },
-            { text: "It caused U.S. civil rights organizations to disband", correct: false, feedback: "Incorrect: It energized and amplified domestic civil rights advocacy." }
-          ]
-        }
-      }
-    ]
-  }
-};
-
-let currentUnit = "1";
-let selectedTerm = null;
-let userAnswers = {};
-let timerInterval = null;
-let timerSeconds = 0;
-let isCountdown = false;
-
-// Initialize Application
-function initApp() {
-  checkUrlParams();
-  loadUnit(currentUnit);
-}
-
-function checkUrlParams() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const unitParam = urlParams.get('unit');
-  if (unitParam && unitsData[unitParam]) {
-    currentUnit = unitParam;
-    document.getElementById("unit-select").value = unitParam;
-  }
-}
-
-function changeUnit(unitNum) {
-  currentUnit = unitNum;
-  resetDiagnostic();
-}
-
-function loadUnit(unitNum) {
-  const unit = unitsData[unitNum];
-  document.getElementById("unit-title-display").innerText = `${unit.title} Diagnostic Assessment`;
-  userAnswers = {};
-  selectedTerm = null;
-  renderWordBank();
-  renderQuestions();
-}
-
-function renderWordBank() {
-  const bankContainer = document.getElementById("word-bank");
-  const unit = unitsData[currentUnit];
-  const terms = unit.topics.map(t => t.answer).sort(() => Math.random() - 0.5);
-  
-  bankContainer.innerHTML = "";
-  terms.forEach(term => {
-    const el = document.createElement("div");
-    el.className = "draggable-term";
-    el.innerText = term;
-    el.draggable = true;
-    el.dataset.term = term;
-
-    el.addEventListener("dragstart", (e) => {
-      e.dataTransfer.setData("text/plain", term);
-    });
-
-    el.addEventListener("click", () => {
-      document.querySelectorAll(".draggable-term").forEach(t => t.classList.remove("selected"));
-      if (selectedTerm === term) {
-        selectedTerm = null;
-      } else {
-        selectedTerm = term;
-        el.classList.add("selected");
-      }
-    });
-
-    bankContainer.appendChild(el);
-  });
-}
-
-function renderQuestions() {
-  const container = document.getElementById("questions-container");
-  container.innerHTML = "";
-  const unit = unitsData[currentUnit];
-
-  unit.topics.forEach((q, idx) => {
-    const card = document.createElement("div");
-    card.className = "card";
-    
-    const textParts = q.question_text.split("________");
-
-    card.innerHTML = `
-      <div class="q-header">
-        <span class="q-topic">Topic ${q.topic}: ${q.title}</span>
-      </div>
-      <div class="q-source">Required Source Alignment: ${q.required_source}</div>
-      <div class="q-text">
-        ${textParts[0]}
-        <span class="drop-target" id="drop-${idx}" data-idx="${idx}">[ Drop Here ]</span>
-        ${textParts[1]}
-      </div>
-      <div class="hint-container">
-        <div class="hint-icon">💡</div>
-        <div class="hint-text"><strong>AP Key Hint:</strong> ${q.hint}</div>
-      </div>
-    `;
-
-    container.appendChild(card);
-
-    const dropZone = card.querySelector(`.drop-target`);
-    
-    dropZone.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      dropZone.classList.add("hovered");
-    });
-
-    dropZone.addEventListener("dragleave", () => {
-      dropZone.classList.remove("hovered");
-    });
-
-    dropZone.addEventListener("drop", (e) => {
-      e.preventDefault();
-      dropZone.classList.remove("hovered");
-      const term = e.dataTransfer.getData("text/plain");
-      assignTerm(idx, term, dropZone);
-    });
-
-    dropZone.addEventListener("click", () => {
-      if (selectedTerm) {
-        assignTerm(idx, selectedTerm, dropZone);
-        selectedTerm = null;
-        document.querySelectorAll(".draggable-term").forEach(t => t.classList.remove("selected"));
-      }
-    });
-  });
-}
-
-function assignTerm(qIndex, term, dropZone) {
-  userAnswers[qIndex] = term;
-  dropZone.innerText = term;
-  dropZone.classList.add("filled");
-}
-
-/* Timer Control Functions */
-function toggleTimer() {
-  const isEnabled = document.getElementById("timer-toggle").checked;
-  document.getElementById("timer-mode").style.display = isEnabled ? "inline-block" : "none";
-  document.getElementById("timer-display").style.display = isEnabled ? "inline-block" : "none";
-  if (isEnabled) {
-    resetTimer();
-  } else {
-    clearInterval(timerInterval);
-  }
-}
-
-function resetTimer() {
-  clearInterval(timerInterval);
-  const mode = document.getElementById("timer-mode").value;
-  if (mode === "countup") {
-    isCountdown = false;
-    timerSeconds = 0;
-  } else {
-    isCountdown = true;
-    timerSeconds = parseInt(mode) * 60;
-  }
-  updateTimerDisplay();
-  timerInterval = setInterval(tickTimer, 1000);
-}
-
-function tickTimer() {
-  if (isCountdown) {
-    timerSeconds--;
-    if (timerSeconds <= 0) {
-      clearInterval(timerInterval);
-      alert("Time is up! Submitting your diagnostic assessment now.");
-      submitDiagnostic();
-    }
-  } else {
-    timerSeconds++;
-  }
-  updateTimerDisplay();
-}
-
-function updateTimerDisplay() {
-  const mins = Math.floor(Math.abs(timerSeconds) / 60);
-  const secs = Math.abs(timerSeconds) % 60;
-  document.getElementById("timer-display").innerText = 
-    `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-}
-
-/* Submission and Scoring */
-function submitDiagnostic() {
-  clearInterval(timerInterval);
-  const unit = unitsData[currentUnit];
-  let score = 0;
-  const incorrectIndices = [];
-
-  unit.topics.forEach((q, idx) => {
-    if (userAnswers[idx] === q.answer) {
-      score++;
-    } else {
-      incorrectIndices.push(idx);
-    }
-  });
-
-  const percentage = Math.round((score / unit.topics.length) * 100);
-  document.getElementById("score-display").innerText = `${percentage}%`;
-  document.getElementById("score-summary").innerText = `You mastered ${score} of ${unit.topics.length} AP Learning Objectives in ${unit.title}.`;
-  
-  if (document.getElementById("timer-toggle").checked) {
-    document.getElementById("time-taken-summary").innerText = `Completion Time: ${document.getElementById("timer-display").innerText}`;
-  } else {
-    document.getElementById("time-taken-summary").innerText = "";
-  }
-
-  renderReteachModules(incorrectIndices);
-
-  document.getElementById("diagnostic-view").style.display = "none";
-  document.getElementById("results-view").style.display = "block";
-  window.scrollTo(0,0);
-}
-
-function renderReteachModules(incorrectIndices) {
-  const container = document.getElementById("reteach-container");
-  container.innerHTML = "";
-  const unit = unitsData[currentUnit];
-
-  if (incorrectIndices.length === 0) {
-    container.innerHTML = "<p><strong>Congratulations! You demonstrated full mastery of all Learning Objectives in this unit!</strong> Review the mini-simulations below for enrichment.</p>";
-  }
-
-  const displayOrder = [...incorrectIndices, ...unit.topics.map((_, i) => i).filter(i => !incorrectIndices.includes(i))];
-
-  displayOrder.forEach(idx => {
-    const q = unit.topics[idx];
-    const wasMissed = incorrectIndices.includes(idx);
-
-    const mod = document.createElement("div");
-    mod.className = `card reteach-module ${wasMissed ? 'missed' : ''}`;
-    
-    let simHTML = "";
-    if (q.simulation.type === "decision") {
-      simHTML = `
-        <div class="sim-box">
-          <strong>Interactive Simulation Task:</strong>
-          <p>${q.simulation.prompt}</p>
-          ${q.simulation.choices.map((c, cIdx) => `
-            <button class="btn btn-outline" style="display:block; width:100%; text-align:left; margin-bottom:0.5rem;" onclick="checkSimDecision(${idx}, ${cIdx}, this)">
-              ${c.text}
-            </button>
-          `).join('')}
-          <div id="sim-feedback-${idx}" style="margin-top:0.5rem; font-weight:bold;"></div>
+            <!-- Navigation Tabs -->
+            <nav class="flex items-center space-x-1 sm:space-x-2">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm">
+                    <i class="fas fa-home"></i>
+                    <span class="hidden md:inline">Overview</span>
+                </button>
+                <button onclick="switchTab('diagnostic')" id="nav-diagnostic" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
+                    <i class="fas fa-edit"></i>
+                    <span class="hidden md:inline">Diagnostic Quiz</span>
+                </button>
+                <button onclick="switchTab('analysis')" id="nav-analysis" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="hidden md:inline">Results & Diagnostics</span>
+                </button>
+                <button onclick="switchTab('reteach')" id="nav-reteach" class="px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10">
+                    <i class="fas fa-book-open"></i>
+                    <span class="hidden md:inline">Reteach & Simulations</span>
+                </button>
+            </nav>
         </div>
-      `;
-    } else {
-      simHTML = `
-        <div class="sim-box">
-          <strong>Interactive Concept Breakdown:</strong>
-          <p>${q.simulation.prompt}</p>
-          <ul>
-            ${q.simulation.options.map(o => `<li><strong>${o.item}:</strong> ${o.correct}</li>`).join('')}
-          </ul>
+    </header>
+
+    <!-- Printable Header (Only shows during PDF/Print) -->
+    <div class="print-only p-6 border-b-2 border-cb-navy">
+        <div class="flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-cb-navy font-serif">AP African American Studies - Diagnostic Report</h1>
+                <p class="text-gray-600 text-sm">Unit 1: Origins of the African Diaspora (Topics 1.1 - 1.10)</p>
+            </div>
+            <div class="text-right">
+                <p id="print-date" class="text-sm font-semibold text-gray-700"></p>
+                <p id="print-student-name" class="text-sm font-bold text-cb-blue"></p>
+            </div>
         </div>
-      `;
-    }
+    </div>
 
-    mod.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h4>Topic ${q.topic}: ${q.title}</h4>
-        <span class="badge" style="background:${wasMissed ? 'var(--cb-ochre)' : 'var(--cb-blue)'}">
-          ${wasMissed ? 'Targeted Review Needed' : 'Objective Mastered'}
-        </span>
-      </div>
-      <p><strong>AP Essential Knowledge:</strong> ${q.ced_ek}</p>
-      <p><strong>Primary Source Reference:</strong> ${q.required_source}</p>
-      ${simHTML}
-    `;
+    <!-- Main Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    container.appendChild(mod);
-  });
-}
+        <!-- STUDENT INFO & STATUS BAR -->
+        <div class="bg-white border border-cb-grayBorder rounded-xl p-4 mb-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
+            <div class="flex items-center space-x-3 w-full sm:w-auto">
+                <div class="w-10 h-10 rounded-full bg-cb-lightBlue text-cb-blue flex items-center justify-center font-bold">
+                    <i class="fas fa-user-graduate text-lg"></i>
+                </div>
+                <div>
+                    <label for="student-name-input" class="block text-xs font-bold text-gray-500 uppercase tracking-wider">AP Student Identifier</label>
+                    <input type="text" id="student-name-input" placeholder="Enter full name..." value="AP Scholar" oninput="updateStudentName(this.value)" class="bg-cb-cream border border-gray-300 rounded px-3 py-1 text-sm text-cb-dark font-bold focus:outline-none focus:border-cb-blue w-full sm:w-60">
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-6 w-full sm:w-auto justify-between sm:justify-end border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-200">
+                <div class="text-center">
+                    <span class="text-xs text-gray-500 font-semibold block">Diagnostic Progress</span>
+                    <span id="diagnostic-status-badge" class="inline-block text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 font-bold">Not Started</span>
+                </div>
+                <div class="text-center">
+                    <span class="text-xs text-gray-500 font-semibold block">Score</span>
+                    <span id="header-score" class="text-base font-bold text-cb-navy">-- / 10</span>
+                </div>
+                <button onclick="exportToPDF()" class="bg-cb-blue hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-all shadow flex items-center space-x-2">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>Export Report</span>
+                </button>
+            </div>
+        </div>
 
-function checkSimDecision(topicIdx, choiceIdx, btnEl) {
-  const choice = unitsData[currentUnit].topics[topicIdx].simulation.choices[choiceIdx];
-  const feedbackEl = document.getElementById(`sim-feedback-${topicIdx}`);
-  
-  if (choice.correct) {
-    feedbackEl.style.color = "var(--correct-text)";
-    feedbackEl.innerText = choice.feedback;
-    btnEl.style.background = "var(--correct-bg)";
-  } else {
-    feedbackEl.style.color = "var(--incorrect-text)";
-    feedbackEl.innerText = choice.feedback;
-    btnEl.style.background = "var(--incorrect-bg)";
-  }
-}
+        <!-- TAB 1: DASHBOARD / OVERVIEW -->
+        <section id="tab-dashboard" class="tab-content space-y-6">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED Alignment</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">Unit 1: Origins of the African Diaspora</h2>
+                    <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
+                        Examine the natural environment, human origins, early African empires, Indian Ocean and Trans-Saharan trade networks, rich artistic traditions, and social systems prior to and during early Atlantic contact (Topics 1.1–1.10).
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="switchTab('diagnostic')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2">
+                            <i class="fas fa-play"></i>
+                            <span>Start Interactive Diagnostic</span>
+                        </button>
+                        <button onclick="switchTab('reteach')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-lg transition-all flex items-center space-x-2">
+                            <i class="fas fa-book-open"></i>
+                            <span>Explore Reteach Modules</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white">
+                    <i class="fas fa-globe-africa text-[260px]"></i>
+                </div>
+            </div>
 
-function resetDiagnostic() {
-  clearInterval(timerInterval);
-  if (document.getElementById("timer-toggle").checked) {
-    resetTimer();
-  }
-  document.getElementById("results-view").style.display = "none";
-  document.getElementById("diagnostic-view").style.display = "block";
-  loadUnit(currentUnit);
-  window.scrollTo(0,0);
-}
+            <!-- CED Topics Grid -->
+            <div>
+                <h3 class="text-xl font-serif font-bold text-cb-navy mb-4 flex items-center space-x-2">
+                    <i class="fas fa-list-check text-cb-gold"></i>
+                    <span>Course & Exam Description Topics (1.1 - 1.10)</span>
+                </h3>
+                <div id="topics-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
 
-window.onload = initApp;
-</script>
+        <!-- TAB 2: DIAGNOSTIC ASSESSMENT (DRAG & DROP) -->
+        <section id="tab-diagnostic" class="tab-content hidden space-y-6">
+            <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-gray-200 gap-4">
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold text-cb-navy">Unit 1 Interactive Diagnostic</h2>
+                        <p class="text-gray-600 text-sm">Drag key terms into the blanks (or tap a term, then tap a blank) to complete each Learning Objective sentence.</p>
+                    </div>
+                    <div class="flex items-center space-x-3 bg-cb-lightBlue px-4 py-2 rounded-lg border border-cb-blue/20">
+                        <i class="fas fa-tasks text-cb-blue"></i>
+                        <span class="text-sm font-semibold text-cb-navy">Filled: <strong id="quiz-progress-text" class="text-cb-blue">0 / 10</strong></span>
+                    </div>
+                </div>
+
+                <!-- DRAG AND DROP WORD BANK -->
+                <div class="mb-8 p-5 bg-cb-cream rounded-xl border border-cb-gold/40 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-hand-pointer text-cb-gold"></i>
+                            <h3 class="text-sm font-bold text-cb-navy uppercase tracking-wider">Word Bank (Drag terms or Tap-to-Select)</h3>
+                        </div>
+                        <span class="text-xs text-gray-500 italic">Drag to drop box or click term then target blank</span>
+                    </div>
+                    <div id="word-bank-container" class="flex flex-wrap gap-2.5 min-h-[50px] p-2 bg-white rounded-lg border border-gray-200">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Diagnostic Questions -->
+                <form id="diagnostic-form" onsubmit="event.preventDefault(); submitDiagnostic();">
+                    <div id="questions-container" class="space-y-6">
+                        <!-- Populated dynamically -->
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-200 flex justify-between items-center">
+                        <button type="button" onclick="resetDiagnostic()" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold transition-colors">
+                            <i class="fas fa-undo mr-1.5"></i> Clear All Blanks
+                        </button>
+                        <button type="submit" class="px-8 py-3 rounded-lg bg-cb-blue hover:bg-blue-700 text-white font-bold shadow-md transition-all flex items-center space-x-2">
+                            <span>Submit Assessment</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB 3: DIAGNOSTIC RESULTS & DIAGNOSTICS -->
+        <section id="tab-analysis" class="tab-content hidden space-y-6">
+            <!-- Score Overview Card -->
+            <div id="results-summary-card" class="bg-white border border-cb-grayBorder rounded-2xl p-6 sm:p-8 shadow-sm print-card">
+                <div class="text-center max-w-2xl mx-auto space-y-4">
+                    <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cb-lightBlue border-4 border-cb-blue mb-1">
+                        <span id="score-percentage" class="text-3xl font-bold text-cb-navy">0%</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-cb-navy">Diagnostic Diagnostic Summary</h2>
+                    <p id="score-feedback-msg" class="text-gray-600 text-sm sm:text-base">Complete the diagnostic assessment to reveal your mastery score and targeted review recommendations.</p>
+
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
+                            <span class="block text-xs text-gray-500 font-bold uppercase">Correct</span>
+                            <span id="stat-correct" class="text-xl font-bold text-emerald-600">0 / 10</span>
+                        </div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
+                            <span class="block text-xs text-gray-500 font-bold uppercase">Mastered</span>
+                            <span id="stat-mastered" class="text-xl font-bold text-cb-blue">0 Topics</span>
+                        </div>
+                        <div class="p-3 bg-cb-cream rounded-xl border border-gray-200">
+                            <span class="block text-xs text-gray-500 font-bold uppercase">Needs Review</span>
+                            <span id="stat-review" class="text-xl font-bold text-cb-ochre">10 Topics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic-by-Topic Breakdown -->
+            <div class="bg-white border border-cb-grayBorder rounded-xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200">
+                    <h3 class="text-xl font-serif font-bold text-cb-navy">Objective Mastery Breakdown</h3>
+                    <button onclick="exportToPDF()" class="no-print text-xs font-bold px-3 py-1.5 rounded bg-cb-lightBlue text-cb-blue hover:bg-blue-100 transition-colors">
+                        <i class="fas fa-print mr-1"></i> Print / Export Report
+                    </button>
+                </div>
+
+                <div id="analysis-list" class="space-y-4">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: RETEACH MODULES & MINI-SIMULATIONS -->
+        <section id="tab-reteach" class="tab-content hidden space-y-6">
+            <!-- Topic Selector Header -->
+            <div class="bg-white border border-cb-grayBorder rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full md:w-auto">
+                    <div class="w-10 h-10 rounded bg-cb-goldLight text-cb-gold border border-cb-gold/30 flex items-center justify-center font-bold">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-cb-navy text-lg">Interactive Reteach & Mini-Simulations</h3>
+                        <p class="text-xs text-gray-500">Select any Unit 1 objective to view concept breakdowns and hands-on simulations.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2 w-full md:w-auto">
+                    <label for="topic-selector" class="text-xs font-bold text-gray-500 whitespace-nowrap">Topic:</label>
+                    <select id="topic-selector" onchange="renderReteachTopic(this.value)" class="bg-cb-cream border border-gray-300 text-cb-navy text-sm font-semibold rounded-lg p-2.5 w-full md:w-80 focus:outline-none focus:border-cb-blue">
+                        <!-- Populated dynamically -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reteach Content Card -->
+            <div id="reteach-card-container" class="space-y-6">
+                <!-- Active Topic Reteach populated dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cb-navy text-white py-6 mt-12 no-print border-t-4 border-cb-gold">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-300 space-y-1">
+            <p class="font-semibold text-white">AP® African American Studies Curriculum Framework • Unit 1: Origins of the African Diaspora</p>
+            <p>Designed for High School AP Scholars • Interactive Drag-and-Drop Diagnostic & Conceptual Simulation Engine</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // OFFICIAL AP CED TOPICS 1.1 - 1.10 FULL CONTENT DATA STRUCTURE
+        const unitTopics = [
+            {
+                id: "1.1",
+                title: "1.1 Natural Environment and Human Origins",
+                essentialKnowledge: "Fossil evidence establishes that early human ancestors originated in East Africa's Great Rift Valley. Human societies adapted during the Paleolithic and Neolithic eras, laying the foundation for early African civilizations.",
+                blankQuestion: "Fossil evidence indicates that early human ancestors originated in East Africa's _____, making Africa the birthplace of humanity.",
+                correctAnswer: "Great Rift Valley",
+                acceptedAnswers: ["great rift valley", "rift valley"],
+                hint: "Geological feature spanning East Africa rich in early hominid fossil sites.",
+                breakdown: "Human evolution began in Africa. Archaeological findings in places like Olduvai Gorge demonstrate that Africa was the cradle of humanity. Early African societies mastered stone tool technology during the Paleolithic era and pioneered agriculture during the Neolithic transition.",
+                simulationType: "timeline",
+                simulationData: {
+                    title: "Human Origins & Migration Timeline Analysis",
+                    prompt: "Order the milestones of early human development in Africa chronologically:",
+                    events: [
+                        { era: "Milestone 1", text: "Hominid divergence and early fossil deposits in the Great Rift Valley." },
+                        { era: "Milestone 2", text: "Development of Paleolithic stone tool industries (Oldowan and Acheulean)." },
+                        { era: "Milestone 3", text: "Neolithic agricultural Revolution and cattle domestication across northern Africa." }
+                    ]
+                }
+            },
+            {
+                id: "1.2",
+                title: "1.2 Ancient Societies & Empires in Africa",
+                essentialKnowledge: "Nubia/Kush and Aksum were powerful ancient Northeast African kingdoms. Kush prospered along the Nile with its iron industry at Meroë, while Aksum developed the Ge'ez script and adopted Christianity in the 4th century.",
+                blankQuestion: "The kingdom of Aksum developed the written language known as _____, which remains one of Africa's oldest indigenous writing systems.",
+                correctAnswer: "Ge'ez",
+                acceptedAnswers: ["ge'ez", "geez"],
+                hint: "Ancient Ethiopian script used in royal inscriptions and liturgical texts.",
+                breakdown: "Northeast Africa was home to monumental ancient civilizations. Nubia/Kush rivaled and ruled Egypt (25th Dynasty) and mastered iron metallurgy at Meroë. Aksum in modern Ethiopia grew into a major trading power connecting Rome and India, adopting Christianity under King Ezana in 330 CE.",
+                simulationType: "source_analysis",
+                simulationData: {
+                    prompt: "Analyze the Ezana Stone Inscription (c. 350 CE) from Aksum:",
+                    quote: "\"I, Ezana, King of the Aksumites and Himyarites... set up this throne here by the mercy of the Lord of Heaven, who has created me.\"",
+                    question: "Which conclusion regarding Northeast African political history is directly supported by this primary source?",
+                    options: [
+                        { text: "Aksum was an isolated society with no formal government structure.", correct: false, feedback: "Incorrect. Aksum was a highly organized empire." },
+                        { text: "Aksum adopted Christianity as a state religion under King Ezana long before European colonization.", correct: true, feedback: "Correct! Aksum's state Christianity dates back to the 4th century CE." }
+                    ]
+                }
+            },
+            {
+                id: "1.3",
+                title: "1.3 West African Kingdoms & Empires",
+                essentialKnowledge: "Ghana, Mali, and Songhai dominated West Africa through the Trans-Saharan trade in gold and salt. Mansa Musa made Mali internationally famous during his 1324 pilgrimage, and Timbuktu became a global center of Islamic scholarship.",
+                blankQuestion: "Emperor _____ of Mali showcased his empire's incredible wealth in gold during his 1324 pilgrimage to Mecca.",
+                correctAnswer: "Mansa Musa",
+                acceptedAnswers: ["mansa musa", "musa"],
+                hint: "Renowned 14th-century Mali ruler considered one of the wealthiest individuals in human history.",
+                breakdown: "West African Sudanic empires controlled key trade nodes. Ghana ('Land of Gold') laid the structural groundwork, Mali expanded economic and cultural influence under Mansa Musa, and Songhai grew into West Africa's largest empire under Sunni Ali and Askia Muhammad.",
+                simulationType: "decision_sim",
+                simulationData: {
+                    title: "Royal Caravan & Investment Strategy: Mansa Musa (1324)",
+                    scenario: "You are preparing Mansa Musa's royal caravan with tens of thousands of attendants and thousands of pounds of gold dust.",
+                    decisionPrompt: "How do you strategically utilize this wealth along your journey through Cairo to Mecca?",
+                    options: [
+                        { text: "Distribute gold generously to charities and scholars, putting Mali on European and Mediterranean maps (like the Catalan Atlas) while funding Timbuktu's Sankore University.", correct: true, feedback: "Historically Accurate! Mansa Musa's generosity made Mali famous across Africa, Europe, and Asia." },
+                        { text: "Hide all gold resources to prevent nearby empires from learning about West African mineral reserves.", correct: false, feedback: "Incorrect. Mansa Musa intentionally used his pilgrimage as a diplomatic display of Mali's wealth and prestige." }
+                    ]
+                }
+            },
+            {
+                id: "1.4",
+                title: "1.4 East African City-States & Indian Ocean Trade",
+                essentialKnowledge: "The Swahili Coast comprised independent city-states (Kilwa, Mombasa, Zanzibar) that prospered in Indian Ocean trade networks using traditional dhow ships and seasonal monsoon winds.",
+                blankQuestion: "East African sailors navigated the Indian Ocean trade network using traditional wooden vessels called _____, propelled by monsoon winds.",
+                correctAnswer: "dhows",
+                acceptedAnswers: ["dhows", "dhow"],
+                hint: "Lateen-sailed vessels used across the Arabian Sea and East African coast.",
+                breakdown: "The Swahili Coast was a cosmopolitan maritime trade network. Swahili culture blended Bantu language structures with Arabic vocabulary. Merchants exchanged African gold, ivory, and timber for Asian silk, spices, and Chinese porcelain.",
+                simulationType: "trade_navigator",
+                simulationData: {
+                    title: "Monsoon Wind Trade Route Navigator",
+                    prompt: "Select the correct monsoon wind direction and trade cargo pairing:",
+                    pairs: [
+                        { wind: "Northeast Monsoon (Nov - Mar)", cargo: "Sails ships south from Arabia/India to Swahili ports with silk & ceramics." },
+                        { wind: "Southwest Monsoon (Apr - Sep)", cargo: "Sails ships north toward India with African gold, ivory, and mangrove timber." }
+                    ]
+                }
+            },
+            {
+                id: "1.5",
+                title: "1.5 Central and Southern African Kingdoms",
+                essentialKnowledge: "Great Zimbabwe was an inland empire renowned for its stone architecture built without mortar. In Central Africa, the Kingdom of Kongo engaged in trade and diplomacy, where Queen Nzinga later resisted Portuguese expansion.",
+                blankQuestion: "Queen _____ of Ndongo and Matamba famously led decades of political and military resistance against Portuguese colonization in Angola.",
+                correctAnswer: "Nzinga",
+                acceptedAnswers: ["nzinga", "nzinga a mbande", "njinga"],
+                hint: "Central African monarch famous for equal diplomacy and guerrilla strategy.",
+                breakdown: "Central and Southern Africa featured sophisticated state-building. Great Zimbabwe controlled gold trade routes to the coast, leaving massive stone enclosures (Dzimba-dza-mabwe). In Kongo and Angola, rulers like Queen Nzinga skillfully combined diplomacy, warfare, and Dutch alliances to counter Portuguese slaving raids.",
+                simulationType: "decision_sim",
+                simulationData: {
+                    title: "Diplomatic Decision: Queen Nzinga's Luanda Summit (1622)",
+                    scenario: "The Portuguese governor intentionally provides no chair for you at negotiations, attempting to force you to stand as a subordinate.",
+                    decisionPrompt: "What action do you take to assert equal royal status?",
+                    options: [
+                        { text: "Instruct your royal attendant to kneel on all fours to act as a human seat, placing you eye-to-eye with the governor.", correct: true, feedback: "Historical Fact! Queen Nzinga used this bold diplomatic move to force the governor to negotiate as an equal." },
+                        { text: "Stand quietly against the wall and sign away territorial rights.", correct: false, feedback: "Incorrect. Nzinga fiercely defended her kingdom's sovereignty for over 40 years." }
+                    ]
+                }
+            },
+            {
+                id: "1.6",
+                title: "1.6 Culture, Religion & Spirituality in Early Africa",
+                essentialKnowledge: "Early Africa contained diverse indigenous religions alongside Islam and Christianity. Religious syncretism occurred as communities blended universal religions with traditional beliefs like ancestral veneration.",
+                blankQuestion: "The blending of traditional African spiritual practices with introduced religions like Islam or Christianity is known as religious _____.",
+                correctAnswer: "syncretism",
+                acceptedAnswers: ["syncretism"],
+                hint: "Concept describing the combination or merging of different beliefs and practices.",
+                breakdown: "African spiritual life emphasized harmony between the physical and spiritual worlds. Indigenous beliefs honored supreme creators, nature spirits, and ancestors. As Christianity and Islam spread, African communities often integrated these faiths alongside indigenous traditions.",
+                simulationType: "source_analysis",
+                simulationData: {
+                    prompt: "Evaluate the cultural synthesis in West African Islamic architecture (e.g., Great Mosque of Djenné):",
+                    question: "How does the Great Mosque of Djenné illustrate religious syncretism?",
+                    options: [
+                        { text: "It combines Islamic architectural functions with indigenous West African adobe mud-brick craftsmanship.", correct: true, feedback: "Correct! The Djenné Mosque blends traditional West African Sudanic earthen building techniques with Islamic mosque design." },
+                        { text: "It was imported directly as a prefabricated stone structure from Europe.", correct: false, feedback: "Incorrect. It was built locally using indigenous Sudanic architectural traditions." }
+                    ]
+                }
+            },
+            {
+                id: "1.7",
+                title: "1.7 Art, Music, and Oral Traditions",
+                essentialKnowledge: "Oral historians and musicians, known as griots (or jalis), preserved genealogies, laws, and epics across generations. Visual art forms like terracotta sculptures and Kente weaving held deep political and spiritual meaning.",
+                blankQuestion: "West African oral historians, genealogists, and musicians who preserve community history are known as _____.",
+                correctAnswer: "griots",
+                acceptedAnswers: ["griots", "griot", "jali", "jelis"],
+                hint: "Traditional hereditary bards and oral historians of West Africa.",
+                breakdown: "Before written European records dominated historiography, African oral traditions preserved centuries of royal genealogy, laws, and epic poetry (such as the Epic of Sundiata). Griots utilized musical accompaniment on the kora to maintain cultural memory.",
+                simulationType: "decision_sim",
+                simulationData: {
+                    title: "Oral Tradition Preservation Task",
+                    scenario: "You are a griot in the Mali Empire tasked with transmitting the legal code and royal lineage to the next generation.",
+                    decisionPrompt: "What is your primary methodological tool for ensuring historical accuracy without written text?",
+                    options: [
+                        { text: "Memorizing rhythmic musical narratives, genealogies, and proverb cycles passed down through specialized familial lineages.", correct: true, feedback: "Correct! Griots relied on rigorous mnemonic devices, music, and memorization to preserve history flawlessly." },
+                        { text: "Drawing random sketches in desert sand that wash away daily.", correct: false, feedback: "Incorrect. Oral transmission required structured musical and mnemonic masterclasses." }
+                    ]
+                }
+            },
+            {
+                id: "1.8",
+                title: "1.8 Social Structure, Kinship, and Gender Roles",
+                essentialKnowledge: "African societies organized social life around kinship networks, age sets, and clan lineages. Many societies practiced matrilineal descent, where lineage and political succession passed through the maternal line.",
+                blankQuestion: "In a _____ kinship system, family lineage, property, and political inheritance are traced through the maternal line.",
+                correctAnswer: "matrilineal",
+                acceptedAnswers: ["matrilineal"],
+                hint: "Opposite of patrilineal; tracing descent through mothers.",
+                breakdown: "Kinship was foundational to African governance. In many West African societies (such as certain Akan communities), lineage was matrilineal, granting women significant economic autonomy, political advisory roles, and queen-mother authority.",
+                simulationType: "source_analysis",
+                simulationData: {
+                    prompt: "Analyze West African Social Kinship Structures:",
+                    question: "What distinct advantage did matrilineal descent provide to women in kingdoms like Ashanti/Akan?",
+                    options: [
+                        { text: "Women held substantial inheritance rights and political influence through clan lineage.", correct: true, feedback: "Correct! Matrilineal structures ensured women held high social standing and property rights." },
+                        { text: "Women were excluded from all economic and family decisions.", correct: false, feedback: "Incorrect. Matrilineal systems often empowered women within family clans." }
+                    ]
+                }
+            },
+            {
+                id: "1.9",
+                title: "1.9 Early Global Connections & European Contact",
+                essentialsKnowledge: "Before the transatlantic slave trade, early Portuguese explorers established diplomatic and commercial contact with West African kingdoms on terms of sovereign equality, exchanging ambassadors.",
+                blankQuestion: "Initial diplomatic and commercial exchanges between Portuguese mariners and West African kingdoms were conducted on terms of _____.",
+                correctAnswer: "sovereign equality",
+                acceptedAnswers: ["sovereign equality", "equality", "mutual sovereignty"],
+                hint: "Principle where independent states negotiate as equals rather than colonizer and colony.",
+                breakdown: "Early maritime encounters in the 15th century (such as Portuguese missions to Benin and Kongo) did not immediately resemble later colonial domination. African monarchs dictated trade terms, taxed foreign ships, and exchanged royal ambassadors with European courts.",
+                simulationType: "decision_sim",
+                simulationData: {
+                    title: "Kingdom of Kongo Diplomatic Correspondence (1526)",
+                    scenario: "King Afonso I of Kongo writes to the King of Portugal protesting illegal Portuguese slave-trading practices in his sovereign domain.",
+                    decisionPrompt: "How does King Afonso assert his authority?",
+                    options: [
+                        { text: "He demands that Portuguese merchants obey Kongo law and cease illegal abductions of free subjects.", correct: true, feedback: "Correct! King Afonso asserted his royal sovereignty to regulate commerce within his borders." },
+                        { text: "He abdicates his throne immediately to foreign merchants.", correct: false, feedback: "Incorrect. Afonso fought vigorously to protect Kongo's sovereignty." }
+                    ]
+                }
+            },
+            {
+                id: "1.10",
+                title: "1.10 Synthesis: Foundations of the African Diaspora",
+                essentialKnowledge: "The diverse cultures, technologies, governance systems, and spiritual traditions of early Africa formed the resilient bedrock of the African diaspora as millions were later forcibly dispersed across the Atlantic.",
+                blankQuestion: "The forced dispersal of Africans across the globe due to the transatlantic slave trade is known as the African _____.",
+                correctAnswer: "Diaspora",
+                acceptedAnswers: ["diaspora", "african diaspora"],
+                hint: "Term for the dispersion of any people from their original homeland.",
+                breakdown: "Unit 1 concludes by connecting African history to the global diaspora. Enslaved Africans carried memories of metallurgy, rice cultivation, spiritual syncretism, musical forms, and political resistance across the Atlantic, shaping Americas' culture.",
+                simulationType: "source_analysis",
+                simulationData: {
+                    prompt: "Synthesis & Legacy Analysis:",
+                    question: "Why is understanding pre-colonial African history essential for studying the African American experience?",
+                    options: [
+                        { text: "It establishes that African Americans descend from rich, sophisticated civilizations with established technologies, arts, and governance.", correct: true, feedback: "Correct! It reframes the African American narrative from enslavement origins to deep civilizational roots." },
+                        { text: "It has no bearing on cultural practices in the Americas.", correct: false, feedback: "Incorrect. African cultural retention profoundly shaped the Americas." }
+                    ]
+                }
+            }
+        ];
+
+        // App State
+        let studentName = "AP Scholar";
+        let userAnswers = {};
+        let selectedTermForTap = null;
+        let diagnosticSubmitted = false;
+
+        // Initialize App on Load
+        window.onload = function() {
+            updatePrintDate();
+            renderDashboardGrid();
+            renderWordBank();
+            renderDiagnosticQuestions();
+            renderReteachSelector();
+            renderReteachTopic(unitTopics[0].id);
+        };
+
+        function updatePrintDate() {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('print-date').innerText = new Date().toLocaleDateString('en-US', options);
+            document.getElementById('print-student-name').innerText = studentName;
+        }
+
+        function updateStudentName(name) {
+            studentName = name.trim() || "AP Scholar";
+            document.getElementById('print-student-name').innerText = studentName;
+        }
+
+        // Tab Navigation Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            // Update nav styles
+            const navIds = ['dashboard', 'diagnostic', 'analysis', 'reteach'];
+            navIds.forEach(id => {
+                const btn = document.getElementById('nav-' + id);
+                if (id === tabId) {
+                    btn.className = "px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 bg-cb-blue text-white shadow-sm";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded text-xs sm:text-sm font-semibold transition-all flex items-center space-x-1.5 text-gray-200 hover:text-white hover:bg-white/10";
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dashboard Overview Grid
+        function renderDashboardGrid() {
+            const grid = document.getElementById('topics-grid');
+            grid.innerHTML = "";
+            unitTopics.forEach(t => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-cb-grayBorder rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2.5 py-0.5 rounded bg-cb-lightBlue text-cb-blue">Topic ${t.id}</span>
+                            <i class="fas fa-bookmark text-cb-gold/60"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-cb-navy text-base mb-2">${t.title}</h4>
+                        <p class="text-gray-600 text-xs leading-relaxed mb-4">${t.essentialKnowledge}</p>
+                    </div>
+                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                        <button onclick="jumpToTopicReteach('${t.id}')" class="text-xs font-semibold text-cb-blue hover:underline flex items-center space-x-1">
+                            <span>Review Concept</span>
+                            <i class="fas fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function jumpToTopicReteach(topicId) {
+            switchTab('reteach');
+            document.getElementById('topic-selector').value = topicId;
+            renderReteachTopic(topicId);
+        }
+
+        // Render Word Bank (Drag & Drop + Tap Support)
+        function renderWordBank() {
+            const container = document.getElementById('word-bank-container');
+            container.innerHTML = "";
+            
+            // Shuffle answers for the bank
+            const terms = unitTopics.map(t => t.correctAnswer).sort(() => Math.random() - 0.5);
+
+            terms.forEach(term => {
+                const badge = document.createElement('div');
+                badge.className = "draggable-term px-3.5 py-1.5 rounded-lg bg-cb-navy text-white text-xs sm:text-sm font-semibold shadow-sm";
+                badge.innerText = term;
+                badge.setAttribute('draggable', 'true');
+                badge.dataset.term = term;
+
+                // Drag Events
+                badge.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', term);
+                });
+
+                // Tap-to-Select Mobile Fallback
+                badge.addEventListener('click', () => {
+                    document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
+                    if (selectedTermForTap === term) {
+                        selectedTermForTap = null;
+                    } else {
+                        selectedTermForTap = term;
+                        badge.classList.add('selected');
+                    }
+                });
+
+                container.appendChild(badge);
+            });
+        }
+
+        // Render Diagnostic Questions with Drop Targets
+        function renderDiagnosticQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = "";
+
+            unitTopics.forEach((t, index) => {
+                const parts = t.blankQuestion.split("_____");
+                const qCard = document.createElement('div');
+                qCard.className = "bg-cb-cream border border-gray-200 rounded-xl p-5 shadow-sm";
+                qCard.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-cb-blue uppercase tracking-wider">Topic ${t.id} Diagnostic</span>
+                        <span class="text-xs text-gray-500 font-medium">Question ${index + 1} of 10</span>
+                    </div>
+                    <p class="text-cb-dark text-sm sm:text-base leading-relaxed mb-4 font-medium">
+                        ${parts[0]}
+                        <span class="drop-target font-bold text-cb-blue" id="drop-target-${index}" ondragover="allowDrop(event)" ondragleave="removeDragOver(event)" ondrop="dropTerm(event, ${index})" onclick="handleDropTargetClick(${index})">
+                            <span class="text-gray-400 font-normal italic text-xs">[Drop / Tap Term Here]</span>
+                        </span>
+                        ${parts[1] || ''}
+                    </p>
+                    <div class="hint-container">
+                        <div class="hint-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="hint-text"><strong>AP Key Hint:</strong> ${t.hint}</div>
+                    </div>
+                `;
+                container.appendChild(qCard);
+            });
+        }
+
+        // Drag & Drop Handlers
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('drag-over');
+        }
+
+        function removeDragOver(ev) {
+            ev.currentTarget.classList.remove('drag-over');
+        }
+
+        function dropTerm(ev, qIndex) {
+            ev.preventDefault();
+            const term = ev.dataTransfer.getData('text/plain');
+            assignTermToQuestion(qIndex, term);
+            ev.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDropTargetClick(qIndex) {
+            if (selectedTermForTap) {
+                assignTermToQuestion(qIndex, selectedTermForTap);
+                selectedTermForTap = null;
+                document.querySelectorAll('.draggable-term').forEach(el => el.classList.remove('selected'));
+            } else if (userAnswers[qIndex]) {
+                // Clicking a filled target clears it back to the bank
+                delete userAnswers[qIndex];
+                renderDiagnosticQuestions();
+                updateQuizProgress();
+            }
+        }
+
+        function assignTermToQuestion(qIndex, term) {
+            userAnswers[qIndex] = term;
+            const target = document.getElementById(`drop-target-${qIndex}`);
+            if (target) {
+                target.innerText = term;
+                target.className = "drop-target font-bold text-cb-blue filled px-3 py-1 bg-cb-lightBlue rounded border border-cb-blue text-sm";
+            }
+            updateQuizProgress();
+        }
+
+        function updateQuizProgress() {
+            const filledCount = Object.keys(userAnswers).length;
+            document.getElementById('quiz-progress-text').innerText = `${filledCount} / 10`;
+            const badge = document.getElementById('diagnostic-status-badge');
+            if (filledCount === 10) {
+                badge.className = "inline-block text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold";
+                badge.innerText = "Completed (Ready to Submit)";
+            } else if (filledCount > 0) {
+                badge.className = "inline-block text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300 font-bold";
+                badge.innerText = "In Progress";
+            }
+        }
+
+        function resetDiagnostic() {
+            userAnswers = {};
+            selectedTermForTap = null;
+            renderWordBank();
+            renderDiagnosticQuestions();
+            updateQuizProgress();
+        }
+
+        // Submit Assessment & Generate Analysis
+        function submitDiagnostic() {
+            let correctCount = 0;
+            const analysisResults = [];
+
+            unitTopics.forEach((t, index) => {
+                const userAns = (userAnswers[index] || "").trim().toLowerCase();
+                const isCorrect = t.acceptedAnswers.includes(userAns);
+                if (isCorrect) correctCount++;
+
+                analysisResults.push({
+                    topic: t,
+                    userAnswer: userAnswers[index] || "Unanswered",
+                    correct: isCorrect
+                });
+            });
+
+            const percentage = Math.round((correctCount / 10) * 100);
+            const masteredCount = correctCount;
+            const reviewCount = 10 - correctCount;
+
+            // Update Header Score
+            document.getElementById('header-score').innerText = `${correctCount} / 10`;
+            document.getElementById('score-percentage').innerText = `${percentage}%`;
+            document.getElementById('stat-correct').innerText = `${correctCount} / 10`;
+            document.getElementById('stat-mastered').innerText = `${masteredCount} Topics`;
+            document.getElementById('stat-review').innerText = `${reviewCount} Topics`;
+
+            // Feedback Message
+            const msgEl = document.getElementById('score-feedback-msg');
+            if (percentage === 100) {
+                msgEl.innerText = "Outstanding! You demonstrated complete mastery across all Unit 1 CED Learning Objectives.";
+            } else if (percentage >= 70) {
+                msgEl.innerText = "Great job! You have a strong grasp of Unit 1, with a few targeted topics to review.";
+            } else {
+                msgEl.innerText = "Review recommended! Complete the automated reteach modules and simulations below to strengthen your understanding.";
+            }
+
+            // Render Analysis List
+            const analysisList = document.getElementById('analysis-list');
+            analysisList.innerHTML = "";
+
+            analysisResults.forEach((res, idx) => {
+                const item = document.createElement('div');
+                item.className = `p-4 rounded-xl border ${res.correct ? 'bg-emerald-50/50 border-emerald-200' : 'bg-rose-50/50 border-rose-200'} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3`;
+                item.innerHTML = `
+                    <div class="space-y-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xs font-bold px-2 py-0.5 rounded ${res.correct ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'}">
+                                Topic ${res.topic.id}
+                            </span>
+                            <h4 class="font-serif font-bold text-cb-navy text-sm">${res.topic.title}</h4>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Your Answer: <strong class="${res.correct ? 'text-emerald-700' : 'text-rose-700'}">${res.userAnswer}</strong> 
+                            ${!res.correct ? `| Correct CED Term: <strong class="text-cb-blue">${res.topic.correctAnswer}</strong>` : ''}
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 w-full sm:w-auto justify-end">
+                        <span class="text-xs font-bold px-3 py-1 rounded-full ${res.correct ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                            ${res.correct ? '<i class="fas fa-check-circle mr-1"></i> Mastered' : '<i class="fas fa-exclamation-circle mr-1"></i> Review Needed'}
+                        </span>
+                        <button onclick="jumpToTopicReteach('${res.topic.id}')" class="text-xs bg-white border border-gray-300 px-3 py-1 rounded font-semibold hover:bg-gray-50 text-cb-navy">
+                            Reteach
+                        </button>
+                    </div>
+                `;
+                analysisList.appendChild(item);
+            });
+
+            diagnosticSubmitted = true;
+            switchTab('analysis');
+        }
+
+        // Reteach & Simulations Hub
+        function renderReteachSelector() {
+            const selector = document.getElementById('topic-selector');
+            selector.innerHTML = "";
+            unitTopics.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.id;
+                opt.innerText = `Topic ${t.id}: ${t.title.replace(/^1\.\d+\s*/, '')}`;
+                selector.appendChild(opt);
+            });
+        }
+
+        function renderReteachTopic(topicId) {
+            const t = unitTopics.find(item => item.id === topicId);
+            if (!t) return;
+
+            const container = document.getElementById('reteach-card-container');
+            
+            let simulationHTML = "";
+            if (t.simulationType === "timeline") {
+                simulationHTML = `
+                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
+                            <i class="fas fa-stream"></i>
+                            <span>${t.simulationData.title}</span>
+                        </div>
+                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
+                        <div class="space-y-2 pt-2">
+                            ${t.simulationData.events.map((ev, i) => `
+                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between shadow-sm">
+                                    <span class="font-bold text-cb-navy">${ev.era}</span>
+                                    <span class="text-gray-700 flex-grow px-4">${ev.text}</span>
+                                    <span class="text-emerald-600 font-bold"><i class="fas fa-check"></i> Verified</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (t.simulationType === "source_analysis") {
+                simulationHTML = `
+                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
+                            <i class="fas fa-scroll"></i>
+                            <span>Primary Source & Historical Analysis Simulation</span>
+                        </div>
+                        ${t.simulationData.quote ? `<blockquote class="italic text-xs bg-white p-3 rounded border-l-4 border-cb-gold text-gray-800">${t.simulationData.quote}</blockquote>` : ''}
+                        <p class="text-xs font-semibold text-cb-navy">${t.simulationData.question || t.simulationData.prompt}</p>
+                        <div class="space-y-2 pt-2" id="sim-options-${t.id}">
+                            ${t.simulationData.options.map((opt, oIdx) => `
+                                <button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between">
+                                    <span>${opt.text}</span>
+                                    <span class="sim-feedback-icon text-gray-400 font-bold">Select</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div>
+                    </div>
+                `;
+            } else if (t.simulationType === "decision_sim") {
+                simulationHTML = `
+                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
+                            <i class="fas fa-chess-board"></i>
+                            <span>${t.simulationData.title}</span>
+                        </div>
+                        <p class="text-xs bg-white p-3 rounded border border-gray-200 text-gray-800 font-medium">${t.simulationData.scenario}</p>
+                        <p class="text-xs font-bold text-cb-navy">${t.simulationData.decisionPrompt}</p>
+                        <div class="space-y-2 pt-2">
+                            ${t.simulationData.options.map((opt, oIdx) => `
+                                <button onclick="checkSimAnswer('${t.id}', ${oIdx}, ${opt.correct})" class="w-full text-left bg-white hover:bg-gray-50 border border-gray-200 p-3 rounded-lg text-xs font-medium transition-colors flex items-center justify-between">
+                                    <span>${opt.text}</span>
+                                    <span class="sim-feedback-icon text-gray-400 font-bold">Choose</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="sim-feedback-${t.id}" class="text-xs font-semibold pt-1"></div>
+                    </div>
+                `;
+            } else if (t.simulationType === "trade_navigator") {
+                simulationHTML = `
+                    <div class="bg-cb-lightBlue/60 border border-cb-blue/20 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center space-x-2 text-cb-blue font-bold text-sm">
+                            <i class="fas fa-compass"></i>
+                            <span>${t.simulationData.title}</span>
+                        </div>
+                        <p class="text-xs text-gray-700">${t.simulationData.prompt}</p>
+                        <div class="space-y-2 pt-2">
+                            ${t.simulationData.pairs.map((p, i) => `
+                                <div class="bg-white p-3 rounded-lg border border-gray-200 text-xs flex items-center justify-between">
+                                    <span class="font-bold text-cb-navy w-1/3">${p.wind}</span>
+                                    <span class="text-gray-700 w-2/3 border-l pl-3">${p.cargo}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="bg-white border border-cb-grayBorder rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-2">
+                        <div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-cb-lightBlue text-cb-blue uppercase">Topic ${t.id} Reteach Module</span>
+                            <h3 class="text-2xl font-serif font-bold text-cb-navy mt-1">${t.title}</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-gray-500"><i class="fas fa-check-circle text-emerald-600 mr-1"></i> CED Aligned</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Essential Knowledge</h4>
+                            <p class="text-cb-dark text-sm sm:text-base leading-relaxed font-serif bg-cb-cream p-4 rounded-lg border-l-4 border-cb-blue">
+                                ${t.essentialKnowledge}
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Concept Breakdown & Historical Context</h4>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                ${t.breakdown}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Simulation / Mini-Task -->
+                    <div class="pt-4 border-t border-gray-200">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-cb-gold mb-3">Interactive Mini-Simulation</h4>
+                        ${simulationHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkSimAnswer(topicId, optionIdx, isCorrect) {
+            const feedbackEl = document.getElementById(`sim-feedback-${topicId}`);
+            const t = unitTopics.find(item => item.id === topicId);
+            const chosenOption = t.simulationData.options[optionIdx];
+
+            if (isCorrect) {
+                feedbackEl.className = "text-xs font-bold pt-2 text-emerald-700 bg-emerald-50 p-3 rounded border border-emerald-200";
+                feedbackEl.innerHTML = `<i class="fas fa-check-circle mr-1"></i> ${chosenOption.feedback}`;
+            } else {
+                feedbackEl.className = "text-xs font-bold pt-2 text-rose-700 bg-rose-50 p-3 rounded border border-rose-200";
+                feedbackEl.innerHTML = `<i class="fas fa-times-circle mr-1"></i> ${chosenOption.feedback}`;
+            }
+        }
+
+        // PDF Export Utility
+        function exportToPDF() {
+            updatePrintDate();
+            window.print();
+        }
+    </script>
 </body>
 </html>
