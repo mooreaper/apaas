@@ -1,30 +1,25 @@
-# AP African American Studies — Unit Diagnostic
+# AP African American Studies — Master Topic Directory & Diagnostic
 
-Single-file interactive diagnostic for **AP African American Studies** (College Board CED, Fall 2024), covering Units 1–4.
+Interactive AP African American Studies study aid covering all **74 CED topics** (Units 1–4).
 
 ## Open the app
 
-Open [`index.html`](index.html) in any modern browser (Chrome, Edge, Firefox, Safari). No build step or server required.
+Open [`index.html`](index.html) in a modern browser. Keep the `assets/` folder next to `index.html`:
+
+- `assets/ap-aas-banner.png` — AP African American Studies banner on the Master Topic Directory
+- `assets/topic-images.js` — per-topic Wikimedia Commons / public-domain primary-source image map
 
 ## Features
 
-- **Unit selector** for Units 1–4 (all CED topics: 1.1–1.11, 2.1–2.24, 3.1–3.18, 4.1–4.21)
-- **One fill-in-the-blank question per topic**, tied to Learning Objectives and required sources
-- **Drag-and-drop word bank** with tap-to-select fallback for tablets/phones
-- **Optional timer** (count-up or countdown: 15 / 30 / custom minutes)
-- **Diagnostic report** with percentage score, elapsed time, and missed objectives
-- **Reteach modules** with Essential Knowledge review and mini-simulations
-- **Print / Save as PDF** via browser print dialog
-- **Deep links:** `index.html?unit=1` (also `?unit=2&timer=1&mode=down&minutes=30`)
+- Master Topic Directory with official course banner
+- Per-topic primary-source images (directory + reteach), with credits
+- Gilder Lehrman portal anchors for each topic
+- Unit checkpoints, results export / print support
+
+## Image credits
+
+Topic images load from Wikimedia Commons (`Special:FilePath`) and prioritize public-domain or museum-open materials closely related to CED required sources. Captions under each image explain the relationship when a closely related substitute is used.
 
 ## Disclaimer
 
-Study aid aligned to the College Board AP African American Studies Course and Exam Description. Not affiliated with or endorsed by College Board. Source titles reference the CED and commonly paired archives (Smithsonian NMAAHC, Gilder Lehrman Institute).
-
-## Regenerating content (optional)
-
-PowerShell build scripts in this repo can regenerate `index.html`:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
-```
+Study aid aligned to the College Board AP African American Studies Course and Exam Description. Not affiliated with or endorsed by College Board.

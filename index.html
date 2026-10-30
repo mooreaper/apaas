@@ -130,18 +130,18 @@
 
         <!-- TAB 1: DASHBOARD (OVERVIEW) -->
         <section id="tab-dashboard" class="tab-content space-y-6">
-            <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white p-8 shadow-xl border-t-4 border-cb-gold">
-                <div class="relative z-10 max-w-3xl">
+            <div class="relative overflow-hidden rounded-2xl bg-cb-navy text-white shadow-xl border-t-4 border-cb-gold">
+                <img src="assets/ap-aas-banner.png" alt="AP African American Studies course banner" class="w-full h-auto block bg-cb-navy" width="1200" height="360" />
+                <div class="p-6 sm:p-8 border-t border-white/10">
                     <span class="inline-block px-3 py-1 rounded-full bg-cb-gold text-cb-navy text-xs font-bold uppercase tracking-wider mb-3">Official College Board CED (74 Topics across Units 1–4)</span>
-                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">AP African American Studies Master Topic Directory</h2>
-                    <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6">
-                        Explore all 74 official AP African American Studies topics, complete with direct Gilder Lehrman portal anchors and required CED primary source images.
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-3">AP African American Studies Master Topic Directory</h2>
+                    <p class="text-gray-200 text-sm sm:text-base leading-relaxed mb-6 max-w-3xl">
+                        Explore all 74 official AP African American Studies topics with related public-domain / museum primary-source images, Gilder Lehrman portal anchors, and CED-aligned reteach modules.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <button onclick="switchTab('reteach')" class="bg-cb-gold hover:bg-yellow-600 text-cb-navy font-bold px-6 py-3 rounded-lg shadow transition-all flex items-center space-x-2"><i class="fas fa-book-open"></i><span>Explore All Reteach Modules</span></button>
                     </div>
                 </div>
-                <div class="absolute -right-8 -bottom-12 opacity-10 pointer-events-none text-white"><i class="fas fa-globe-africa text-[260px]"></i></div>
             </div>
 
             <!-- Unit Filter Tabs for Overview -->
@@ -231,15 +231,47 @@
         </div>
     </footer>
 
+    <script src="assets/topic-images.js"></script>
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // UNIT-SPECIFIC REQUIRED CED SOURCE IMAGES
+        // Fallback unit images if a topic-specific Commons file fails
         const unitImages = {
-            1: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop", // Ancient African Artifacts & Inscriptions
-            2: "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?q=80&w=800&auto=format&fit=crop", // Transatlantic Enslavement & Resistance Records
-            3: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=800&auto=format&fit=crop", // Reconstruction & Jim Crow Era Documents
-            4: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=800&auto=format&fit=crop"  // Civil Rights & Modern Movements
+            1: "https://commons.wikimedia.org/wiki/Special:FilePath/Great_Zimbabwe.jpg?width=800",
+            2: "https://commons.wikimedia.org/wiki/Special:FilePath/Slaveshipposter.jpg?width=800",
+            3: "https://commons.wikimedia.org/wiki/Special:FilePath/W.E.B._Du_Bois_by_James_E._Purdy,_1907.jpg?width=800",
+            4: "https://commons.wikimedia.org/wiki/Special:FilePath/Martin_Luther_King,_Jr..jpg?width=800"
         };
+
+        function cedKeyFromTopic(t) {
+            const m = String(t.title || '').match(/Topic\s+(\d+\.\d+)/i);
+            return m ? m[1] : null;
+        }
+
+        function topicImageMeta(t) {
+            const key = cedKeyFromTopic(t);
+            return (key && window.TOPIC_IMAGES && window.TOPIC_IMAGES[key]) || null;
+        }
+
+        function topicImageSrc(t) {
+            const meta = topicImageMeta(t);
+            if (meta && meta.file && typeof window.topicImageUrl === 'function') {
+                return window.topicImageUrl(cedKeyFromTopic(t));
+            }
+            if (meta && meta.file) {
+                return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(meta.file) + '?width=800';
+            }
+            return unitImages[t.unit] || unitImages[1];
+        }
+
+        function topicImageCredit(t) {
+            const meta = topicImageMeta(t);
+            return (meta && meta.credit) || ('Related primary source visual for Unit ' + t.unit + ' (public domain / museum).');
+        }
+
+        function topicImageAlt(t) {
+            const meta = topicImageMeta(t);
+            return (meta && meta.alt) || t.title;
+        }
 
         // ALL 74 TOPICS WITH EXACT GILDER LEHRMAN ANCHOR URLS
         const allTopics = [
@@ -384,17 +416,22 @@
             filtered.forEach(t => {
                 const card = document.createElement('div');
                 card.className = "bg-white border border-cb-grayBorder rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between";
+                const imgSrc = topicImageSrc(t);
+                const imgAlt = topicImageAlt(t).replace(/"/g, '&quot;');
+                const credit = topicImageCredit(t);
+                const fallback = unitImages[t.unit];
                 card.innerHTML = `
                     <div>
-                        <div class="h-40 overflow-hidden relative">
-                            <img src="${unitImages[t.unit]}" alt="Unit ${t.unit} CED Source" class="w-full h-full object-cover">
+                        <div class="h-40 overflow-hidden relative bg-cb-navy/10">
+                            <img src="${imgSrc}" alt="${imgAlt}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
                             <div class="absolute top-3 left-3 bg-cb-navy text-white text-xs font-bold px-2.5 py-1 rounded shadow">
-                                Unit ${t.unit}
+                                ${cedKeyFromTopic(t) || ('Unit ' + t.unit)}
                             </div>
                         </div>
                         <div class="p-5 space-y-2">
                             <h4 class="font-serif font-bold text-cb-navy text-sm">${t.title}</h4>
                             <p class="text-gray-600 text-xs leading-relaxed">${t.summary}</p>
+                            <p class="text-[10px] text-gray-500 leading-snug">${credit}</p>
                             <div class="p-2.5 bg-cb-cream rounded-lg border border-gray-200 flex items-center justify-between text-xs pt-3">
                                 <span class="font-semibold text-cb-blue truncate max-w-[180px]"><i class="fas fa-landmark text-cb-gold mr-1"></i>Gilder Lehrman</span>
                                 <a href="${t.url}" target="_blank" class="text-cb-blue font-bold hover:underline flex items-center space-x-1 whitespace-nowrap"><span>Official Link</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
@@ -402,7 +439,7 @@
                         </div>
                     </div>
                     <div class="px-5 pb-5 pt-0 flex items-center justify-between">
-                        <span class="text-[11px] text-gray-500 italic">CED Required Source</span>
+                        <span class="text-[11px] text-gray-500 italic">Related primary source image</span>
                         <button onclick="jumpToTopicReteach(${t.id})" class="text-xs bg-cb-lightBlue hover:bg-blue-100 text-cb-blue font-bold px-3 py-1.5 rounded transition-colors flex items-center space-x-1"><span>Open Reteach</span><i class="fas fa-arrow-right text-[10px]"></i></button>
                     </div>
                 `;
@@ -457,11 +494,14 @@
                             <p class="text-amber-900 text-sm font-semibold">${t.summary}</p>
                         </div>
 
-                        <!-- Gilder Lehrman Portal Integration Card with Unit CED Image & Direct URL -->
+                        <!-- Primary source image + Gilder Lehrman portal -->
                         <div class="p-4 bg-blue-50/60 rounded-lg border border-blue-200 flex flex-col md:flex-row items-start gap-4">
-                            <img src="${unitImages[t.unit]}" alt="Unit ${t.unit} CED Source Material" class="w-full md:w-48 h-32 object-cover rounded-lg border border-blue-200 shadow-sm">
+                            <div class="w-full md:w-56 shrink-0 space-y-2">
+                                <img src="${topicImageSrc(t)}" alt="${topicImageAlt(t).replace(/"/g, '&quot;')}" class="w-full h-36 object-cover rounded-lg border border-blue-200 shadow-sm bg-white" loading="lazy" onerror="this.onerror=null;this.src='${unitImages[t.unit]}'">
+                                <p class="text-[10px] text-gray-500 leading-snug">${topicImageCredit(t)}</p>
+                            </div>
                             <div class="space-y-2 flex-grow">
-                                <div class="flex items-center justify-between">
+                                <div class="flex items-center justify-between gap-2 flex-wrap">
                                     <h5 class="text-xs font-bold text-cb-navy uppercase"><i class="fas fa-landmark text-cb-blue mr-1"></i> Gilder Lehrman Official Anchor Link</h5>
                                     <a href="${t.url}" target="_blank" class="text-xs bg-cb-blue text-white font-semibold px-3 py-1.5 rounded hover:bg-blue-700 transition-colors inline-flex items-center space-x-1"><span>Open Direct Page</span><i class="fas fa-external-link-alt text-[10px]"></i></a>
                                 </div>
